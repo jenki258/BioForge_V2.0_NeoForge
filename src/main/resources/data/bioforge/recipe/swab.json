@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " W ",
+    " S ",
+    " C "
+  ],
+  "key": {
+    "W": {
+      "tag": "bioforge:ingredients/minecraft/white_wool"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/minecraft/stick"
+    },
+    "C": {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  },
+  "result": {
+    "id": "bioforge:swab",
+    "count": 1
+  }
+}

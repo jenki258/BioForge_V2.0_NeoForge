@@ -1,0 +1,12 @@
+{
+  "display_name": "SpCas9 Precision Module",
+  "pam": "NGG",
+  "efficiency": 0.92,
+  "compatible_guide_profiles": [
+    "bioforge:default"
+  ],
+  "compatible_pathogens": [
+    "bacteria",
+    "parasite"
+  ]
+}

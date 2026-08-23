@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "bioforge:medical_mask",
+    "bioforge:ice_bag",
+    "bioforge:magma_bag"
+  ]
+}

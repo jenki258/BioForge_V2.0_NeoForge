@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "LPL",
+    " N ",
+    " S "
+  ],
+  "key": {
+    "L": {
+      "tag": "bioforge:ingredients/minecraft/leather"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/minecraft/stick"
+    }
+  },
+  "result": {
+    "id": "bioforge:reflex_hammer"
+  }
+}

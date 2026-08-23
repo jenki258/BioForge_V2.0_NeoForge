@@ -1,0 +1,14 @@
+{
+  "station": "pharma_mixer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/bioforge/laboratory_glassware" },
+    { "tag": "bioforge:ingredients/bioforge/sterile_filter" },
+    { "tag": "bioforge:ingredients/minecraft/fermented_spider_eye" },
+    { "tag": "bioforge:ingredients/minecraft/glowstone_dust" },
+    { "tag": "bioforge:ingredients/bioforge/activated_carbon" }
+  ],
+  "output": "bioforge:pathogen_reagent",
+  "count": 2,
+  "waste": "bioforge:laboratory_waste",
+  "processing_time": 200
+}

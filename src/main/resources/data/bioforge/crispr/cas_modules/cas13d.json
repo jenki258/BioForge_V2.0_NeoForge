@@ -1,0 +1,11 @@
+{
+  "display_name": "Cas13d Viral RNA Module",
+  "pam": "PFS-U",
+  "efficiency": 1.0,
+  "compatible_guide_profiles": [
+    "bioforge:default"
+  ],
+  "compatible_pathogens": [
+    "virus"
+  ]
+}

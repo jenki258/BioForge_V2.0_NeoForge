@@ -1,0 +1,10 @@
+{
+  "type": "bioforge:incubator",
+  "primary_input": "#bioforge:ingredients/bioforge/catalyst_vial",
+  "secondary_input": "#bioforge:ingredients/bioforge/nutrient_medium",
+  "output": "bioforge:virus_sample",
+  "operation": "generate_strain",
+  "processing_time": 200,
+  "primary_item_cost": 0,
+  "catalyst_charge_cost": 1
+}

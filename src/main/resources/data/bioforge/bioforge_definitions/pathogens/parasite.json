@@ -1,0 +1,14 @@
+{
+  "schema_version": 1, "id": "bioforge:parasite", "replace": true,
+  "color": "#cc66cc",
+  "allowed_transmissions": ["food_borne", "water_borne", "animals", "attack_based", "blood"],
+  "default_symptoms": {
+    "heart_rate": "TACHY", "lung_sound": "CRACKLE", "temperature_plus": true, "temperature_minus": false,
+    "otoscope_redness": {"min": 0.5, "max": 0.8}, "otoscope_secretion": {"min": 0.2, "max": 0.5},
+    "otoscope_lesions": {"min": 0.4, "max": 0.7}, "otoscope_swelling": {"min": 0.1, "max": 0.3},
+    "oxygen_saturation": {"min": 0.6, "max": 0.8}, "perfusion_index": {"min": 0.4, "max": 0.7},
+    "reflex_delay": {"min": 0.2, "max": 0.5}, "reflex_strength": 0.5, "neural_damage": 0.3,
+    "infection_strength": {"min": 0.6, "max": 0.9}, "colony_radius": 20.0,
+    "max_infested_blocks": 100.0, "microscope_visibility": "VERY_LOW"
+  }
+}

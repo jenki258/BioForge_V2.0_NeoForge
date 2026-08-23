@@ -1,0 +1,6 @@
+{
+  "station": "sterilization_chamber",
+  "ingredients": [{ "tag": "bioforge:ingredients/minecraft/slime_ball" }],
+  "output": "bioforge:sterile_rubber",
+  "processing_time": 150
+}

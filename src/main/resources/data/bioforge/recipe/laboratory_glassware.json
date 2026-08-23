@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "G G",
+    "NPN",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    }
+  },
+  "result": {
+    "id": "bioforge:laboratory_glassware",
+    "count": 2
+  }
+}

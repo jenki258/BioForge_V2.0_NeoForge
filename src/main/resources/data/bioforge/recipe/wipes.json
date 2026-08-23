@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/paper"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/paper"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/white_wool"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  ],
+  "result": {
+    "id": "bioforge:wipes",
+    "count": 8
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DED",
+    "CBC",
+    "RPR"
+  ],
+  "key": {
+    "D": {
+      "tag": "bioforge:ingredients/minecraft/diamond"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/minecraft/echo_shard"
+    },
+    "C": {
+      "tag": "bioforge:ingredients/minecraft/comparator"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/redstone_block"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/precision_mechanism"
+    }
+  },
+  "result": {
+    "id": "bioforge:biomedical_processor"
+  }
+}

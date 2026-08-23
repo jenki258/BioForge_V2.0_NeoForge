@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/neutralizing_agent"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/surfactant_concentrate"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/splash_potion"
+    }
+  ],
+  "result": {
+    "id": "bioforge:decontamination_flask"
+  }
+}

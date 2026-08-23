@@ -1,0 +1,48 @@
+{
+  "id": "hypoxic_drift",
+  "name": "Hypoxic Drift",
+  "description": "Reduces host oxygen saturation and becomes neurotoxic beside respiratory adaptations",
+  "pathogens": ["VIRUS", "BACTERIA", "PARASITE"],
+  "rarity": "uncommon",
+  "weight": 45,
+  "tags": ["respiratory", "oxygen"],
+  "effects": [
+    {
+      "type": "modify_symptom",
+      "target": "oxygen_saturation",
+      "operation": "add",
+      "value": -0.18,
+      "min": 0.15,
+      "max": 1.0,
+      "trigger": "apply"
+    },
+    {
+      "type": "play_sound",
+      "target": "minecraft:entity.player.breath",
+      "sound_source": "players",
+      "volume": 0.52,
+      "pitch": 0.82,
+      "chance": 0.25,
+      "interval": 100,
+      "game_event": "minecraft:entity_shake",
+      "trigger": "continuous"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "respiratory_hypoxia",
+      "with": "respiratory_shedding",
+      "effects": [
+        {
+          "type": "modify_symptom",
+          "target": "neural_damage",
+          "operation": "add",
+          "value": 0.2,
+          "min": 0.0,
+          "max": 1.0,
+          "trigger": "apply"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "bioforge:bacteria",
+  "replace": true,
+  "color": "#66cc66",
+  "environmental": true,
+  "allowed_transmissions": ["food_borne", "water_borne", "contact_based", "attack_based", "environmental", "animals"],
+  "default_symptoms": {
+    "heart_rate": "TACHY", "lung_sound": "CRACKLE", "temperature_plus": true, "temperature_minus": false,
+    "otoscope_redness": {"min": 0.7, "max": 1.0}, "otoscope_secretion": {"min": 0.6, "max": 1.0},
+    "otoscope_lesions": {"min": 0.3, "max": 0.6}, "otoscope_swelling": {"min": 0.2, "max": 0.4},
+    "oxygen_saturation": {"min": 0.75, "max": 0.9}, "perfusion_index": {"min": 0.5, "max": 0.8},
+    "reflex_delay": {"min": 0.15, "max": 0.35}, "reflex_strength": 0.7, "neural_damage": 0.1,
+    "infection_strength": {"min": 0.4, "max": 0.7}, "colony_radius": 20.0,
+    "max_infested_blocks": 80.0, "microscope_visibility": "MEDIUM"
+  }
+}

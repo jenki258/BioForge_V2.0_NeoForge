@@ -1,0 +1,56 @@
+{
+  "order": 70,
+  "unlock_items": [
+    "bioforge:black_steel_ingot",
+    "bioforge:precision_mechanism",
+    "bioforge:laboratory_frame",
+    "bioforge:biomedical_processor"
+  ],
+  "recipes": [
+    "bioforge:black_steel_blend",
+    "bioforge:black_steel_ingot",
+    "bioforge:black_steel_nuggets",
+    "bioforge:black_steel_ingot_from_nuggets",
+    "bioforge:black_steel_block",
+    "bioforge:black_steel_ingots_from_block",
+    "bioforge:black_steel_plate",
+    "bioforge:black_steel_mesh",
+    "bioforge:reinforced_glass",
+    "bioforge:sterile_polymer_sheet",
+    "bioforge:laboratory_glassware",
+    "bioforge:sterile_filter",
+    "bioforge:optical_lens",
+    "bioforge:precision_mechanism",
+    "bioforge:electronic_control_unit",
+    "bioforge:laboratory_frame",
+    "bioforge:biomedical_processor"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.engineering_materials.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.engineering_materials.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.engineering_materials.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.engineering_materials.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

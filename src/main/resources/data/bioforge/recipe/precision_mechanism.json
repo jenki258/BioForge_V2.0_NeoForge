@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BCB",
+    "QDQ",
+    "BRB"
+  ],
+  "key": {
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "C": {
+      "tag": "bioforge:ingredients/minecraft/copper_ingot"
+    },
+    "Q": {
+      "tag": "bioforge:ingredients/minecraft/quartz"
+    },
+    "D": {
+      "tag": "bioforge:ingredients/minecraft/lapis_lazuli"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    }
+  },
+  "result": {
+    "id": "bioforge:precision_mechanism"
+  }
+}

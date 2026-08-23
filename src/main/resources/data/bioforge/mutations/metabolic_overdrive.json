@@ -1,0 +1,50 @@
+{
+  "id": "metabolic_overdrive",
+  "name": "Metabolic Overdrive",
+  "description": "Accelerates the infection while exhausting its host",
+  "pathogens": ["UNIVERSAL"],
+  "rarity": "rare",
+  "weight": 25,
+  "tags": ["metabolic", "virulence", "cardiac"],
+  "effects": [
+    {
+      "type": "set_symptom",
+      "target": "heart_rate",
+      "operation": "set",
+      "value": "TACHY",
+      "trigger": "apply"
+    },
+    {
+      "type": "modify_symptom",
+      "target": "infection_strength",
+      "operation": "add",
+      "value": 0.12,
+      "min": 0.0,
+      "max": 1.0,
+      "trigger": "apply"
+    },
+    {
+      "type": "exhaustion",
+      "target": "",
+      "value": 0.35,
+      "interval": 120,
+      "trigger": "continuous"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "hypermetabolic_collapse",
+      "with": "hypervirulence",
+      "effects": [
+        {
+          "type": "potion_effect",
+          "target": "minecraft:weakness",
+          "duration": 160,
+          "amplifier": 0,
+          "interval": 120,
+          "trigger": "continuous"
+        }
+      ]
+    }
+  ]
+}

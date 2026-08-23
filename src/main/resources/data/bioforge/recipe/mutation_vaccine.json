@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/vaccine"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/amethyst_shard"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/fermented_spider_eye"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    }
+  ],
+  "result": {
+    "id": "bioforge:mutation_vaccine"
+  }
+}

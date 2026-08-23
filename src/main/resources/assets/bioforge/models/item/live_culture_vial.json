@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bioforge:item/live_culture_vial_empty"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "bioforge:filled": 1.0
+      },
+      "model": "bioforge:item/live_culture_vial_filled"
+    }
+  ]
+}

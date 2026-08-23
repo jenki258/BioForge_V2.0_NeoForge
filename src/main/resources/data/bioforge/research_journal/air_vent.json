@@ -1,0 +1,44 @@
+{
+  "order": 685,
+  "unlock_items": [
+    "bioforge:air_vent"
+  ],
+  "recipes": [
+    "bioforge:air_vent"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.air_vent.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.air_vent.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.air_vent.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.air_vent.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.air_vent.content.4"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "order": 520,
+  "unlock_items": [
+    "bioforge:vaccine_maker",
+    "bioforge:vaccine",
+    "bioforge:medical_report",
+    "bioforge:blood_slide"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.vaccine_quality.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_quality.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_quality.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_quality.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

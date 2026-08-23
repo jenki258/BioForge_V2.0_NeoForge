@@ -1,0 +1,11 @@
+{
+  "station": "chemical_synthesizer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/minecraft/bone_meal" },
+    { "tag": "bioforge:ingredients/minecraft/charcoal" },
+    { "tag": "bioforge:ingredients/bioforge/sterilizing_solution" }
+  ],
+  "output": "bioforge:neutralizing_agent",
+  "count": 3,
+  "processing_time": 180
+}

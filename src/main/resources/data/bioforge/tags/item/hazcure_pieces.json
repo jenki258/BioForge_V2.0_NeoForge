@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "bioforge:hazcure_helmet",
+    "bioforge:hazcure_chestplate",
+    "bioforge:hazcure_leggings",
+    "bioforge:hazcure_boots"
+  ]
+}

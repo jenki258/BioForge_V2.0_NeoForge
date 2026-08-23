@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "WWW",
+    "GTG",
+    "BBB"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/thermal_gel"
+    },
+    "T": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_mesh"
+    }
+  },
+  "result": {
+    "id": "bioforge:insulated_lining"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " Q ",
+    "ALA",
+    " B "
+  ],
+  "key": {
+    "Q": {
+      "tag": "bioforge:ingredients/minecraft/quartz"
+    },
+    "A": {
+      "tag": "bioforge:ingredients/minecraft/amethyst_shard"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/minecraft/blaze_powder"
+    }
+  },
+  "result": {
+    "id": "bioforge:catalyst_vial"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "order": 690,
+  "unlock_items": [
+    "bioforge:viral_scanner",
+    "bioforge:ceiling_viral_scanner",
+    "bioforge:open_left_viral_scanner",
+    "bioforge:open_right_viral_scanner"
+  ],
+  "title": {
+    "color": "dark_purple",
+    "bold": true,
+    "translate": "research.bioforge.page.viral_scanners.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.viral_scanners.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.viral_scanners.content.2"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "station": "chemical_synthesizer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/minecraft/slime_ball" },
+    { "tag": "bioforge:ingredients/bioforge/ethanol" },
+    { "tag": "bioforge:ingredients/minecraft/honey_bottle" }
+  ],
+  "output": "bioforge:surfactant_concentrate",
+  "count": 3,
+  "processing_time": 180
+}

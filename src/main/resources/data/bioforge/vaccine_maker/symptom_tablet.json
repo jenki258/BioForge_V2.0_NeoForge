@@ -1,0 +1,31 @@
+{
+  "operation": "symptom_tablet",
+  "processing_time": 120,
+  "requires_program": false,
+  "consume_sample": false,
+  "consume_reagent": true,
+  "minimum_quality": 0,
+  "inputs": {
+    "sample": [
+      {
+        "tag": "bioforge:ingredients/bioforge/virus_sample"
+      },
+      {
+        "tag": "bioforge:ingredients/bioforge/live_culture_vial"
+      },
+      {
+        "tag": "bioforge:ingredients/bioforge/petri_dish"
+      }
+    ],
+    "carrier": {
+      "tag": "bioforge:ingredients/bioforge/symptom_tablet"
+    },
+    "reagent": {
+      "tag": "bioforge:ingredients/bioforge/gene_imprint"
+    }
+  },
+  "result": {
+    "item": "bioforge:symptom_tablet",
+    "duration_ticks": 12000
+  }
+}

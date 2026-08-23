@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/polymer_resin"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/ethanol"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sulfuric_acid"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/clay_ball"
+    }
+  ],
+  "result": {
+    "id": "bioforge:chemical_resistant_coating",
+    "count": 2
+  }
+}

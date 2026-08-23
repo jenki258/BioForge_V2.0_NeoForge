@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bioforge:item/petri_dish",
+    "layer1": "bioforge:item/petri_dish_culture"
+  }
+}

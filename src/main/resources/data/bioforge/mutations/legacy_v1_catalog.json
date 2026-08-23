@@ -1,0 +1,193 @@
+{
+  "definitions": [
+    {
+      "id": "adaptation_speed", "name": "Accelerated Adaptation", "description": "The strain adapts rapidly, gaining a small permanent virulence increase", "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 42, "tags": ["legacy_v1", "adaptation", "virulence"],
+      "effects": [{"type":"modify_symptom","target":"infection_strength","operation":"add","value":0.05,"min":0.0,"max":10000.0,"trigger":"apply"}]
+    },
+    {
+      "id": "amphibious_fatigue", "name": "Amphibious Fatigue", "description": "Water causes intense muscular fatigue until the strain develops aquatic respiration", "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 35, "tags": ["legacy_v1", "detrimental", "aquatic"],
+      "effects": [{"type":"potion_effect","target":"minecraft:slowness","duration":80,"amplifier":1,"interval":40,"in_water":true,"trigger":"continuous"}],
+      "interactions": [{"id":"aquatic_compensation","with":"self_respiration","remove_mutations":["amphibious_fatigue"]}]
+    },
+    {
+      "id": "antiviral_vulnerability", "name": "Antiviral Vulnerability", "description": "Reduced immune escape makes matching vaccines substantially more effective", "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 22, "tags": ["legacy_v1", "vaccine_vulnerability", "treatment"],
+      "effects": [{"type":"modify_symptom","target":"infection_strength","operation":"add","value":-0.04,"min":0.0,"max":10000.0,"trigger":"apply"}], "conflicts": ["vaccine_defense", "reinforced_vaccine_defense"]
+    },
+    {
+      "id": "bartering_instinct", "name": "Bartering Instinct", "description": "Heightened social pattern recognition improves luck while infected", "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "beneficial", "behavioral"],
+      "effects": [{"type":"attribute_modifier","target":"minecraft:generic.luck","operation":"add","amount":2.0,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "blindness_resistance", "name": "Blindness Resistance", "description": "Neural compensation continuously clears blindness", "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 20, "tags": ["legacy_v1", "beneficial", "neural"],
+      "effects": [{"type":"bioforge:clear_effect","target":"minecraft:blindness","interval":20,"trigger":"continuous"}],
+      "interactions": [{"id":"visual_compensation","with":["blindness","night_blindness"],"mode":"any","remove_mutations":["blindness","night_blindness"]}]
+    },
+    {
+      "id": "chameleon", "name": "Chameleon", "description": "The host fades from view while remaining nearly motionless", "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 8, "tags": ["legacy_v1", "beneficial", "camouflage"],
+      "effects": [{"type":"bioforge:camouflage","target":"","mode":"still","interval":5,"trigger":"continuous"}],
+      "interactions": [{"id":"adaptive_camouflage","with":"water_camouflage","effects":[{"type":"attribute_modifier","target":"minecraft:generic.movement_speed","operation":"add","amount":0.025,"interval":80,"trigger":"continuous"}]}]
+    },
+    {
+      "id": "climbing", "name": "Climbing", "description": "Altered muscle control allows the host to climb vertical surfaces", "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 8, "tags": ["legacy_v1", "beneficial", "mobility"],
+      "effects": [{"type":"bioforge:wall_climb","target":"","interval":1,"trigger":"continuous"}]
+    },
+    {
+      "id": "emerald_fumes", "name": "Emerald Fumes", "description": "The infection periodically releases visible toxic metabolic vapour", "pathogens": ["BACTERIA", "FUNGI", "UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "detrimental", "visual"],
+      "effects": [{"type":"spawn_particle","target":"minecraft:witch","count":7,"spread":0.35,"speed":0.02,"interval":40,"trigger":"continuous"},{"type":"potion_effect","target":"minecraft:poison","duration":80,"amplifier":0,"chance":0.08,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "fast_regeneration", "name": "Fast Regeneration", "description": "Aggressive tissue repair restores health at a high metabolic cost", "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 10, "tags": ["legacy_v1", "beneficial", "regeneration"],
+      "effects": [{"type":"potion_effect","target":"minecraft:regeneration","duration":80,"amplifier":0,"interval":60,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.2,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"carnivorous_repair","with":"flesh_cravings","effects":[{"type":"potion_effect","target":"minecraft:hunger","duration":120,"amplifier":1,"interval":100,"trigger":"continuous"}]}]
+    },
+    {
+      "id": "flesh_cravings", "name": "Flesh Cravings", "description": "The host can digest only meat; feeding the craving restores tissue but an empty stomach quickly becomes dangerous", "pathogens": ["PARASITE", "VIRUS", "UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "metabolic", "mixed", "diet:meat_only"],
+      "effects": [{"type":"potion_effect","target":"minecraft:strength","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.18,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "grass_dependency", "name": "Grass Dependency", "description": "The host must remain on living grass-like substrate or suffer escalating hunger and metabolic weakness", "pathogens": ["PARASITE", "FUNGI", "UNIVERSAL"], "rarity": "uncommon", "weight": 30, "tags": ["legacy_v1", "detrimental", "plant", "substrate_dependency"],
+      "effects": [{"type":"bioforge:grass_dependency","target":"","duration":100,"exhaustion":0.35,"interval":40,"trigger":"continuous"}]
+    },
+    {
+      "id": "grass_eater", "name": "Grass Eater", "description": "Plant-adapted metabolism stabilizes hunger and repairs minor damage", "pathogens": ["PARASITE", "FUNGI", "UNIVERSAL"], "rarity": "rare", "weight": 20, "tags": ["legacy_v1", "beneficial", "plant"],
+      "effects": [{"type":"potion_effect","target":"minecraft:saturation","duration":40,"amplifier":0,"chance":0.18,"interval":160,"trigger":"continuous"},{"type":"potion_effect","target":"minecraft:regeneration","duration":50,"amplifier":0,"chance":0.12,"interval":160,"trigger":"continuous"}],
+      "interactions": [{"id":"plant_metabolism","with":"grass_dependency","remove_mutations":["grass_dependency"]}]
+    },
+    {
+      "id": "hay_allergy", "name": "Hay Allergy", "description": "Plant fibres provoke weakness and frequent visible sneezing", "pathogens": ["UNIVERSAL"], "rarity": "common", "weight": 45, "tags": ["legacy_v1", "detrimental", "respiratory"],
+      "effects": [{"type":"potion_effect","target":"minecraft:weakness","duration":90,"amplifier":0,"interval":80,"trigger":"continuous"},{"type":"spawn_particle","target":"minecraft:sneeze","count":4,"spread":0.18,"interval":110,"chance":0.30,"offset_y":1.4,"forward_offset":0.55,"forward_speed":0.08,"trigger":"continuous"},{"type":"play_sound","target":"bioforge:symptom.sneeze","sound_source":"players","volume":0.62,"pitch":1.0,"chance":0.30,"interval":110,"game_event":"minecraft:entity_shake","trigger":"continuous"}]
+    },
+    {
+      "id": "hay_infusion", "name": "Hay Infusion", "description": "Fibrous biological reinforcement improves damage resistance", "pathogens": ["FUNGI", "PARASITE", "UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "beneficial", "plant"],
+      "effects": [{"type":"potion_effect","target":"minecraft:resistance","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"allergen_tolerance","with":"hay_allergy","remove_mutations":["hay_allergy"]}]
+    },
+    {
+      "id": "heat_cold_resistance", "name": "Thermal Resistance", "description": "Thermoregulation suppresses infection-driven fever and hypothermia", "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 10, "tags": ["legacy_v1", "beneficial", "thermal"],
+      "effects": [{"type":"set_symptom","target":"temperature_plus","operation":"set","value":false,"trigger":"apply"},{"type":"set_symptom","target":"temperature_minus","operation":"set","value":false,"trigger":"apply"},{"type":"potion_effect","target":"minecraft:fire_resistance","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"thermal_stabilization","with":"thermal_instability","remove_mutations":["thermal_instability"]}]
+    },
+    {
+      "id": "honey_immunity", "name": "Honey Immunity", "description": "The strain metabolizes common toxins before they affect the host", "pathogens": ["BACTERIA", "PARASITE", "UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "beneficial", "toxin"],
+      "effects": [{"type":"bioforge:clear_effect","target":"minecraft:poison","interval":20,"trigger":"continuous"}],
+      "interactions": [{"id":"toxin_neutralization","with":"poison","remove_mutations":["poison"]}]
+    },
+    {
+      "id": "hyper_metabolism", "name": "Hyper Metabolism", "description": "Movement accelerates while food reserves collapse", "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 30, "tags": ["legacy_v1", "metabolic", "mixed"],
+      "effects": [{"type":"attribute_modifier","target":"minecraft:generic.movement_speed","operation":"add","amount":0.06,"interval":80,"trigger":"continuous"},{"type":"potion_effect","target":"minecraft:hunger","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}], "conflicts": ["metabolic_overdrive"]
+    },
+    {
+      "id": "light_sensitive", "name": "Light Sensitive", "description": "Bright environments trigger visual and motor distress", "pathogens": ["PRION", "PARASITE", "UNIVERSAL"], "rarity": "uncommon", "weight": 30, "tags": ["legacy_v1", "detrimental", "visual"],
+      "effects": [{"type":"bioforge:light_reaction","target":"minecraft:weakness","reaction":"bright","duration":60,"amplifier":0,"interval":20,"trigger":"continuous"}]
+    },
+    {
+      "id": "night_blindness", "name": "Night Blindness", "description": "Low light severely disrupts vision", "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 32, "tags": ["legacy_v1", "detrimental", "visual"],
+      "effects": [{"type":"bioforge:light_reaction","target":"minecraft:blindness","reaction":"dark","duration":60,"amplifier":0,"interval":20,"trigger":"continuous"}], "conflicts": ["night_vision", "blindness_resistance"]
+    },
+    {
+      "id": "night_vision", "name": "Night Vision", "description": "Retinal adaptation reveals dark environments", "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "beneficial", "visual"],
+      "effects": [{"type":"potion_effect","target":"minecraft:night_vision","duration":260,"amplifier":0,"interval":200,"trigger":"continuous"}], "conflicts": ["night_blindness"]
+    },
+    {
+      "id": "poison_resistance", "name": "Poison Resistance", "description": "Enhanced detoxification continuously clears poison", "pathogens": ["BACTERIA", "PARASITE", "UNIVERSAL"], "rarity": "rare", "weight": 20, "tags": ["legacy_v1", "beneficial", "toxin"],
+      "effects": [{"type":"bioforge:clear_effect","target":"minecraft:poison","interval":20,"trigger":"continuous"}],
+      "interactions": [{"id":"poison_compensation","with":"poison","remove_mutations":["poison"]}]
+    },
+    {
+      "id": "pollination_dependency", "name": "Pollination Dependency", "description": "The strain depends on unstable floral metabolites", "pathogens": ["FUNGI", "PARASITE", "UNIVERSAL"], "rarity": "uncommon", "weight": 28, "tags": ["legacy_v1", "detrimental", "plant"],
+      "effects": [{"type":"potion_effect","target":"minecraft:weakness","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.15,"interval":100,"trigger":"continuous"}]
+    },
+    {
+      "id": "pollinators_grace", "name": "Pollinator's Grace", "description": "Airborne floral adaptation grants controlled falling and improved luck", "pathogens": ["FUNGI", "PARASITE", "UNIVERSAL"], "rarity": "epic", "weight": 9, "tags": ["legacy_v1", "beneficial", "plant"],
+      "effects": [{"type":"potion_effect","target":"minecraft:slow_falling","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"},{"type":"attribute_modifier","target":"minecraft:generic.luck","operation":"add","amount":1.0,"interval":80,"trigger":"continuous"},{"type":"spawn_particle","target":"minecraft:happy_villager","count":2,"spread":0.35,"chance":0.2,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"stable_pollination","with":"pollination_dependency","remove_mutations":["pollination_dependency"]}]
+    },
+    {
+      "id": "self_respiration", "name": "Self Respiration", "description": "The infection maintains the host's air supply underwater", "pathogens": ["BACTERIA", "PARASITE", "UNIVERSAL"], "rarity": "epic", "weight": 9, "tags": ["legacy_v1", "beneficial", "aquatic"],
+      "effects": [{"type":"bioforge:respiration","target":"","interval":10,"trigger":"continuous"}],
+      "interactions": [{"id":"aquatic_adaptation","with":"amphibious_fatigue","remove_mutations":["amphibious_fatigue"]}]
+    },
+    {
+      "id": "speed_boost", "name": "Speed Boost", "description": "Persistent neuromuscular stimulation increases movement speed", "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "beneficial", "mobility"],
+      "effects": [{"type":"attribute_modifier","target":"minecraft:generic.movement_speed","operation":"add","amount":0.08,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "speed_bursts", "name": "Speed Bursts", "description": "Short unpredictable bursts of extreme speed disrupt normal movement", "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "mixed", "mobility"],
+      "effects": [{"type":"potion_effect","target":"minecraft:speed","duration":60,"amplifier":2,"chance":0.28,"interval":100,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.3,"chance":0.28,"interval":100,"trigger":"continuous"}]
+    },
+    {
+      "id": "strength", "name": "Strength", "description": "Muscle recruitment increases attack damage", "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 18, "tags": ["legacy_v1", "beneficial", "physical"],
+      "effects": [{"type":"attribute_modifier","target":"minecraft:generic.attack_damage","operation":"add","amount":2.0,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"motor_recovery","with":"weak_grip","remove_mutations":["weak_grip"]}]
+    },
+    {
+      "id": "strong_skin", "name": "Strong Skin", "description": "Dense dermal tissue increases armour and knockback resistance", "pathogens": ["BACTERIA", "FUNGI", "PARASITE", "UNIVERSAL"], "rarity": "epic", "weight": 10, "tags": ["legacy_v1", "beneficial", "physical"],
+      "effects": [{"type":"attribute_modifier","target":"minecraft:generic.armor","operation":"add","amount":4.0,"interval":80,"trigger":"continuous"},{"type":"attribute_modifier","target":"minecraft:generic.knockback_resistance","operation":"add","amount":0.15,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "water_allergy", "name": "Water Allergy", "description": "Contact with water damages unstable tissue", "pathogens": ["FUNGI", "PRION", "UNIVERSAL"], "rarity": "uncommon", "weight": 30, "tags": ["legacy_v1", "detrimental", "aquatic"],
+      "effects": [{"type":"damage","target":"drown","value":1.0,"interval":60,"in_water":true,"trigger":"continuous"}], "conflicts": ["water_camouflage", "self_respiration"]
+    },
+    {
+      "id": "water_camouflage", "name": "Water Camouflage", "description": "The host becomes nearly invisible while submerged", "pathogens": ["BACTERIA", "PARASITE", "UNIVERSAL"], "rarity": "epic", "weight": 9, "tags": ["legacy_v1", "beneficial", "camouflage", "aquatic"],
+      "effects": [{"type":"bioforge:camouflage","target":"","mode":"water","interval":5,"trigger":"continuous"}], "conflicts": ["water_allergy"]
+    },
+    {
+      "id": "weak_grip", "name": "Weak Grip", "description": "Motor damage reduces attack damage and handling speed", "pathogens": ["PRION", "VIRUS", "UNIVERSAL"], "rarity": "uncommon", "weight": 32, "tags": ["legacy_v1", "detrimental", "neural"],
+      "effects": [{"type":"attribute_modifier","target":"minecraft:generic.attack_damage","operation":"add","amount":-2.0,"interval":80,"trigger":"continuous"},{"type":"attribute_modifier","target":"minecraft:generic.attack_speed","operation":"add","amount":-0.35,"interval":80,"trigger":"continuous"}], "conflicts": ["strength"]
+    },
+    {
+      "id": "blindness", "name": "Blindness", "description": "The infection repeatedly disrupts visual processing", "pathogens": ["PRION", "VIRUS", "UNIVERSAL"], "rarity": "uncommon", "weight": 30, "tags": ["legacy_v1", "symptom", "visual"],
+      "effects": [{"type":"potion_effect","target":"minecraft:blindness","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}], "conflicts": ["blindness_resistance"]
+    },
+    {
+      "id": "coughing", "name": "Coughing", "description": "Repeated coughing exhausts the host and visibly sheds respiratory material", "pathogens": ["VIRUS", "BACTERIA", "FUNGI", "UNIVERSAL"], "rarity": "common", "weight": 48, "tags": ["legacy_v1", "symptom", "respiratory", "suppressible:coughing"],
+      "effects": [{"type":"spawn_particle","target":"minecraft:cloud","count":5,"spread":0.20,"speed":0.02,"offset_y":1.45,"forward_offset":0.55,"forward_speed":0.07,"chance":0.32,"interval":70,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.15,"chance":0.32,"interval":70,"trigger":"continuous"},{"type":"play_sound","target":"bioforge:symptom.cough","sound_source":"players","volume":0.68,"pitch":1.0,"chance":0.32,"interval":70,"game_event":"minecraft:entity_shake","trigger":"continuous"}],
+      "interactions": [{"id":"aerosol_cough","with":"respiratory_shedding","effects":[{"type":"spawn_particle","target":"minecraft:spore_blossom_air","count":9,"spread":0.5,"offset_y":1.3,"interval":50,"trigger":"continuous"}]}]
+    },
+    {
+      "id": "fatigue", "name": "Fatigue", "description": "Systemic inflammation slows movement and work", "pathogens": ["UNIVERSAL"], "rarity": "common", "weight": 45, "tags": ["legacy_v1", "symptom", "physical"],
+      "effects": [{"type":"potion_effect","target":"minecraft:mining_fatigue","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"},{"type":"potion_effect","target":"minecraft:slowness","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "fever", "name": "Fever", "description": "The infection drives temperature upward and produces visible heat stress", "pathogens": ["VIRUS", "BACTERIA", "PARASITE", "UNIVERSAL"], "rarity": "common", "weight": 48, "tags": ["legacy_v1", "symptom", "thermal"],
+      "effects": [{"type":"set_symptom","target":"temperature_plus","operation":"set","value":true,"trigger":"apply"},{"type":"spawn_particle","target":"minecraft:ash","count":3,"spread":0.3,"chance":0.22,"interval":80,"trigger":"continuous"}], "conflicts": ["heat_cold_resistance"]
+    },
+    {
+      "id": "health_down", "name": "Health Down", "description": "Progressive systemic damage reduces maximum health", "pathogens": ["PRION", "PARASITE", "VIRUS", "UNIVERSAL"], "rarity": "rare", "weight": 20, "tags": ["legacy_v1", "symptom", "detrimental"],
+      "effects": [{"type":"attribute_modifier","target":"minecraft:generic.max_health","operation":"add","amount":-4.0,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "hunger", "name": "Hunger", "description": "The infection consumes host energy reserves", "pathogens": ["PARASITE", "VIRUS", "UNIVERSAL"], "rarity": "common", "weight": 46, "tags": ["legacy_v1", "symptom", "metabolic"],
+      "effects": [{"type":"potion_effect","target":"minecraft:hunger","duration":120,"amplifier":0,"interval":100,"trigger":"continuous"}]
+    },
+    {
+      "id": "nausea", "name": "Nausea", "description": "Neurological and gastrointestinal disruption distorts vision", "pathogens": ["PARASITE", "PRION", "VIRUS", "UNIVERSAL"], "rarity": "common", "weight": 44, "tags": ["legacy_v1", "symptom", "neural"],
+      "effects": [{"type":"potion_effect","target":"minecraft:nausea","duration":100,"amplifier":0,"chance":0.35,"interval":120,"trigger":"continuous"}]
+    },
+    {
+      "id": "panic_attacks", "name": "Panic Attacks", "description": "Adrenal spikes create erratic bursts followed by weakness", "pathogens": ["PRION", "VIRUS", "UNIVERSAL"], "rarity": "rare", "weight": 20, "tags": ["legacy_v1", "symptom", "neural"],
+      "effects": [{"type":"potion_effect","target":"minecraft:speed","duration":50,"amplifier":1,"chance":0.24,"interval":120,"trigger":"continuous"},{"type":"potion_effect","target":"minecraft:weakness","duration":90,"amplifier":0,"chance":0.24,"interval":120,"trigger":"continuous"},{"type":"spawn_particle","target":"minecraft:angry_villager","count":5,"spread":0.35,"chance":0.24,"interval":120,"offset_y":1.2,"trigger":"continuous"}]
+    },
+    {
+      "id": "paranoia", "name": "Paranoia", "description": "Neural inflammation produces darkness, unease and false threat responses", "pathogens": ["PRION", "PARASITE", "UNIVERSAL"], "rarity": "epic", "weight": 10, "tags": ["legacy_v1", "symptom", "neural", "visual"],
+      "effects": [{"type":"potion_effect","target":"minecraft:darkness","duration":80,"amplifier":0,"chance":0.22,"interval":140,"trigger":"continuous"},{"type":"spawn_particle","target":"minecraft:witch","count":4,"spread":0.45,"chance":0.22,"interval":140,"trigger":"continuous"},{"type":"play_sound","target":"bioforge:symptom.paranoia_voice","sound_source":"players","volume":0.38,"pitch":1.0,"chance":0.16,"interval":180,"trigger":"continuous"}]
+    },
+    {
+      "id": "poison", "name": "Poison", "description": "Toxic metabolites periodically poison the host", "pathogens": ["BACTERIA", "PARASITE", "FUNGI", "UNIVERSAL"], "rarity": "uncommon", "weight": 30, "tags": ["legacy_v1", "symptom", "toxin"],
+      "effects": [{"type":"potion_effect","target":"minecraft:poison","duration":100,"amplifier":0,"interval":100,"trigger":"continuous"}], "conflicts": ["poison_resistance", "honey_immunity"]
+    },
+    {
+      "id": "slowness", "name": "Slowness", "description": "Muscular inflammation slows the host", "pathogens": ["UNIVERSAL"], "rarity": "common", "weight": 46, "tags": ["legacy_v1", "symptom", "physical"],
+      "effects": [{"type":"potion_effect","target":"minecraft:slowness","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}], "conflicts": ["speed_boost"]
+    },
+    {
+      "id": "sneezing", "name": "Sneezing", "description": "Intermittent sneezing produces visible respiratory shedding", "pathogens": ["VIRUS", "BACTERIA", "FUNGI", "UNIVERSAL"], "rarity": "common", "weight": 48, "tags": ["legacy_v1", "symptom", "respiratory"],
+      "effects": [{"type":"spawn_particle","target":"minecraft:sneeze","count":6,"spread":0.22,"speed":0.05,"offset_y":1.45,"forward_offset":0.65,"forward_speed":0.10,"chance":0.34,"interval":80,"trigger":"continuous"},{"type":"play_sound","target":"bioforge:symptom.sneeze","sound_source":"players","volume":0.68,"pitch":1.0,"chance":0.34,"interval":80,"game_event":"minecraft:entity_shake","trigger":"continuous"}]
+    },
+    {
+      "id": "weakness", "name": "Weakness", "description": "Systemic damage reduces physical power", "pathogens": ["UNIVERSAL"], "rarity": "common", "weight": 46, "tags": ["legacy_v1", "symptom", "physical"],
+      "effects": [{"type":"potion_effect","target":"minecraft:weakness","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}], "conflicts": ["strength"]
+    }
+  ]
+}

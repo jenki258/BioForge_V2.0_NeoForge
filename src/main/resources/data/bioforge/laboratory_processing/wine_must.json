@@ -1,0 +1,12 @@
+{
+  "station": "barrel_press",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/minecraft/pressable_fruits" },
+    { "tag": "bioforge:ingredients/minecraft/pressable_fruits" },
+    { "tag": "bioforge:ingredients/minecraft/pressable_fruits" },
+    { "tag": "bioforge:ingredients/minecraft/glass_bottle" }
+  ],
+  "output": "bioforge:wine_must",
+  "count": 2,
+  "processing_time": 120
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/sugar"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/neutralizing_agent"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/glass_bottle"
+    }
+  ],
+  "result": {
+    "id": "bioforge:symptom_tablet",
+    "count": 4
+  }
+}

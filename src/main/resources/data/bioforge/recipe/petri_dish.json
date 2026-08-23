@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GGG",
+    "PSP"
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  },
+  "result": {
+    "id": "bioforge:petri_dish",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GPG"
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    }
+  },
+  "result": {
+    "id": "bioforge:blood_slide",
+    "count": 1
+  }
+}

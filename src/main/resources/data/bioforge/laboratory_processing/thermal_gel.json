@@ -1,0 +1,11 @@
+{
+  "station": "chemical_synthesizer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/minecraft/snowball" },
+    { "tag": "bioforge:ingredients/minecraft/magma_cream" },
+    { "tag": "bioforge:ingredients/minecraft/slime_ball" }
+  ],
+  "output": "bioforge:thermal_gel",
+  "count": 3,
+  "processing_time": 180
+}

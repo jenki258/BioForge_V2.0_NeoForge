@@ -1,0 +1,54 @@
+{
+  "order": 300,
+  "unlock_items": [
+    "bioforge:incubator",
+    "bioforge:catalyst_vial",
+    "bioforge:nutrient_medium",
+    "bioforge:virus_sample",
+    "bioforge:live_culture_vial"
+  ],
+  "recipes": [
+    "bioforge:swab",
+    "bioforge:petri_dish",
+    "bioforge:contaminated_substrate",
+    "bioforge:incubator",
+    "bioforge:live_culture_vial"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.cultivation.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.cultivation.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.cultivation.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.cultivation.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.cultivation.content.4"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

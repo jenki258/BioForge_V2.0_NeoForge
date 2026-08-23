@@ -1,0 +1,68 @@
+{
+  "order": 200,
+  "unlock_items": [
+    "bioforge:wooden_needle",
+    "bioforge:iron_needle",
+    "bioforge:syringe",
+    "bioforge:tube",
+    "bioforge:centrifuge"
+  ],
+  "recipes": [
+    "bioforge:wooden_needle",
+    "bioforge:iron_needle",
+    "bioforge:hardened_needle",
+    "bioforge:syringe",
+    "bioforge:tube",
+    "bioforge:blood_slide",
+    "bioforge:anti_a_vial",
+    "bioforge:anti_b_vial",
+    "bioforge:anti_d_vial",
+    "bioforge:bone_saw",
+    "bioforge:decalcification_fluid",
+    "bioforge:centrifuge"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.blood_laboratory.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.blood_laboratory.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.blood_laboratory.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.blood_laboratory.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.blood_laboratory.content.4"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.blood_laboratory.content.5"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

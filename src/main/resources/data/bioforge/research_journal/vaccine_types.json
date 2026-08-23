@@ -1,0 +1,68 @@
+{
+  "order": 515,
+  "unlock_items": [
+    "bioforge:vaccine",
+    "bioforge:mutation_vaccine",
+    "bioforge:transmission_vaccine",
+    "bioforge:symptom_vaccine",
+    "bioforge:random_mutation_vaccine"
+  ],
+  "recipes": [
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:directed_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:random_mutation_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:symptom_tablet"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_suppressor_pill"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_inhibitor_pill"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_blocker_pill"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.vaccine_types.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_types.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_types.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_types.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

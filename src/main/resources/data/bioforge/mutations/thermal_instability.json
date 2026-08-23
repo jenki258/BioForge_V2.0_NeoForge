@@ -1,0 +1,34 @@
+{
+  "id": "thermal_instability",
+  "name": "Thermal Instability",
+  "description": "Destabilizes host temperature regulation",
+  "pathogens": ["UNIVERSAL"],
+  "rarity": "uncommon",
+  "weight": 42,
+  "tags": ["temperature", "metabolic"],
+  "effects": [
+    {
+      "type": "set_symptom",
+      "target": "temperature_plus",
+      "operation": "set",
+      "value": true,
+      "trigger": "apply"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "necrotic_thermal_spike",
+      "with": "necrotic_fever",
+      "effects": [
+        {
+          "type": "damage",
+          "target": "on_fire",
+          "value": 1.0,
+          "chance": 0.18,
+          "interval": 400,
+          "trigger": "continuous"
+        }
+      ]
+    }
+  ]
+}

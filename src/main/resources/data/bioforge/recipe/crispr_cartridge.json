@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GNG",
+    "RPR",
+    " S "
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/minecraft/paper"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    }
+  },
+  "result": {
+    "id": "bioforge:crispr_cartridge"
+  }
+}

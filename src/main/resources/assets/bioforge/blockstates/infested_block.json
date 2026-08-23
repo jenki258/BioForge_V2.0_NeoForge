@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "bioforge:block/infested_block" }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "station": "chemical_synthesizer",
+  "ingredients": [
+    {"type": "neoforge:components", "items": ["minecraft:potion"], "components": {"minecraft:potion_contents": {"potion": "minecraft:water"}}},
+    { "tag": "bioforge:ingredients/minecraft/sugar" },
+    { "tag": "bioforge:ingredients/bioforge/wine_must" }
+  ],
+  "output": "bioforge:ethanol",
+  "count": 3,
+  "processing_time": 120
+}

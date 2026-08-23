@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " N ",
+    "GLG",
+    " P "
+  ],
+  "key": {
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    }
+  },
+  "result": {
+    "id": "bioforge:live_culture_vial"
+  }
+}

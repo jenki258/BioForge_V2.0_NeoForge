@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "B B",
+    "L L",
+    "S S"
+  ],
+  "key": {
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/insulated_lining"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/airtight_seal"
+    }
+  },
+  "result": {
+    "id": "bioforge:hazcure_boots"
+  }
+}

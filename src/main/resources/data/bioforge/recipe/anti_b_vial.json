@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/spider_eye"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/blue_dye"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/copper_ingot"
+    }
+  ],
+  "result": {
+    "id": "bioforge:anti_b_vial"
+  }
+}

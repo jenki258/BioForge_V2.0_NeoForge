@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SPS",
+    "PAP",
+    "SPS"
+  ],
+  "key": {
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/minecraft/paper"
+    },
+    "A": {
+      "tag": "bioforge:ingredients/bioforge/activated_carbon"
+    }
+  },
+  "result": {
+    "id": "bioforge:sterile_filter",
+    "count": 2
+  }
+}

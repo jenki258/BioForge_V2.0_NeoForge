@@ -1,0 +1,29 @@
+{
+  "order": 50,
+  "unlock_items": [
+    "bioforge:black_steel_blend",
+    "bioforge:black_steel_ingot",
+    "bioforge:black_steel_plate"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.black_steel_progression.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.black_steel_progression.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.black_steel_progression.content.2"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

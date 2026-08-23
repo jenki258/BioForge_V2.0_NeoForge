@@ -1,0 +1,12 @@
+{
+  "display_name": "Cas12a Broad-Cut Module",
+  "pam": "TTTV",
+  "efficiency": 0.95,
+  "compatible_guide_profiles": [
+    "bioforge:default"
+  ],
+  "compatible_pathogens": [
+    "fungi",
+    "prion"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "tag": "bioforge:ingredients/minecraft/charcoal"
+  },
+  "result": {
+    "id": "bioforge:activated_carbon"
+  },
+  "experience": 0.2,
+  "cookingtime": 300
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "BBB",
+    "IGI",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "I": {
+      "tag": "bioforge:ingredients/minecraft/packed_ice"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/thermal_gel"
+    }
+  },
+  "result": {
+    "id": "bioforge:ice_bag"
+  }
+}

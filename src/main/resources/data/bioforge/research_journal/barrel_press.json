@@ -1,0 +1,47 @@
+{
+  "order": 580,
+  "unlock_items": [
+    "bioforge:barrel_press",
+    "bioforge:wine_must",
+    "bioforge:ethanol"
+  ],
+  "recipes": [
+    "bioforge:barrel_press",
+    {
+      "type": "laboratory",
+      "id": "bioforge:wine_must"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:ethanol"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.barrel_press.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.barrel_press.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.barrel_press.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.barrel_press.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

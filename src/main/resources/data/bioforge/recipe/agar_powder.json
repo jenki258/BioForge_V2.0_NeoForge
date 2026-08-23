@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/dried_kelp"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/dried_kelp"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/bone_meal"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/sugar"
+    }
+  ],
+  "result": {
+    "id": "bioforge:agar_powder",
+    "count": 3
+  }
+}

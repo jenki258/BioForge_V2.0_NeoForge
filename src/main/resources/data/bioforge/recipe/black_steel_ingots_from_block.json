@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/black_steel_block"
+    }
+  ],
+  "result": {
+    "id": "bioforge:black_steel_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "LOL",
+    "PEP",
+    "PFP"
+  ],
+  "key": {
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/optical_lens"
+    },
+    "O": {
+      "tag": "bioforge:ingredients/minecraft/spyglass"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_frame"
+    }
+  },
+  "result": {
+    "id": "bioforge:microscope"
+  }
+}

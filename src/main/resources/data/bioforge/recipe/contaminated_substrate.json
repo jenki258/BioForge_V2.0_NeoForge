@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AFA",
+    "DND",
+    "DCD"
+  ],
+  "key": {
+    "A": {
+      "tag": "bioforge:ingredients/bioforge/agar_powder"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/sterile_filter"
+    },
+    "D": {
+      "tag": "bioforge:ingredients/minecraft/dirt"
+    },
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/nutrient_medium"
+    },
+    "C": {
+      "tag": "bioforge:ingredients/bioforge/activated_carbon"
+    }
+  },
+  "result": {
+    "id": "bioforge:contaminated_substrate"
+  }
+}

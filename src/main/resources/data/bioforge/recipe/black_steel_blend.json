@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ICI",
+    "CFC",
+    "ICI"
+  ],
+  "key": {
+    "I": {
+      "tag": "bioforge:ingredients/minecraft/iron_ingot"
+    },
+    "C": {
+      "tag": "bioforge:ingredients/bioforge/activated_carbon"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/minecraft/flint"
+    }
+  },
+  "result": {
+    "id": "bioforge:black_steel_blend",
+    "count": 4
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bioforge:item/hardened_needle_filled"
+  }
+}

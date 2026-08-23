@@ -1,0 +1,9 @@
+{
+  "category": "symptom",
+  "operation": "auto_opposite",
+  "require_same_pathogen": true,
+  "minimum_similarity": 0.2,
+  "base_success_chance": 0.88,
+  "potency": 0.25,
+  "neutral_epsilon": 0.001
+}

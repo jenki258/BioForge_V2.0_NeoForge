@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SFS",
+    "BVB",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "tag": "bioforge:ingredients/minecraft/string"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/activated_filter"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "V": {
+      "tag": "bioforge:ingredients/bioforge/respirator_valve"
+    }
+  },
+  "result": {
+    "id": "bioforge:medical_mask"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "operation": "resistance_pill",
+  "processing_time": 80,
+  "requires_program": false,
+  "consume_sample": false,
+  "minimum_quality": 0,
+  "inputs": {
+    "sample": [
+      {
+        "tag": "bioforge:ingredients/bioforge/virus_sample"
+      },
+      {
+        "tag": "bioforge:ingredients/bioforge/live_culture_vial"
+      },
+      {
+        "tag": "bioforge:ingredients/bioforge/petri_dish"
+      }
+    ],
+    "carrier": {
+      "tag": "bioforge:ingredients/bioforge/symptom_tablet"
+    },
+    "reagent": {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    }
+  },
+  "result": {
+    "item": "bioforge:viral_suppressor_pill",
+    "resistance": 0.3,
+    "duration_ticks": 6000
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "order": 740,
+  "unlock_items": [
+    "bioforge:thermometer",
+    "bioforge:stethoscope",
+    "bioforge:otoscope",
+    "bioforge:pulse_oximeter",
+    "bioforge:reflex_hammer",
+    "bioforge:symptom_tablet"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.symptom_reference.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.symptom_reference.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.symptom_reference.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.symptom_reference.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

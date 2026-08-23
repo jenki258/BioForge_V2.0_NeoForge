@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " F ",
+    " S ",
+    " T "
+  ],
+  "key": {
+    "F": {
+      "tag": "bioforge:ingredients/minecraft/flint"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/minecraft/stick"
+    },
+    "T": {
+      "tag": "bioforge:ingredients/minecraft/string"
+    }
+  },
+  "result": {
+    "id": "bioforge:wooden_needle"
+  }
+}

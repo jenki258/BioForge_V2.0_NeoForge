@@ -1,0 +1,16 @@
+{
+  "id": "bloodborne",
+  "name": "Bloodborne Adaptation",
+  "description": "Adds blood transmission to the infection",
+  "pathogens": ["BACTERIA", "FUNGI"],
+  "rarity": "uncommon",
+  "weight": 50,
+  "tags": ["transmission", "blood"],
+  "effects": [
+    {
+      "type": "add_infection_type",
+      "target": "BLOOD",
+      "trigger": "apply"
+    }
+  ]
+}

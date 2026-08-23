@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FBF",
+    "ENE",
+    "PFP"
+  ],
+  "key": {
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_frame"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/biomedical_processor"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/cas_module"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    }
+  },
+  "result": {
+    "id": "bioforge:vaccine_maker"
+  }
+}

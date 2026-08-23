@@ -1,0 +1,40 @@
+{
+  "id": "respiratory_shedding",
+  "name": "Respiratory Shedding",
+  "description": "Forces airborne transmission and causes productive crackling respiration",
+  "pathogens": ["VIRUS", "BACTERIA", "FUNGI"],
+  "rarity": "uncommon",
+  "weight": 55,
+  "tags": ["transmission", "airborne", "respiratory"],
+  "effects": [
+    {
+      "type": "add_infection_type",
+      "target": "AIR_BORNE",
+      "trigger": "apply"
+    },
+    {
+      "type": "set_symptom",
+      "target": "lung_sound",
+      "operation": "set",
+      "value": "CRACKLE",
+      "trigger": "apply"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "aerosolized_spores",
+      "with": "spore_cloud",
+      "effects": [
+        {
+          "type": "modify_symptom",
+          "target": "infection_strength",
+          "operation": "add",
+          "value": 0.1,
+          "min": 0.0,
+          "max": 1.0,
+          "trigger": "apply"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "order": 400,
+  "unlock_items": [
+    "bioforge:microscope",
+    "bioforge:blood_slide",
+    "bioforge:gene_imprint",
+    "bioforge:visibility_reagent"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.microscopy.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.microscopy.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.microscopy.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.microscopy.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.microscopy.content.4"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

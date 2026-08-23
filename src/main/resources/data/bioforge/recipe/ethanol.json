@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/water_bucket"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/glass_bottle"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/glass_bottle"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/sugar"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/sugar"
+    },
+    { "tag": "bioforge:ingredients/bioforge/wine_must" }
+  ],
+  "result": {
+    "id": "bioforge:ethanol",
+    "count": 2
+  }
+}

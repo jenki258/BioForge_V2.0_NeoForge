@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ",
+    "PBP",
+    " S "
+  ],
+  "key": {
+    "O": {
+      "tag": "bioforge:ingredients/bioforge/optical_lens"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/biomedical_processor"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/sterile_filter"
+    }
+  },
+  "result": {
+    "id": "bioforge:area_contamination_scanner"
+  }
+}

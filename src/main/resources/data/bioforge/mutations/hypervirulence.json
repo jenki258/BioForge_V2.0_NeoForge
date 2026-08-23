@@ -1,0 +1,20 @@
+{
+  "id": "hypervirulence",
+  "name": "Hypervirulence",
+  "description": "Increases infection strength by 50%",
+  "pathogens": ["UNIVERSAL"],
+  "rarity": "rare",
+  "weight": 20,
+  "tags": ["infection", "virulence"],
+  "effects": [
+    {
+      "type": "modify_symptom",
+      "target": "infection_strength",
+      "operation": "multiply",
+      "value": 1.5,
+      "min": 0.0,
+      "max": 1.0,
+      "trigger": "apply"
+    }
+  ]
+}

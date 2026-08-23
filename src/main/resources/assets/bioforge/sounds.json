@@ -1,0 +1,79 @@
+{
+  "symptom.cough": {
+    "subtitle": "subtitles.bioforge.symptom.cough",
+    "sounds": [
+      "bioforge:symptom/cough_1",
+      "bioforge:symptom/cough_2",
+      "bioforge:symptom/cough_3",
+      "bioforge:symptom/cough_4",
+      "bioforge:symptom/cough_5"
+    ]
+  },
+  "symptom.sneeze": {
+    "subtitle": "subtitles.bioforge.symptom.sneeze",
+    "sounds": [
+      "bioforge:symptom/sneeze_1",
+      "bioforge:symptom/sneeze_2",
+      "bioforge:symptom/sneeze_3",
+      "bioforge:symptom/sneeze_4",
+      "bioforge:symptom/sneeze_5"
+    ]
+  },
+  "symptom.paranoia_voice": {
+    "subtitle": "subtitles.bioforge.symptom.paranoia_voice",
+    "sounds": [
+      "bioforge:symptom/voice_1",
+      "bioforge:symptom/voice_2",
+      "bioforge:symptom/voice_3",
+      "bioforge:symptom/voice_4",
+      "bioforge:symptom/voice_5",
+      "bioforge:symptom/voice_6",
+      "bioforge:symptom/voice_7"
+    ]
+  },
+  "machine.disinfecting": {
+    "subtitle": "subtitles.bioforge.machine.disinfecting",
+    "sounds": ["bioforge:machine/disinfecting"]
+  },
+  "machine.genes_complete": {
+    "subtitle": "subtitles.bioforge.machine.genes_complete",
+    "sounds": ["bioforge:machine/genes_complete"]
+  },
+  "machine.emergency": {
+    "subtitle": "subtitles.bioforge.machine.emergency",
+    "sounds": ["bioforge:machine/emergency"]
+  },
+  "machine.testing_complete": {
+    "subtitle": "subtitles.bioforge.machine.testing_complete",
+    "sounds": ["bioforge:machine/testing_complete"]
+  },
+  "machine.centrifuge": {
+    "subtitle": "subtitles.bioforge.machine.centrifuge",
+    "sounds": ["bioforge:machine/centrifuge"]
+  },
+  "machine.liquid_pour": {
+    "subtitle": "subtitles.bioforge.machine.liquid_pour",
+    "sounds": ["bioforge:machine/liquid_pour"]
+  },
+  "machine.chemicals_complete": {
+    "subtitle": "subtitles.bioforge.machine.chemicals_complete",
+    "sounds": ["bioforge:machine/chemicals_complete"]
+  },
+  "ui.button": {
+    "subtitle": "subtitles.bioforge.ui.button",
+    "sounds": [
+      "bioforge:ui/button_1",
+      "bioforge:ui/button_2",
+      "bioforge:ui/button_3"
+    ]
+  },
+  "ui.satisfying": {
+    "subtitle": "subtitles.bioforge.ui.satisfying",
+    "sounds": [
+      "bioforge:ui/satisfying_1",
+      "bioforge:ui/satisfying_2",
+      "bioforge:ui/satisfying_3",
+      "bioforge:ui/satisfying_4"
+    ]
+  }
+}

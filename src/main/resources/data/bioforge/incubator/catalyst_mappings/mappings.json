@@ -1,0 +1,17 @@
+{
+  "nether_star_universal_chance": 0.025,
+  "mappings": [
+    { "item": "minecraft:red_mushroom", "pathogen": "FUNGI" },
+    { "item": "minecraft:brown_mushroom", "pathogen": "FUNGI" },
+    { "item": "minecraft:crimson_fungus", "pathogen": "FUNGI" },
+    { "item": "minecraft:warped_fungus", "pathogen": "FUNGI" },
+    { "item": "minecraft:rotten_flesh", "pathogen": "BACTERIA" },
+    { "item": "minecraft:slime_ball", "pathogen": "BACTERIA" },
+    { "item": "minecraft:spider_eye", "pathogen": "VIRUS" },
+    { "item": "minecraft:fermented_spider_eye", "pathogen": "VIRUS" },
+    { "item": "minecraft:pufferfish", "pathogen": "PARASITE" },
+    { "item": "minecraft:rabbit_foot", "pathogen": "PARASITE" },
+    { "item": "minecraft:bone", "pathogen": "PRION" },
+    { "item": "minecraft:phantom_membrane", "pathogen": "PRION" }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "station": "sterilization_chamber",
+  "ingredients": [{ "tag": "bioforge:ingredients/bioforge/dirty_culture_vial" }],
+  "output": "bioforge:live_culture_vial",
+  "processing_time": 120
+}

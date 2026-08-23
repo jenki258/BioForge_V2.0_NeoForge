@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GQG",
+    "RMR",
+    "GLG"
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/minecraft/gold_ingot"
+    },
+    "Q": {
+      "tag": "bioforge:ingredients/minecraft/quartz"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/precision_mechanism"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/minecraft/diamond"
+    }
+  },
+  "result": {
+    "id": "bioforge:electronic_control_unit"
+  }
+}

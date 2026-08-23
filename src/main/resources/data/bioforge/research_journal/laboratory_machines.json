@@ -1,0 +1,40 @@
+{
+  "order": 620,
+  "unlock_items": [
+    "bioforge:centrifuge",
+    "bioforge:incubator",
+    "bioforge:microscope",
+    "bioforge:vaccine_maker",
+    "bioforge:chemical_synthesizer",
+    "bioforge:pharma_mixer",
+    "bioforge:sterilization_chamber"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.laboratory_machines.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.laboratory_machines.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.laboratory_machines.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.laboratory_machines.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

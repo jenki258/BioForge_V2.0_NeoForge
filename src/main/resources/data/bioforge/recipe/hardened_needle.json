@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/iron_needle"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/netherite_scrap"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/diamond"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  ],
+  "result": {
+    "id": "bioforge:hardened_needle"
+  }
+}

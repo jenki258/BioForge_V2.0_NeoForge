@@ -1,0 +1,83 @@
+{
+  "order": 0,
+  "recipes": [
+    "bioforge:research_journal"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.contents.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.contents.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.contents.content.2"
+      },
+      "link": "bioforge:diagnostics",
+      "line_breaks": 1
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.contents.content.3"
+      },
+      "link": "bioforge:blood_laboratory",
+      "line_breaks": 1
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.contents.content.4"
+      },
+      "link": "bioforge:cultivation",
+      "line_breaks": 1
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.contents.content.5"
+      },
+      "link": "bioforge:microscopy",
+      "line_breaks": 1
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.contents.content.6"
+      },
+      "link": "bioforge:crispr_and_vaccines",
+      "line_breaks": 1
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.contents.content.7"
+      },
+      "link": "bioforge:chemistry",
+      "line_breaks": 1
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.contents.content.8"
+      },
+      "link": "bioforge:containment",
+      "line_breaks": 0
+    }
+  ]
+}

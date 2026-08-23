@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bioforge:item/tube_empty"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "bioforge:tube_filled_blood": 1.0
+      },
+      "model": "bioforge:item/tube_filled_blood"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "SLS",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "bioforge:ingredients/bioforge/chemical_resistant_coating"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/minecraft/leather"
+    }
+  },
+  "result": {
+    "id": "bioforge:sealed_biofabric",
+    "count": 2
+  }
+}

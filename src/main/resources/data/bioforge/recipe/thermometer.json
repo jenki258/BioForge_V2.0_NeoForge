@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " G ",
+    "QRQ",
+    " N "
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "Q": {
+      "tag": "bioforge:ingredients/minecraft/quartz"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    },
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    }
+  },
+  "result": {
+    "id": "bioforge:thermometer"
+  }
+}

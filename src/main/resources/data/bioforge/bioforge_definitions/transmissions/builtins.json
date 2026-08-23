@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "definitions": [
+    { "id": "bioforge:air_borne", "replace": true, "behaviors": ["bioforge:air_borne"] },
+    { "id": "bioforge:food_borne", "replace": true, "behaviors": ["bioforge:food_borne"] },
+    { "id": "bioforge:water_borne", "replace": true, "behaviors": ["bioforge:water_borne"] },
+    { "id": "bioforge:contact_based", "replace": true, "behaviors": ["bioforge:contact_based"] },
+    { "id": "bioforge:attack_based", "replace": true, "behaviors": ["bioforge:attack_based"] },
+    { "id": "bioforge:animals", "replace": true, "behaviors": ["bioforge:animals"] },
+    { "id": "bioforge:blood", "replace": true, "behaviors": ["bioforge:blood"] },
+    { "id": "bioforge:environmental", "replace": true, "behaviors": ["bioforge:environmental"] }
+  ]
+}

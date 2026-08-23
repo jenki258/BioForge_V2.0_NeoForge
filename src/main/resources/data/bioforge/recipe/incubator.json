@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RFR",
+    "RER",
+    "PMP"
+  ],
+  "key": {
+    "R": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/sterile_filter"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/minecraft/magma_cream"
+    }
+  },
+  "result": {
+    "id": "bioforge:incubator"
+  }
+}

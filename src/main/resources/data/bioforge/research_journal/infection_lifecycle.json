@@ -1,0 +1,43 @@
+{
+  "order": 475,
+  "unlock_items": [
+    "bioforge:live_culture_vial",
+    "bioforge:virus_sample",
+    "bioforge:gene_imprint"
+  ],
+  "title": {
+    "color": "dark_red",
+    "bold": true,
+    "translate": "research.bioforge.page.infection_lifecycle.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.infection_lifecycle.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.infection_lifecycle.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.infection_lifecycle.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.infection_lifecycle.content.4"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

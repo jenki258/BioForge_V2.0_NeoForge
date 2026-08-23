@@ -1,0 +1,48 @@
+{
+  "id": "necrotic_fever",
+  "name": "Necrotic Fever",
+  "description": "Causes persistent fever and weakness",
+  "pathogens": ["BACTERIA"],
+  "rarity": "uncommon",
+  "weight": 50,
+  "tags": ["inflammation", "temperature"],
+  "effects": [
+    {
+      "type": "set_symptom",
+      "target": "temperature_plus",
+      "operation": "set",
+      "value": true,
+      "trigger": "apply"
+    },
+    {
+      "type": "potion_effect",
+      "target": "minecraft:weakness",
+      "trigger": "continuous",
+      "interval": 100,
+      "duration": 240,
+      "amplifier": 0,
+      "ambient": false,
+      "show_particles": true,
+      "show_icon": true
+    }
+  ],
+  "interactions": [
+    {
+      "id": "hypervirulent_fever",
+      "with": "hypervirulence",
+      "effect_modifiers": [
+        {
+          "match": {
+            "type": "potion_effect",
+            "target": "minecraft:weakness",
+            "trigger": "continuous"
+          },
+          "parameter": "amplifier",
+          "add": 1,
+          "min": 0,
+          "max": 4
+        }
+      ]
+    }
+  ]
+}

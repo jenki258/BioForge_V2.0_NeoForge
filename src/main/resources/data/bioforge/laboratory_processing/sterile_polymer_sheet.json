@@ -1,0 +1,6 @@
+{
+  "station": "sterilization_chamber",
+  "ingredients": [{ "tag": "bioforge:ingredients/bioforge/polymer_resin" }],
+  "output": "bioforge:sterile_polymer_sheet",
+  "processing_time": 160
+}

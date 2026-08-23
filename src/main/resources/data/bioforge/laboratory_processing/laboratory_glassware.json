@@ -1,0 +1,6 @@
+{
+  "station": "sterilization_chamber",
+  "ingredients": [{ "tag": "bioforge:ingredients/minecraft/glass_bottle" }],
+  "output": "bioforge:laboratory_glassware",
+  "processing_time": 160
+}

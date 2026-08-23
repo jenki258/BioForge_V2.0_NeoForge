@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "ILM",
+    "B B",
+    "S S"
+  ],
+  "key": {
+    "I": {
+      "tag": "bioforge:ingredients/bioforge/ice_bag"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/magma_bag"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/insulated_lining"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/airtight_seal"
+    }
+  },
+  "result": {
+    "id": "bioforge:hazcure_leggings"
+  }
+}

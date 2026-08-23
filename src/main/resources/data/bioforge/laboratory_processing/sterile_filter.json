@@ -1,0 +1,6 @@
+{
+  "station": "sterilization_chamber",
+  "ingredients": [{ "tag": "bioforge:ingredients/bioforge/activated_carbon" }],
+  "output": "bioforge:sterile_filter",
+  "processing_time": 140
+}

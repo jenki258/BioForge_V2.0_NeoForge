@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bioforge:item/syringe_fill_0"
+  },
+  "overrides": [
+    { "predicate": { "bioforge:syringe_fill": 0.0 }, "model": "bioforge:item/syringe_fill_0" },
+    { "predicate": { "bioforge:syringe_fill": 0.25 }, "model": "bioforge:item/syringe_fill_1" },
+    { "predicate": { "bioforge:syringe_fill": 0.5 }, "model": "bioforge:item/syringe_fill_2" },
+    { "predicate": { "bioforge:syringe_fill": 0.75 }, "model": "bioforge:item/syringe_fill_3" },
+    { "predicate": { "bioforge:syringe_fill": 1.0 }, "model": "bioforge:item/syringe_fill_4" }
+  ]
+}

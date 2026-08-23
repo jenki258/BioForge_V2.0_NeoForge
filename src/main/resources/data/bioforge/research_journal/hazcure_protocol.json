@@ -1,0 +1,30 @@
+{
+  "order": 720,
+  "unlock_items": [
+    "bioforge:hazcure_helmet",
+    "bioforge:hazcure_chestplate",
+    "bioforge:hazcure_leggings",
+    "bioforge:hazcure_boots"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.hazcure_protocol.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.hazcure_protocol.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.hazcure_protocol.content.2"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

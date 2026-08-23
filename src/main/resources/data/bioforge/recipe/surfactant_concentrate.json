@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/slime_ball"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/ethanol"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/honey_bottle"
+    }
+  ],
+  "result": {
+    "id": "bioforge:surfactant_concentrate",
+    "count": 2
+  }
+}

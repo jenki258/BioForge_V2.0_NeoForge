@@ -1,0 +1,1 @@
+{"variants":{"facing=north":{"model":"bioforge:block/sterilization_chamber"},"facing=east":{"model":"bioforge:block/sterilization_chamber","y":90},"facing=south":{"model":"bioforge:block/sterilization_chamber","y":180},"facing=west":{"model":"bioforge:block/sterilization_chamber","y":270}}}

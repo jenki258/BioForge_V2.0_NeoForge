@@ -1,0 +1,11 @@
+{
+  "station": "chemical_synthesizer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/bioforge/sulfuric_acid" },
+    { "tag": "bioforge:ingredients/bioforge/laboratory_glassware" },
+    { "tag": "bioforge:ingredients/minecraft/bone_meal" }
+  ],
+  "output": "bioforge:decalcification_fluid",
+  "count": 3,
+  "processing_time": 200
+}

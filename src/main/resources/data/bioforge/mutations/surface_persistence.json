@@ -1,0 +1,51 @@
+{
+  "id": "surface_persistence",
+  "name": "Surface Persistence",
+  "description": "Creates long-lived environmental reservoirs with a wider colony footprint",
+  "pathogens": ["BACTERIA", "FUNGI", "VIRUS"],
+  "rarity": "rare",
+  "weight": 28,
+  "tags": ["surface", "environmental", "transmission"],
+  "effects": [
+    {
+      "type": "add_infection_type",
+      "target": "ENVIRONMENTAL",
+      "trigger": "apply"
+    },
+    {
+      "type": "modify_symptom",
+      "target": "colony_radius",
+      "operation": "multiply",
+      "value": 1.5,
+      "min": 0.0,
+      "max": 10000.0,
+      "trigger": "apply"
+    },
+    {
+      "type": "modify_symptom",
+      "target": "max_infested_blocks",
+      "operation": "multiply",
+      "value": 1.75,
+      "min": 0.0,
+      "max": 10000.0,
+      "trigger": "apply"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "persistent_spore_reservoir",
+      "with": "spore_cloud",
+      "effects": [
+        {
+          "type": "modify_symptom",
+          "target": "colony_radius",
+          "operation": "add",
+          "value": 8.0,
+          "min": 0.0,
+          "max": 10000.0,
+          "trigger": "apply"
+        }
+      ]
+    }
+  ]
+}

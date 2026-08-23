@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "growth=0": { "model": "bioforge:block/petri_dish_stage0" },
+    "growth=1": { "model": "bioforge:block/petri_dish_stage1" },
+    "growth=2": { "model": "bioforge:block/petri_dish_stage2" },
+    "growth=3": { "model": "bioforge:block/petri_dish_stage3" },
+    "growth=4": { "model": "bioforge:block/petri_dish_stage4" }
+  }
+}

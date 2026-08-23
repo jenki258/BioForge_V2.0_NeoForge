@@ -1,0 +1,50 @@
+{
+  "definitions": [
+    {
+      "id": "heat_adaptation",
+      "name": "Heat Adaptation",
+      "description": "Natural selection has made the strain stable in hot climates",
+      "pathogens": ["VIRUS", "BACTERIA", "FUNGI", "PARASITE", "PRION", "UNIVERSAL"],
+      "rarity": "rare",
+      "weight": 0,
+      "tags": ["climate_adaptation", "heat_immunity"]
+    },
+    {
+      "id": "cold_adaptation",
+      "name": "Cold Adaptation",
+      "description": "Natural selection has made the strain stable in cold climates",
+      "pathogens": ["VIRUS", "BACTERIA", "FUNGI", "PARASITE", "PRION", "UNIVERSAL"],
+      "rarity": "rare",
+      "weight": 0,
+      "tags": ["climate_adaptation", "cold_immunity"]
+    },
+    {
+      "id": "thermal_homeostasis",
+      "name": "Thermal Homeostasis",
+      "description": "The strain remains stable at both climatic extremes",
+      "pathogens": ["VIRUS", "BACTERIA", "FUNGI", "PARASITE", "PRION", "UNIVERSAL"],
+      "rarity": "legendary",
+      "weight": 0,
+      "requires": ["heat_adaptation", "cold_adaptation"],
+      "tags": ["climate_adaptation", "heat_immunity", "cold_immunity"]
+    },
+    {
+      "id": "pyrolytic_self_destruct",
+      "name": "Pyrolytic Self-Destruction",
+      "description": "The pathogen irreversibly destroys itself when exposed to fire",
+      "pathogens": ["VIRUS", "BACTERIA", "FUNGI", "UNIVERSAL"],
+      "rarity": "rare",
+      "weight": 12,
+      "tags": ["self_destruct", "environment_reaction"],
+      "effects": [
+        {
+          "type": "bioforge:self_destruct",
+          "condition": "on_fire",
+          "chance": 0.2,
+          "interval": 20,
+          "trigger": "continuous"
+        }
+      ]
+    }
+  ]
+}

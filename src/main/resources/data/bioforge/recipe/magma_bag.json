@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "BBB",
+    "MGM",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/minecraft/magma_cream"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/thermal_gel"
+    }
+  },
+  "result": {
+    "id": "bioforge:magma_bag"
+  }
+}

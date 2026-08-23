@@ -1,0 +1,41 @@
+{
+  "order": 505,
+  "unlock_items": [
+    "bioforge:crispr_cartridge",
+    "bioforge:cas_module",
+    "bioforge:petri_dish"
+  ],
+  "recipes": [
+    "bioforge:crispr_cartridge",
+    "bioforge:cas_module",
+    "bioforge:petri_dish"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.crispr_cartridges.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_cartridges.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_cartridges.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_cartridges.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

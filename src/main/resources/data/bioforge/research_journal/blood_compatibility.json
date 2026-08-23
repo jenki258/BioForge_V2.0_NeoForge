@@ -1,0 +1,38 @@
+{
+  "order": 220,
+  "unlock_items": [
+    "bioforge:anti_a_vial",
+    "bioforge:anti_b_vial",
+    "bioforge:anti_d_vial",
+    "bioforge:plasma_sample",
+    "bioforge:cell_pellet"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.blood_compatibility.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.blood_compatibility.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.blood_compatibility.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.blood_compatibility.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MMM",
+    "CFC",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_mesh"
+    },
+    "C": {
+      "tag": "bioforge:ingredients/bioforge/activated_carbon"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/sterile_filter"
+    }
+  },
+  "result": {
+    "id": "bioforge:activated_filter"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1, "id": "bioforge:fungi", "replace": true,
+  "color": "#cccc66", "environmental": true,
+  "allowed_transmissions": ["air_borne", "contact_based", "food_borne", "environmental"],
+  "default_symptoms": {
+    "heart_rate": "TACHY", "lung_sound": "CRACKLE", "temperature_plus": true, "temperature_minus": false,
+    "otoscope_redness": {"min": 0.1, "max": 0.3}, "otoscope_secretion": {"min": 0.3, "max": 0.6},
+    "otoscope_lesions": {"min": 0.7, "max": 1.0}, "otoscope_swelling": {"min": 0.0, "max": 0.1},
+    "oxygen_saturation": {"min": 0.85, "max": 0.95}, "perfusion_index": {"min": 0.4, "max": 0.8},
+    "reflex_delay": {"min": 0.25, "max": 0.45}, "reflex_strength": 0.3, "neural_damage": 0.4,
+    "infection_strength": {"min": 0.5, "max": 0.9}, "colony_radius": 25.0,
+    "max_infested_blocks": 150.0, "microscope_visibility": "HIGH"
+  }
+}

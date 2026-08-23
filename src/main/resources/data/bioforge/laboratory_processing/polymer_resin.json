@@ -1,0 +1,11 @@
+{
+  "station": "chemical_synthesizer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/minecraft/slime_ball" },
+    { "tag": "bioforge:ingredients/bioforge/activated_carbon" },
+    { "tag": "bioforge:ingredients/bioforge/sulfuric_acid" }
+  ],
+  "output": "bioforge:polymer_resin",
+  "count": 3,
+  "processing_time": 160
+}

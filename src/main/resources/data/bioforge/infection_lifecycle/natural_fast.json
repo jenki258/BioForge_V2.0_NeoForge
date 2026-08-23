@@ -1,0 +1,17 @@
+{
+  "id": "bioforge:natural_fast",
+  "pathogens": ["bioforge:virus"],
+  "incubation_ticks": 4800,
+  "adaptation_speed": 0.5,
+  "hostile_climate_incubation_rate": 0.5,
+  "adaptation_points_per_second": 0.4,
+  "hot_adaptation_threshold": 95.0,
+  "cold_adaptation_threshold": 95.0,
+  "hot_adaptation_mutation": "heat_adaptation",
+  "cold_adaptation_mutation": "cold_adaptation",
+  "dual_adaptation_mutation": "thermal_homeostasis",
+  "lifespan_ticks": 96000,
+  "infectivity": 1.05,
+  "cure_resistance": 0.12,
+  "contagious_during_incubation": false
+}

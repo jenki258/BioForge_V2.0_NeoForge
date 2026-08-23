@@ -1,0 +1,25 @@
+{
+  "id": "neural_decay",
+  "name": "Neural Decay",
+  "description": "Causes severe neural damage and delayed reflexes",
+  "pathogens": ["PRION"],
+  "rarity": "epic",
+  "weight": 8,
+  "tags": ["neural", "reflex"],
+  "effects": [
+    {
+      "type": "set_symptom",
+      "target": "neural_damage",
+      "operation": "max",
+      "value": 1.0,
+      "trigger": "apply"
+    },
+    {
+      "type": "set_symptom",
+      "target": "reflex_delay",
+      "operation": "max",
+      "value": 0.9,
+      "trigger": "apply"
+    }
+  ]
+}

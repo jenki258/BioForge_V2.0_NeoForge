@@ -1,0 +1,69 @@
+{
+  "order": 700,
+  "unlock_items": [
+    "bioforge:medical_mask",
+    "bioforge:protective_gloves",
+    "bioforge:area_contamination_scanner",
+    "bioforge:decontamination_flask",
+    "bioforge:hazcure_helmet"
+  ],
+  "recipes": [
+    "bioforge:medical_mask",
+    "bioforge:protective_gloves",
+    "bioforge:ice_bag",
+    "bioforge:magma_bag",
+    "bioforge:hazcure_helmet",
+    "bioforge:hazcure_chestplate",
+    "bioforge:hazcure_leggings",
+    "bioforge:hazcure_boots",
+    "bioforge:area_contamination_scanner",
+    "bioforge:decontamination_flask",
+    "bioforge:wipes",
+    "bioforge:activated_filter",
+    "bioforge:airtight_seal",
+    "bioforge:chemical_resistant_coating",
+    "bioforge:insulated_lining",
+    "bioforge:neutralizing_agent",
+    "bioforge:respirator_valve",
+    "bioforge:sealed_biofabric",
+    "bioforge:surfactant_concentrate",
+    "bioforge:thermal_gel"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.containment.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.containment.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.containment.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.containment.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.containment.content.4"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

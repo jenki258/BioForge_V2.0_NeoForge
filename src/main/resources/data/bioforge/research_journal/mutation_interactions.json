@@ -1,0 +1,36 @@
+{
+  "order": 480,
+  "unlock_items": [
+    "bioforge:gene_imprint",
+    "bioforge:random_mutation_vaccine",
+    "bioforge:live_culture_vial"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.mutation_interactions.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.mutation_interactions.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.mutation_interactions.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.mutation_interactions.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

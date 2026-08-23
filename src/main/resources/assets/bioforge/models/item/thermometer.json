@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bioforge:item/thermometer_ready"
+  },
+  "overrides": [
+    {
+      "predicate": { "bioforge:ready": 1.0 },
+      "model": "bioforge:item/thermometer_ready"
+    }
+  ]
+}

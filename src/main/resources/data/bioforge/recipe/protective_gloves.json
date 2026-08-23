@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "B B",
+    "R R",
+    "C C"
+  ],
+  "key": {
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/bioforge/sterile_rubber"
+    },
+    "C": {
+      "tag": "bioforge:ingredients/bioforge/chemical_resistant_coating"
+    }
+  },
+  "result": {
+    "id": "bioforge:protective_gloves"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NRN",
+    "R R",
+    "NRN"
+  ],
+  "key": {
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/bioforge/sterile_rubber"
+    }
+  },
+  "result": {
+    "id": "bioforge:airtight_seal",
+    "count": 2
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "order": 100,
+  "unlock_items": [
+    "bioforge:clipboard",
+    "bioforge:thermometer",
+    "bioforge:stethoscope",
+    "bioforge:otoscope",
+    "bioforge:pulse_oximeter",
+    "bioforge:reflex_hammer"
+  ],
+  "recipes": [
+    "bioforge:clipboard",
+    "bioforge:thermometer",
+    "bioforge:stethoscope",
+    "bioforge:otoscope",
+    "bioforge:mirror",
+    "bioforge:pulse_oximeter",
+    "bioforge:reflex_hammer",
+    "bioforge:microscope",
+    "bioforge:pathogen_reagent",
+    "bioforge:visibility_reagent"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.diagnostics.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.diagnostics.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.diagnostics.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.diagnostics.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.diagnostics.content.4"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

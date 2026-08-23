@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " L ",
+    "PRP",
+    " N "
+  ],
+  "key": {
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/optical_lens"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/redstone_torch"
+    },
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    }
+  },
+  "result": {
+    "id": "bioforge:otoscope"
+  }
+}

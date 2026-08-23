@@ -1,0 +1,33 @@
+{
+  "alphabet": "ACGU",
+  "cartridge_size": 4,
+  "cartridges_per_guide": 5,
+  "guides": [
+    {
+      "name": "replication_core",
+      "salt": "bioforge-replication-v1",
+      "sources": [
+        "pathogen",
+        "core"
+      ]
+    },
+    {
+      "name": "clinical_expression",
+      "salt": "bioforge-clinical-v1",
+      "sources": [
+        "pathogen",
+        "transmission",
+        "symptoms"
+      ]
+    },
+    {
+      "name": "immune_escape",
+      "salt": "bioforge-immunity-v1",
+      "sources": [
+        "pathogen",
+        "mutations",
+        "symptoms"
+      ]
+    }
+  ]
+}

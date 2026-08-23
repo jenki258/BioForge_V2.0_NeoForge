@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG",
+    "PEP",
+    "FFF"
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_frame"
+    }
+  },
+  "result": {
+    "id": "bioforge:chemical_synthesizer"
+  }
+}

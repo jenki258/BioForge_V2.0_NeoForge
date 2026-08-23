@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "I",
+    "I"
+  ],
+  "key": {
+    "I": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_ingot"
+    }
+  },
+  "result": {
+    "id": "bioforge:black_steel_plate"
+  }
+}

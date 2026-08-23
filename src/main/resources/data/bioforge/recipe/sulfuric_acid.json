@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/water_bucket"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/glass_bottle"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/gunpowder"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/gunpowder"
+    }
+  ],
+  "result": {
+    "id": "bioforge:sulfuric_acid"
+  }
+}

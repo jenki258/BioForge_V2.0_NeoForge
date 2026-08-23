@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/agar_powder"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/bone_meal"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/sugar"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/water_bucket"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  ],
+  "result": {
+    "id": "bioforge:nutrient_medium",
+    "count": 2
+  }
+}

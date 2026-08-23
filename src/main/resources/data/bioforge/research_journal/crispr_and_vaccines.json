@@ -1,0 +1,105 @@
+{
+  "order": 500,
+  "unlock_items": [
+    "bioforge:vaccine_maker",
+    "bioforge:crispr_cartridge",
+    "bioforge:cas_module",
+    "bioforge:gene_imprint"
+  ],
+  "recipes": [
+    "bioforge:vaccine_maker",
+    "bioforge:crispr_cartridge",
+    "bioforge:cas_module",
+    "bioforge:gene_imprint",
+    "bioforge:blank_vaccine",
+    "bioforge:mutation_vaccine",
+    "bioforge:transmission_vaccine",
+    "bioforge:symptom_vaccine",
+    "bioforge:random_mutation_vaccine",
+    "bioforge:symptom_tablet",
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:clone_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:directed_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine_assayed"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine_documented"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:random_mutation_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:symptom_tablet"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_blocker_pill"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_inhibitor_pill"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_suppressor_pill"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.crispr_and_vaccines.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_and_vaccines.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_and_vaccines.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_and_vaccines.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_and_vaccines.content.4"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.crispr_and_vaccines.content.5"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

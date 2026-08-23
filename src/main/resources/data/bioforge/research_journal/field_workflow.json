@@ -1,0 +1,34 @@
+{
+  "order": 20,
+  "unlock_items": [
+    "bioforge:research_journal"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.field_workflow.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.field_workflow.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.field_workflow.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.field_workflow.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bioforge:item/reagent_vial",
+    "layer1": "bioforge:item/reagent_vial_liquid"
+  }
+}

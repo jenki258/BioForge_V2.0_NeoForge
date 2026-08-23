@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/vaccine"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/echo_shard"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/chorus_fruit"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    }
+  ],
+  "result": {
+    "id": "bioforge:random_mutation_vaccine"
+  }
+}

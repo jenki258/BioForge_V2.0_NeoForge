@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "tag": "bioforge:ingredients/bioforge/polymer_resin"
+  },
+  "result": {
+    "id": "bioforge:sterile_polymer_sheet"
+  },
+  "experience": 0.3,
+  "cookingtime": 240
+}

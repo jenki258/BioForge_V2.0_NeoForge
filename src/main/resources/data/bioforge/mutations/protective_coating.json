@@ -1,0 +1,42 @@
+{
+  "id": "protective_coating",
+  "name": "Protective Coating",
+  "description": "Builds a durable environmental shell and improves treatment resistance",
+  "pathogens": ["BACTERIA", "FUNGI", "PRION"],
+  "rarity": "epic",
+  "weight": 12,
+  "tags": ["environmental", "surface", "treatment_resistance"],
+  "effects": [
+    {
+      "type": "add_infection_type",
+      "target": "ENVIRONMENTAL",
+      "trigger": "apply"
+    },
+    {
+      "type": "modify_symptom",
+      "target": "perfusion_index",
+      "operation": "add",
+      "value": -0.12,
+      "min": 0.0,
+      "max": 1.0,
+      "trigger": "apply"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "coated_vaccine_escape",
+      "with": "vaccine_defense",
+      "effects": [
+        {
+          "type": "modify_symptom",
+          "target": "infection_strength",
+          "operation": "add",
+          "value": 0.1,
+          "min": 0.0,
+          "max": 1.0,
+          "trigger": "apply"
+        }
+      ]
+    }
+  ]
+}

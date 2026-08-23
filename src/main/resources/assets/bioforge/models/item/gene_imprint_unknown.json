@@ -1,0 +1,4 @@
+{
+  "parent": "bioforge:item/gene_imprint_base",
+  "textures": {"layer1": "bioforge:item/gene_imprint/unknown"}
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/bone_meal"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/charcoal"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    },
+    {
+      "type": "neoforge:components",
+      "items": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      }
+    }
+  ],
+  "result": {
+    "id": "bioforge:neutralizing_agent",
+    "count": 2
+  }
+}

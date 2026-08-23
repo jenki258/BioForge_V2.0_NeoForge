@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "include": {
+    "symptom": true,
+    "mutation": true,
+    "transmission": true,
+    "pathogen": true,
+    "lifecycle": true
+  },
+  "controls": {
+    "targets_per_page": 5,
+    "numeric_states": 16,
+    "percentage_steps": 100,
+    "maximum_incubation_ticks": 72000
+  },
+  "quality_blend": {
+    "mode": "geometric",
+    "crispr_weight": 0.55,
+    "correction_weight": 0.45
+  },
+  "family_weights": {
+    "symptom": 0.45,
+    "mutation": 0.30,
+    "transmission": 0.15,
+    "pathogen": 0.10,
+    "lifecycle": 0.10
+  },
+  "assay": {
+    "exact_strain_multiplier": 1.0,
+    "same_pathogen_multiplier": 0.15,
+    "mismatch_multiplier": 0.0,
+    "calibration_sliders": [
+      "focus",
+      "contrast",
+      "spectrum",
+      "phase",
+      "stability"
+    ]
+  },
+  "overrides": []
+}

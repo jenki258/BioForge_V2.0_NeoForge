@@ -1,0 +1,20 @@
+{
+  "id": "analgesic_resistance",
+  "name": "Analgesic Resistance",
+  "description": "Makes symptom-suppressing tablets substantially less durable",
+  "pathogens": ["UNIVERSAL"],
+  "rarity": "epic",
+  "weight": 10,
+  "tags": ["treatment_resistance", "symptom_suppression"],
+  "effects": [
+    {
+      "type": "modify_symptom",
+      "target": "infection_strength",
+      "operation": "add",
+      "value": 0.06,
+      "min": 0.0,
+      "max": 1.0,
+      "trigger": "apply"
+    }
+  ]
+}

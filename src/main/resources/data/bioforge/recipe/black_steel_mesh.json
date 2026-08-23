@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NNN",
+    "N N",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    }
+  },
+  "result": {
+    "id": "bioforge:black_steel_mesh"
+  }
+}

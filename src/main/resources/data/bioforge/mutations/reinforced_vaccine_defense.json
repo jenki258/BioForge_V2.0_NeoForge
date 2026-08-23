@@ -1,0 +1,29 @@
+{
+  "id": "reinforced_vaccine_defense",
+  "name": "Reinforced Vaccine Defense",
+  "description": "A stable compound adaptation produced by vaccine defense and hypervirulence",
+  "pathogens": ["UNIVERSAL"],
+  "rarity": "legendary",
+  "weight": 0,
+  "enabled": true,
+  "hidden": false,
+  "requires": ["vaccine_defense", "hypervirulence"],
+  "tags": [
+    "vaccine_defense",
+    "immune_escape",
+    "compound_mutation",
+    "treatment_resistance",
+    "vaccine_requires_rh_negative"
+  ],
+  "effects": [
+    {
+      "type": "modify_symptom",
+      "target": "infection_strength",
+      "operation": "add",
+      "value": 0.15,
+      "min": 0.0,
+      "max": 1.0,
+      "trigger": "apply"
+    }
+  ]
+}

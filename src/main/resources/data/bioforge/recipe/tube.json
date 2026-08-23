@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "G G",
+    "GPG",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/sterile_polymer_sheet"
+    }
+  },
+  "result": {
+    "id": "bioforge:tube",
+    "count": 2
+  }
+}

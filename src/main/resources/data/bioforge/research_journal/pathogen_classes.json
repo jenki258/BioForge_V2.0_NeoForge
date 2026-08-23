@@ -1,0 +1,36 @@
+{
+  "order": 330,
+  "unlock_items": [
+    "bioforge:pathogen_reagent",
+    "bioforge:catalyst_vial",
+    "bioforge:virus_sample"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.pathogen_classes.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.pathogen_classes.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.pathogen_classes.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.pathogen_classes.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

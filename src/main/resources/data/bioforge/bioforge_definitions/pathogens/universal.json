@@ -1,0 +1,14 @@
+{
+  "schema_version": 1, "id": "bioforge:universal", "replace": true,
+  "color": "#aaaaaa", "environmental": true,
+  "allowed_transmissions": ["air_borne", "food_borne", "water_borne", "contact_based", "attack_based", "animals", "blood", "environmental"],
+  "default_symptoms": {
+    "heart_rate": "TACHY", "lung_sound": "CRACKLE", "temperature_plus": true, "temperature_minus": false,
+    "otoscope_redness": {"min": 0.0, "max": 1.0}, "otoscope_secretion": {"min": 0.0, "max": 1.0},
+    "otoscope_lesions": {"min": 0.0, "max": 1.0}, "otoscope_swelling": {"min": 0.0, "max": 1.0},
+    "oxygen_saturation": {"min": 0.7, "max": 1.0}, "perfusion_index": {"min": 0.0, "max": 1.0},
+    "reflex_delay": {"min": 0.0, "max": 0.3}, "reflex_strength": {"min": 0.0, "max": 1.0},
+    "neural_damage": {"min": 0.0, "max": 0.5}, "infection_strength": 0.5,
+    "colony_radius": 20.0, "max_infested_blocks": 100.0, "microscope_visibility": "NONE"
+  }
+}

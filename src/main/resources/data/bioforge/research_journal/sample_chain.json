@@ -1,0 +1,38 @@
+{
+  "order": 270,
+  "unlock_items": [
+    "bioforge:swab",
+    "bioforge:petri_dish",
+    "bioforge:tube",
+    "bioforge:blood_slide",
+    "bioforge:live_culture_vial"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.sample_chain.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.sample_chain.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.sample_chain.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.sample_chain.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PDP",
+    "GMG",
+    "PDP"
+  ],
+  "key": {
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "D": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/minecraft/gold_ingot"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/precision_mechanism"
+    }
+  },
+  "result": {
+    "id": "bioforge:laboratory_frame"
+  }
+}

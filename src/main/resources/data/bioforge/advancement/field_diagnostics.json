@@ -1,0 +1,14 @@
+{
+  "parent": "bioforge:root",
+  "display": {
+    "icon": { "item": "bioforge:thermometer" },
+    "title": { "translate": "advancement.bioforge.field_diagnostics.title" },
+    "description": { "translate": "advancement.bioforge.field_diagnostics.description" },
+    "frame": "task", "show_toast": true, "announce_to_chat": false, "hidden": false
+  },
+  "criteria": {
+    "thermometer": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:thermometer"] }] } },
+    "otoscope": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:otoscope"] }] } },
+    "reflex_hammer": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:reflex_hammer"] }] } }
+  }
+}

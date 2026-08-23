@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,lit=false": { "model": "bioforge:block/microscope_base" },
+    "facing=north,lit=true":  { "model": "bioforge:block/microscope_base" },
+    "facing=east,lit=false":  { "model": "bioforge:block/microscope_base", "y": 90 },
+    "facing=east,lit=true":   { "model": "bioforge:block/microscope_base", "y": 90 },
+    "facing=south,lit=false": { "model": "bioforge:block/microscope_base", "y": 180 },
+    "facing=south,lit=true":  { "model": "bioforge:block/microscope_base", "y": 180 },
+    "facing=west,lit=false":  { "model": "bioforge:block/microscope_base", "y": 270 },
+    "facing=west,lit=true":   { "model": "bioforge:block/microscope_base", "y": 270 }
+  }
+}

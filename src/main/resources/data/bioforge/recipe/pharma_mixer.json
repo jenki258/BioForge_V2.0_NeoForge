@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LBL",
+    "PEP",
+    "FFF"
+  ],
+  "key": {
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/biomedical_processor"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_frame"
+    }
+  },
+  "result": {
+    "id": "bioforge:pharma_mixer"
+  }
+}

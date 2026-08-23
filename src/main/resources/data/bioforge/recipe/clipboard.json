@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " N ",
+    "PPP",
+    " L "
+  ],
+  "key": {
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/minecraft/paper"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/minecraft/leather"
+    }
+  },
+  "result": {
+    "id": "bioforge:clipboard"
+  }
+}

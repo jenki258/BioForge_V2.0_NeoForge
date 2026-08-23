@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bioforge:item/hardened_needle"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "bioforge:filled": 1.0
+      },
+      "model": "bioforge:item/hardened_needle_filled"
+    }
+  ]
+}

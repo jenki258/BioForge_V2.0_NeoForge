@@ -1,0 +1,16 @@
+{
+  "id": "zoonotic_adaptation",
+  "name": "Zoonotic Adaptation",
+  "description": "Allows the strain to propagate through infected animals and their products",
+  "pathogens": ["BACTERIA", "PARASITE", "VIRUS"],
+  "rarity": "rare",
+  "weight": 24,
+  "tags": ["animal", "transmission", "food_chain"],
+  "effects": [
+    {
+      "type": "add_infection_type",
+      "target": "ANIMALS",
+      "trigger": "apply"
+    }
+  ]
+}

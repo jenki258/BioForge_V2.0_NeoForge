@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bioforge:item/blood_slide_empty"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "bioforge:blood_slide_filled": 1.0
+      },
+      "model": "bioforge:item/blood_slide_filled"
+    }
+  ]
+}

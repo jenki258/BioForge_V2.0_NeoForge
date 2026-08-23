@@ -1,0 +1,200 @@
+{
+  "items": {
+    "bioforge:blood_slide": {
+      "calibration": {
+        "sliders": [
+          { "name": "microscope.calibration.brightness", "target": 0.72, "random_target": true },
+          { "name": "microscope.calibration.zoom", "target": 0.45, "range_min": 0.1, "range_max": 0.9, "random_target": true },
+          { "name": "microscope.calibration.saturation", "target": 0.60, "random_target": true },
+          { "name": "microscope.calibration.contrast", "target": 0.55, "random_target": true }
+        ]
+      },
+      "entries": [
+        {
+          "symptom": "heart_rate",
+          "type": "enum",
+          "icon": "bioforge:textures/gui/microscope/heart.png",
+          "states": {
+            "normal": "bioforge:textures/gui/microscope/heart_normal.png",
+            "tachy": "bioforge:textures/gui/microscope/heart.png",
+            "brady": "bioforge:textures/gui/microscope/small_heart.png"
+          }
+        },
+        {
+          "symptom": "temperature_plus",
+          "type": "boolean",
+          "icon": "bioforge:textures/gui/microscope/temp.png"
+        },
+        {
+          "symptom": "temperature_minus",
+          "type": "boolean",
+          "icon": "bioforge:textures/gui/microscope/temp_low.png"
+        }
+      ]
+    },
+    "bioforge:plasma_sample": {
+      "calibration": {
+        "sliders": [
+          { "name": "microscope.calibration.brightness", "target": 0.70, "random_target": true },
+          { "name": "microscope.calibration.zoom", "target": 0.35, "range_min": 0.1, "range_max": 0.9, "random_target": true },
+          { "name": "microscope.calibration.spectrum", "target": 0.62, "random_target": true }
+        ]
+      },
+      "entries": [
+        {
+          "symptom": "oxygen_saturation",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/oxygen_saturation.png"
+        },
+        {
+          "symptom": "perfusion_index",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/perfusion_index.png"
+        },
+        {
+          "symptom": "infection_strength",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/strength.png"
+        }
+      ]
+    },
+    "bioforge:cell_pellet": {
+      "calibration": {
+        "sliders": [
+          { "name": "microscope.calibration.brightness", "target": 0.65, "random_target": true },
+          { "name": "microscope.calibration.zoom", "target": 0.55, "range_min": 0.1, "range_max": 0.9, "random_target": true },
+          { "name": "microscope.calibration.saturation", "target": 0.45, "random_target": true },
+          { "name": "microscope.calibration.contrast", "target": 0.50, "random_target": true },
+          { "name": "microscope.calibration.focus", "target": 0.75, "random_target": true }
+        ]
+      },
+      "entries": [
+        {
+          "symptom": "otoscope_redness",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/tissue_redness.png"
+        },
+        {
+          "symptom": "otoscope_lesions",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/tissue_lesions.png"
+        },
+        {
+          "symptom": "otoscope_secretion",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/tissue_secretion.png"
+        },
+        {
+          "symptom": "otoscope_swelling",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/tissue_swelling.png"
+        }
+      ]
+    },
+    "bioforge:virus_sample": {
+      "calibration": {
+        "sliders": [
+          { "name": "microscope.calibration.brightness", "target": 0.55, "random_target": true },
+          { "name": "microscope.calibration.zoom", "target": 0.60, "range_min": 0.1, "range_max": 0.9, "random_target": true },
+          { "name": "microscope.calibration.spectrum", "target": 0.48, "random_target": true }
+        ]
+      },
+      "entries": [
+        {
+          "symptom": "lung_sound",
+          "type": "enum",
+          "icon": "bioforge:textures/gui/microscope/lung_crackle.png",
+          "states": {
+            "normal": "bioforge:textures/gui/microscope/lung_clear.png",
+            "crackle": "bioforge:textures/gui/microscope/lung_crackle.png"
+          }
+        }
+      ]
+    },
+    "bioforge:petri_dish": {
+      "calibration": {
+        "sliders": [
+          { "name": "microscope.calibration.brightness", "target": 0.68, "random_target": true },
+          { "name": "microscope.calibration.zoom", "target": 0.50, "range_min": 0.1, "range_max": 0.9, "random_target": true },
+          { "name": "microscope.calibration.saturation", "target": 0.40, "random_target": true }
+        ]
+      },
+      "entries": [
+        {
+          "symptom": "colony_radius",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/colony_radius.png",
+          "display_percentage": false
+        },
+        {
+          "symptom": "max_infested_blocks",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/infestation_capacity.png",
+          "display_percentage": false
+        },
+        {
+          "symptom": "growth_stage",
+          "type": "float",
+          "source": "nbt",
+          "nbt_key": "Growth",
+          "condition": ">=1",
+          "icon": "bioforge:textures/gui/microscope/stage.png",
+          "display_percentage": false
+        }
+      ]
+    },
+    "bioforge:bone_marrow": {
+      "calibration": {
+        "sliders": [
+          { "name": "microscope.calibration.brightness", "target": 0.50, "random_target": true },
+          { "name": "microscope.calibration.zoom", "target": 0.55, "range_min": 0.1, "range_max": 0.9, "random_target": true },
+          { "name": "microscope.calibration.focus", "target": 0.70, "random_target": true }
+        ]
+      },
+      "entries": [
+        {
+          "symptom": "neural_damage",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/neural_damage.png"
+        },
+        {
+          "symptom": "reflex_delay",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/reflex_delay.png"
+        },
+        {
+          "symptom": "reflex_strength",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/reflex_strength.png"
+        }
+      ]
+    },
+    "bioforge:withered_bone_marrow": {
+      "calibration": {
+        "sliders": [
+          { "name": "microscope.calibration.brightness", "target": 0.40, "random_target": true },
+          { "name": "microscope.calibration.zoom", "target": 0.65, "range_min": 0.1, "range_max": 0.9, "random_target": true },
+          { "name": "microscope.calibration.contrast", "target": 0.55, "random_target": true },
+          { "name": "microscope.calibration.focus", "target": 0.80, "random_target": true }
+        ]
+      },
+      "entries": [
+        {
+          "symptom": "neural_damage",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/neural_damage.png"
+        },
+        {
+          "symptom": "reflex_delay",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/reflex_delay.png"
+        },
+        {
+          "symptom": "reflex_strength",
+          "type": "float",
+          "icon": "bioforge:textures/gui/microscope/reflex_strength.png"
+        }
+      ]
+    }
+  }
+}

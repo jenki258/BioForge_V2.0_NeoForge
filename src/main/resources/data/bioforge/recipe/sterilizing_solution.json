@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/ethanol"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sulfuric_acid"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/water_bucket"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/blaze_powder"
+    }
+  ],
+  "result": {
+    "id": "bioforge:sterilizing_solution",
+    "count": 2
+  }
+}

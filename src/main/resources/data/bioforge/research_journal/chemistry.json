@@ -1,0 +1,129 @@
+{
+  "order": 600,
+  "unlock_items": [
+    "bioforge:chemical_synthesizer",
+    "bioforge:sterilization_chamber",
+    "bioforge:pharma_mixer",
+    "bioforge:sulfuric_acid",
+    "bioforge:sterilizing_solution"
+  ],
+  "recipes": [
+    "bioforge:chemical_synthesizer",
+    "bioforge:sterilization_chamber",
+    "bioforge:pharma_mixer",
+    "bioforge:activated_carbon",
+    "bioforge:catalyst_vial",
+    {
+      "type": "laboratory",
+      "id": "bioforge:ethanol"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sulfuric_acid"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sterilizing_solution"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:polymer_resin"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:thermal_gel"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:surfactant"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:neutralizing_agent"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:decalcification_fluid"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sterile_polymer_sheet"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sterile_filter"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sterile_rubber"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:laboratory_glassware"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:clean_culture_vial"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:agar_powder"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:nutrient_medium"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:pathogen_reagent"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:visibility_reagent"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.chemistry.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.chemistry.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.chemistry.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.chemistry.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.chemistry.content.4"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.chemistry.content.5"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "vaccine_defense",
+  "name": "Adaptive Vaccine Defense",
+  "description": "An immune-escape response selected after surviving vaccine pressure",
+  "pathogens": ["UNIVERSAL"],
+  "rarity": "epic",
+  "weight": 0,
+  "enabled": true,
+  "hidden": false,
+  "tags": ["vaccine_defense", "immune_escape", "treatment_resistance"],
+  "interactions": [
+    {
+      "id": "hypervirulent_escape",
+      "with": "hypervirulence",
+      "grant_mutations": ["reinforced_vaccine_defense"]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "order": 530,
+  "unlock_items": [
+    "bioforge:vaccine",
+    "bioforge:blood_slide",
+    "bioforge:tube"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.vaccine_assays.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_assays.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_assays.content.2"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

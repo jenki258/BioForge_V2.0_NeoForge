@@ -1,0 +1,34 @@
+{
+  "definitions": [
+    {
+      "id": "porcine_receptor_shift",
+      "name": "Porcine Receptor Shift",
+      "description": "A wild-host gene isolated from infected porcine blood",
+      "pathogens": ["VIRUS", "UNIVERSAL"],
+      "rarity": "legendary",
+      "weight": 0,
+      "tags": ["wild_only", "porcine_origin", "vaccine_target"]
+    },
+    {
+      "id": "bovine_serum_stability",
+      "name": "Bovine Serum Stability",
+      "description": "A wild-host gene isolated from infected bovine blood",
+      "pathogens": ["BACTERIA", "UNIVERSAL"],
+      "rarity": "legendary",
+      "weight": 0,
+      "tags": ["wild_only", "bovine_origin", "vaccine_target"]
+    },
+    {
+      "id": "avian_egg_tropism",
+      "name": "Avian Egg Tropism",
+      "description": "A wild-host gene isolated from infected avian blood",
+      "pathogens": ["VIRUS", "UNIVERSAL"],
+      "rarity": "legendary",
+      "weight": 0,
+      "tags": ["wild_only", "avian_origin", "vaccine_target"],
+      "effects": [
+        {"type": "add_infection_type", "target": "food_borne", "trigger": "apply"}
+      ]
+    }
+  ]
+}

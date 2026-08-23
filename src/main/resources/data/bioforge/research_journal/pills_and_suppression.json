@@ -1,0 +1,48 @@
+{
+  "order": 550,
+  "unlock_items": [
+    "bioforge:symptom_tablet",
+    "bioforge:viral_suppressor_pill",
+    "bioforge:viral_inhibitor_pill",
+    "bioforge:viral_blocker_pill"
+  ],
+  "recipes": [
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:symptom_tablet"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_suppressor_pill"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_inhibitor_pill"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_blocker_pill"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.pills_and_suppression.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.pills_and_suppression.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.pills_and_suppression.content.2"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "order": 510,
+  "unlock_items": [
+    "bioforge:vaccine_maker",
+    "bioforge:blank_vaccine",
+    "bioforge:crispr_cartridge",
+    "bioforge:cas_module"
+  ],
+  "recipes": [
+    "bioforge:vaccine_maker",
+    "bioforge:blank_vaccine",
+    "bioforge:crispr_cartridge",
+    "bioforge:cas_module",
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine_assayed"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine_documented"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.vaccine_production.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_production.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_production.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.vaccine_production.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

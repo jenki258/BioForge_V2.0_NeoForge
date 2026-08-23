@@ -1,0 +1,26 @@
+{
+  "parent": "bioforge:item/gene_imprint_base",
+  "overrides": [
+    {"predicate": {"bioforge:gene_imprint_variant": 0.04}, "model": "bioforge:item/gene_imprint_unknown"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.08}, "model": "bioforge:item/gene_imprint_mutation"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.12}, "model": "bioforge:item/gene_imprint_transmission"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.16}, "model": "bioforge:item/gene_imprint_symptom"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.20}, "model": "bioforge:item/gene_imprint_symptom_heart_rate"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.25}, "model": "bioforge:item/gene_imprint_symptom_lung_sound"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.30}, "model": "bioforge:item/gene_imprint_symptom_temperature_plus"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.35}, "model": "bioforge:item/gene_imprint_symptom_temperature_minus"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.40}, "model": "bioforge:item/gene_imprint_symptom_otoscope_redness"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.45}, "model": "bioforge:item/gene_imprint_symptom_otoscope_lesions"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.50}, "model": "bioforge:item/gene_imprint_symptom_otoscope_secretion"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.55}, "model": "bioforge:item/gene_imprint_symptom_otoscope_swelling"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.60}, "model": "bioforge:item/gene_imprint_symptom_reflex_delay"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.65}, "model": "bioforge:item/gene_imprint_symptom_reflex_strength"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.70}, "model": "bioforge:item/gene_imprint_symptom_neural_damage"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.75}, "model": "bioforge:item/gene_imprint_symptom_oxygen_saturation"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.80}, "model": "bioforge:item/gene_imprint_symptom_perfusion_index"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.85}, "model": "bioforge:item/gene_imprint_symptom_infection_strength"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.90}, "model": "bioforge:item/gene_imprint_symptom_colony_radius"},
+    {"predicate": {"bioforge:gene_imprint_variant": 0.95}, "model": "bioforge:item/gene_imprint_symptom_max_infested_blocks"},
+    {"predicate": {"bioforge:gene_imprint_variant": 1.00}, "model": "bioforge:item/gene_imprint_symptom_microscope_visibility"}
+  ]
+}

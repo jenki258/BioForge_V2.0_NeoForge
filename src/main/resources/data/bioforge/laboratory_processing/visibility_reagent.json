@@ -1,0 +1,14 @@
+{
+  "station": "pharma_mixer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/bioforge/laboratory_glassware" },
+    { "tag": "bioforge:ingredients/bioforge/sterile_filter" },
+    { "tag": "bioforge:ingredients/minecraft/amethyst_shard" },
+    { "tag": "bioforge:ingredients/minecraft/glow_ink_sac" },
+    { "tag": "bioforge:ingredients/minecraft/redstone" }
+  ],
+  "output": "bioforge:visibility_reagent",
+  "count": 2,
+  "waste": "bioforge:laboratory_waste",
+  "processing_time": 200
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/nutrient_medium"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterile_filter"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/golden_carrot"
+    }
+  ],
+  "result": {
+    "id": "bioforge:vaccine"
+  }
+}

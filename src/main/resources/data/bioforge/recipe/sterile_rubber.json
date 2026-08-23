@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/slime_ball"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/dried_kelp"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sulfuric_acid"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  ],
+  "result": {
+    "id": "bioforge:sterile_rubber",
+    "count": 2
+  }
+}

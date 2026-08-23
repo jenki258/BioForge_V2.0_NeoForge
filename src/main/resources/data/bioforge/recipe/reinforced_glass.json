@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NGN",
+    "GAG",
+    "NGN"
+  ],
+  "key": {
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/minecraft/glass"
+    },
+    "A": {
+      "tag": "bioforge:ingredients/minecraft/amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "bioforge:reinforced_glass",
+    "count": 4
+  }
+}

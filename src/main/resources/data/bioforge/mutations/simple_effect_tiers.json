@@ -1,0 +1,116 @@
+{
+  "definitions": [
+    {
+      "id": "muscular_response_i",
+      "name": "Muscular Response I",
+      "description": "The infection stimulates muscle fibres, granting Strength I",
+      "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 28,
+      "tags": ["beneficial", "simple_effect", "strength", "tier_1"],
+      "effects": [{"type":"potion_effect","target":"minecraft:strength","duration":140,"amplifier":0,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "muscular_response_ii",
+      "name": "Muscular Response II",
+      "description": "A stronger muscle response grants Strength II at a higher metabolic cost",
+      "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 12,
+      "requires": ["muscular_response_i"],
+      "tags": ["beneficial", "simple_effect", "strength", "tier_2"],
+      "effects": [{"type":"potion_effect","target":"minecraft:strength","duration":140,"amplifier":1,"interval":80,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.10,"interval":100,"trigger":"continuous"}],
+      "interactions": [{"id":"muscular_response_upgrade_ii","with":"muscular_response_i","remove_mutations":["muscular_response_i"]}]
+    },
+    {
+      "id": "muscular_response_iii",
+      "name": "Muscular Response III",
+      "description": "Extreme muscular stimulation grants Strength III but consumes food rapidly",
+      "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 4,
+      "requires": ["muscular_response_ii"],
+      "tags": ["beneficial", "simple_effect", "strength", "tier_3"],
+      "effects": [{"type":"potion_effect","target":"minecraft:strength","duration":120,"amplifier":2,"interval":60,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.22,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"muscular_response_upgrade_iii","with":"muscular_response_ii","remove_mutations":["muscular_response_ii"]}]
+    },
+    {
+      "id": "neural_acceleration_i",
+      "name": "Neural Acceleration I",
+      "description": "Faster motor signalling grants Speed I",
+      "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 28,
+      "tags": ["beneficial", "simple_effect", "speed", "tier_1"],
+      "effects": [{"type":"potion_effect","target":"minecraft:speed","duration":140,"amplifier":0,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "neural_acceleration_ii",
+      "name": "Neural Acceleration II",
+      "description": "Accelerated neural signalling grants Speed II and mild hunger",
+      "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 12,
+      "requires": ["neural_acceleration_i"],
+      "tags": ["beneficial", "simple_effect", "speed", "tier_2"],
+      "effects": [{"type":"potion_effect","target":"minecraft:speed","duration":140,"amplifier":1,"interval":80,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.08,"interval":100,"trigger":"continuous"}],
+      "interactions": [{"id":"neural_acceleration_upgrade_ii","with":"neural_acceleration_i","remove_mutations":["neural_acceleration_i"]}]
+    },
+    {
+      "id": "neural_acceleration_iii",
+      "name": "Neural Acceleration III",
+      "description": "Unstable neural overclocking grants Speed III with a substantial metabolic drain",
+      "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 4,
+      "requires": ["neural_acceleration_ii"],
+      "tags": ["beneficial", "simple_effect", "speed", "tier_3"],
+      "effects": [{"type":"potion_effect","target":"minecraft:speed","duration":120,"amplifier":2,"interval":60,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.18,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"neural_acceleration_upgrade_iii","with":"neural_acceleration_ii","remove_mutations":["neural_acceleration_ii"]}]
+    },
+    {
+      "id": "dermal_reinforcement_i",
+      "name": "Dermal Reinforcement I",
+      "description": "Altered connective tissue grants Resistance I",
+      "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 22,
+      "tags": ["beneficial", "simple_effect", "resistance", "tier_1"],
+      "effects": [{"type":"potion_effect","target":"minecraft:resistance","duration":140,"amplifier":0,"interval":80,"trigger":"continuous"}]
+    },
+    {
+      "id": "dermal_reinforcement_ii",
+      "name": "Dermal Reinforcement II",
+      "description": "Dense connective tissue grants Resistance II but slows the host slightly",
+      "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 9,
+      "requires": ["dermal_reinforcement_i"],
+      "tags": ["beneficial", "simple_effect", "resistance", "tier_2"],
+      "effects": [{"type":"potion_effect","target":"minecraft:resistance","duration":140,"amplifier":1,"interval":80,"trigger":"continuous"},{"type":"potion_effect","target":"minecraft:slowness","duration":80,"amplifier":0,"chance":0.20,"interval":100,"trigger":"continuous"}],
+      "interactions": [{"id":"dermal_reinforcement_upgrade_ii","with":"dermal_reinforcement_i","remove_mutations":["dermal_reinforcement_i"]}]
+    },
+    {
+      "id": "dermal_reinforcement_iii",
+      "name": "Dermal Reinforcement III",
+      "description": "Armoured tissue grants Resistance III while increasingly restricting movement",
+      "pathogens": ["UNIVERSAL"], "rarity": "legendary", "weight": 2,
+      "requires": ["dermal_reinforcement_ii"],
+      "tags": ["beneficial", "simple_effect", "resistance", "tier_3"],
+      "effects": [{"type":"potion_effect","target":"minecraft:resistance","duration":120,"amplifier":2,"interval":60,"trigger":"continuous"},{"type":"potion_effect","target":"minecraft:slowness","duration":100,"amplifier":0,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"dermal_reinforcement_upgrade_iii","with":"dermal_reinforcement_ii","remove_mutations":["dermal_reinforcement_ii"]}]
+    },
+    {
+      "id": "regenerative_tissue_i",
+      "name": "Regenerative Tissue I",
+      "description": "Slow tissue repair grants Regeneration I",
+      "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 16,
+      "tags": ["beneficial", "simple_effect", "regeneration", "tier_1"],
+      "effects": [{"type":"potion_effect","target":"minecraft:regeneration","duration":100,"amplifier":0,"interval":100,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.10,"interval":100,"trigger":"continuous"}]
+    },
+    {
+      "id": "regenerative_tissue_ii",
+      "name": "Regenerative Tissue II",
+      "description": "Rapid tissue repair grants Regeneration II and consumes food reserves",
+      "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 6,
+      "requires": ["regenerative_tissue_i"],
+      "tags": ["beneficial", "simple_effect", "regeneration", "tier_2"],
+      "effects": [{"type":"potion_effect","target":"minecraft:regeneration","duration":100,"amplifier":1,"interval":80,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.22,"interval":80,"trigger":"continuous"}],
+      "interactions": [{"id":"regenerative_tissue_upgrade_ii","with":"regenerative_tissue_i","remove_mutations":["regenerative_tissue_i"]}]
+    },
+    {
+      "id": "regenerative_tissue_iii",
+      "name": "Regenerative Tissue III",
+      "description": "Aggressive tissue reconstruction grants Regeneration III at severe metabolic cost",
+      "pathogens": ["UNIVERSAL"], "rarity": "legendary", "weight": 2,
+      "requires": ["regenerative_tissue_ii"],
+      "tags": ["beneficial", "simple_effect", "regeneration", "tier_3"],
+      "effects": [{"type":"potion_effect","target":"minecraft:regeneration","duration":100,"amplifier":2,"interval":60,"trigger":"continuous"},{"type":"exhaustion","target":"","value":0.38,"interval":60,"trigger":"continuous"}],
+      "interactions": [{"id":"regenerative_tissue_upgrade_iii","with":"regenerative_tissue_ii","remove_mutations":["regenerative_tissue_ii"]}]
+    }
+  ]
+}

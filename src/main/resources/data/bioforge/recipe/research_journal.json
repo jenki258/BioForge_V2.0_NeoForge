@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/book"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/ink_sac"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/paper"
+    }
+  ],
+  "result": {
+    "id": "bioforge:research_journal"
+  }
+}

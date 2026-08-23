@@ -1,0 +1,18 @@
+{
+  "parent": "bioforge:laboratory_engineering",
+  "display": {
+    "icon": { "item": "bioforge:barrel_press" },
+    "title": { "translate": "advancement.bioforge.barrel_press.title" },
+    "description": { "translate": "advancement.bioforge.barrel_press.description" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "machine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { "items": [{ "items": ["bioforge:barrel_press"] }] }
+    }
+  }
+}

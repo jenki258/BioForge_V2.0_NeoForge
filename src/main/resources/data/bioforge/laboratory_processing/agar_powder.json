@@ -1,0 +1,12 @@
+{
+  "station": "pharma_mixer",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/minecraft/dried_kelp" },
+    { "tag": "bioforge:ingredients/minecraft/bone_meal" },
+    { "tag": "bioforge:ingredients/minecraft/sugar" }
+  ],
+  "output": "bioforge:agar_powder",
+  "count": 4,
+  "waste": "bioforge:laboratory_waste",
+  "processing_time": 100
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PFP",
+    "FCF",
+    "PFP"
+  ],
+  "key": {
+    "P": { "tag": "bioforge:ingredients/bioforge/black_steel_plate" },
+    "F": { "tag": "bioforge:ingredients/bioforge/sterile_filter" },
+    "C": { "tag": "bioforge:ingredients/bioforge/electronic_control_unit" }
+  },
+  "result": {
+    "id": "bioforge:air_vent"
+  }
+}

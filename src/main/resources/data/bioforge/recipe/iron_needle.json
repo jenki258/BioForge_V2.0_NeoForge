@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " N ",
+    " P ",
+    " S "
+  ],
+  "key": {
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  },
+  "result": {
+    "id": "bioforge:iron_needle"
+  }
+}

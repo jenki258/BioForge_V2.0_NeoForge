@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "bioforge:block/incubator_bottom",
+    "top": "bioforge:block/incubator_top",
+    "side": "bioforge:block/incubator_side",
+    "front": "bioforge:block/incubator_front"
+  }
+}

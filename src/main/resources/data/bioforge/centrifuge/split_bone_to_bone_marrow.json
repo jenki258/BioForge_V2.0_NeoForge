@@ -1,0 +1,8 @@
+{
+  "input": "#bioforge:ingredients/bioforge/split_bone",
+  "output": "bioforge:bone_marrow",
+  "copy_blood_data": true,
+  "copy_nbt": false,
+  "copy_nbt_keys": [],
+  "processing_time": 120
+}

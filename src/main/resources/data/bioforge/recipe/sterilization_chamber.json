@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RGR",
+    "PEP",
+    "FFF"
+  ],
+  "key": {
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/blaze_rod"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_frame"
+    }
+  },
+  "result": {
+    "id": "bioforge:sterilization_chamber"
+  }
+}

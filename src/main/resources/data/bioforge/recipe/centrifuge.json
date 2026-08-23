@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PEP",
+    "MFM",
+    "PBP"
+  ],
+  "key": {
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "E": {
+      "tag": "bioforge:ingredients/bioforge/electronic_control_unit"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/precision_mechanism"
+    },
+    "F": {
+      "tag": "bioforge:ingredients/bioforge/laboratory_frame"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_block"
+    }
+  },
+  "result": {
+    "id": "bioforge:centrifuge"
+  }
+}

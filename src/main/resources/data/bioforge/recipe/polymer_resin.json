@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/slime_ball"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/slime_ball"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/activated_carbon"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sulfuric_acid"
+    }
+  ],
+  "result": {
+    "id": "bioforge:polymer_resin",
+    "count": 2
+  }
+}

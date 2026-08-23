@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " Q ",
+    "GAG",
+    " Q "
+  ],
+  "key": {
+    "Q": {
+      "tag": "bioforge:ingredients/minecraft/quartz"
+    },
+    "G": {
+      "tag": "bioforge:ingredients/bioforge/reinforced_glass"
+    },
+    "A": {
+      "tag": "bioforge:ingredients/minecraft/amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "bioforge:optical_lens",
+    "count": 2
+  }
+}

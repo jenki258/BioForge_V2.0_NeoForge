@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "bioforge:microbial_mat",
+    "bioforge:sporocarp",
+    "bioforge:necrotic_patch",
+    "bioforge:contaminated_substrate",
+    "bioforge:infested_block"
+  ]
+}

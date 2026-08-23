@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "N N",
+    "L L",
+    " M "
+  ],
+  "key": {
+    "N": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_nugget"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/minecraft/leather"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/precision_mechanism"
+    }
+  },
+  "result": {
+    "id": "bioforge:stethoscope"
+  }
+}

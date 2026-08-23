@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [" P ", "IBI", "WWW"],
+  "key": {
+    "P": { "tag": "bioforge:ingredients/minecraft/piston" },
+    "I": { "tag": "bioforge:ingredients/minecraft/iron_ingot" },
+    "B": { "tag": "bioforge:ingredients/minecraft/barrel" },
+    "W": { "tag": "bioforge:ingredients/minecraft/planks" }
+  },
+  "result": { "id": "bioforge:barrel_press" }
+}

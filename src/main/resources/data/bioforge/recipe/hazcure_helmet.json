@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SAS",
+    "BMB",
+    " P "
+  ],
+  "key": {
+    "S": {
+      "tag": "bioforge:ingredients/bioforge/airtight_seal"
+    },
+    "A": {
+      "tag": "bioforge:ingredients/bioforge/activated_filter"
+    },
+    "B": {
+      "tag": "bioforge:ingredients/bioforge/sealed_biofabric"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/medical_mask"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    }
+  },
+  "result": {
+    "id": "bioforge:hazcure_helmet"
+  }
+}

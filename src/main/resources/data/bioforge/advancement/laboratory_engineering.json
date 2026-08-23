@@ -1,0 +1,13 @@
+{
+  "parent": "bioforge:black_steel",
+  "display": {
+    "icon": { "item": "bioforge:laboratory_frame" },
+    "title": { "translate": "advancement.bioforge.laboratory_engineering.title" },
+    "description": { "translate": "advancement.bioforge.laboratory_engineering.description" },
+    "frame": "goal", "show_toast": true, "announce_to_chat": false, "hidden": false
+  },
+  "criteria": {
+    "frame": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:laboratory_frame"] }] } },
+    "controller": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:electronic_control_unit"] }] } }
+  }
+}

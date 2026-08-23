@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " R ",
+    "PMP",
+    " R "
+  ],
+  "key": {
+    "R": {
+      "tag": "bioforge:ingredients/bioforge/sterile_rubber"
+    },
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/precision_mechanism"
+    }
+  },
+  "result": {
+    "id": "bioforge:respirator_valve"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterile_filter"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/amethyst_shard"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/glow_ink_sac"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    }
+  ],
+  "result": {
+    "id": "bioforge:visibility_reagent"
+  }
+}

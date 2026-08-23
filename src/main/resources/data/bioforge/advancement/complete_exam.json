@@ -1,0 +1,15 @@
+{
+  "parent": "bioforge:field_diagnostics",
+  "display": {
+    "icon": { "item": "bioforge:medical_report" },
+    "title": { "translate": "advancement.bioforge.complete_exam.title" },
+    "description": { "translate": "advancement.bioforge.complete_exam.description" },
+    "frame": "goal", "show_toast": true, "announce_to_chat": true, "hidden": false
+  },
+  "criteria": {
+    "report": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:medical_report"] }] } },
+    "otoscope": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:otoscope"] }] } },
+    "oximeter": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:pulse_oximeter"] }] } },
+    "hammer": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:reflex_hammer"] }] } }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "III",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_ingot"
+    }
+  },
+  "result": {
+    "id": "bioforge:black_steel_block"
+  }
+}

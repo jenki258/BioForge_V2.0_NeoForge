@@ -1,0 +1,36 @@
+{
+  "order": 140,
+  "unlock_items": [
+    "bioforge:clipboard",
+    "bioforge:medical_report",
+    "bioforge:crispr_notes"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.patient_records.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.patient_records.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.patient_records.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.patient_records.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

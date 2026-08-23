@@ -1,0 +1,1 @@
+{"variants":{"facing=north":{"model":"bioforge:block/pharma_mixer"},"facing=east":{"model":"bioforge:block/pharma_mixer","y":90},"facing=south":{"model":"bioforge:block/pharma_mixer","y":180},"facing=west":{"model":"bioforge:block/pharma_mixer","y":270}}}

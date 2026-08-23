@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/minecraft/snowball"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/magma_cream"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/slime_ball"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/sterilizing_solution"
+    }
+  ],
+  "result": {
+    "id": "bioforge:thermal_gel",
+    "count": 2
+  }
+}

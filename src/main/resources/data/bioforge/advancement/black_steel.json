@@ -1,0 +1,10 @@
+{
+  "parent": "bioforge:root",
+  "display": {
+    "icon": { "item": "bioforge:black_steel_ingot" },
+    "title": { "translate": "advancement.bioforge.black_steel.title" },
+    "description": { "translate": "advancement.bioforge.black_steel.description" },
+    "frame": "task", "show_toast": true, "announce_to_chat": false, "hidden": false
+  },
+  "criteria": { "ingot": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["bioforge:black_steel_ingot"] }] } } }
+}

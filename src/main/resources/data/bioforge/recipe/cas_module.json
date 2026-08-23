@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PLP",
+    "QMQ",
+    "RDR"
+  ],
+  "key": {
+    "P": {
+      "tag": "bioforge:ingredients/bioforge/black_steel_plate"
+    },
+    "L": {
+      "tag": "bioforge:ingredients/bioforge/optical_lens"
+    },
+    "Q": {
+      "tag": "bioforge:ingredients/minecraft/quartz"
+    },
+    "M": {
+      "tag": "bioforge:ingredients/bioforge/precision_mechanism"
+    },
+    "R": {
+      "tag": "bioforge:ingredients/minecraft/redstone"
+    },
+    "D": {
+      "tag": "bioforge:ingredients/minecraft/diamond"
+    }
+  },
+  "result": {
+    "id": "bioforge:cas_module"
+  }
+}

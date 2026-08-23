@@ -1,0 +1,37 @@
+{
+  "order": 460,
+  "unlock_items": [
+    "bioforge:gene_imprint",
+    "bioforge:medical_mask",
+    "bioforge:protective_gloves",
+    "bioforge:area_contamination_scanner"
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.transmission_routes.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.transmission_routes.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.transmission_routes.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.transmission_routes.content.3"
+      },
+      "line_breaks": 0
+    }
+  ]
+}

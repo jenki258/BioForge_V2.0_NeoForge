@@ -1,0 +1,28 @@
+{
+  "id": "scanner_evasion",
+  "name": "Scanner Evasion",
+  "description": "The strain suppresses the biomarkers used by BioForge viral scanners, allowing infected hosts to pass undetected",
+  "pathogens": ["VIRUS", "PRION", "UNIVERSAL"],
+  "rarity": "epic",
+  "weight": 10,
+  "tags": ["scanner_evasion", "stealth", "diagnostic_evasion", "vaccine_target"],
+  "effects": [
+    {
+      "type": "set_symptom",
+      "target": "microscope_visibility",
+      "operation": "set",
+      "value": "VERY_LOW",
+      "trigger": "apply"
+    },
+    {
+      "type": "spawn_particle",
+      "target": "minecraft:smoke",
+      "count": 2,
+      "spread": 0.2,
+      "speed": 0.005,
+      "chance": 0.08,
+      "interval": 100,
+      "trigger": "continuous"
+    }
+  ]
+}

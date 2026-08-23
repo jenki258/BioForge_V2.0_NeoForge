@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "bioforge:ingredients/bioforge/sulfuric_acid"
+    },
+    {
+      "tag": "bioforge:ingredients/bioforge/laboratory_glassware"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/fermented_spider_eye"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/water_bucket"
+    },
+    {
+      "tag": "bioforge:ingredients/minecraft/bone_meal"
+    }
+  ],
+  "result": {
+    "id": "bioforge:decalcification_fluid",
+    "count": 2
+  }
+}
