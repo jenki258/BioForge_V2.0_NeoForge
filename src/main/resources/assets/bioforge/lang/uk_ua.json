@@ -1117,7 +1117,7 @@
   "command.bioforge.test.validation_failed": "[Тест BioForge] Перевірка визначень завершилася з помилками: %s.",
   "command.bioforge.test.registries_consistent": "[Тест BioForge] Реєстри визначень і аддонів узгоджені.",
   "command.bioforge.test.stress": "[Тест BioForge] Навантаження: %s ітерацій за %s мс (%s мкс/операцію), помилок: %s, контрольна сума: %s.",
-  "command.bioforge.test.nbt_failed": "[Тест BioForge] Помилка повного циклу запису та читання NBT зразка крові.",
+  "command.bioforge.test.nbt_failed": "[Тест BioForge] Помилка повного циклу запису та читання NBT зразка крові",
   "command.bioforge.test.gave_tubes": "[Тест BioForge] Гравцеві %s видано заповнені пробірки всіх груп крові: %s.",
   "command.bioforge.mutate.unknown": "Невідома мутація: %s",
   "command.bioforge.mutate.applied": "Мутацію %s застосовано до цілей: %s.",
