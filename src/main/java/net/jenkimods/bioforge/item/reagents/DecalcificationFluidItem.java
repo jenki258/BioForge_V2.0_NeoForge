@@ -41,11 +41,11 @@ public class DecalcificationFluidItem extends Item {
         }
 
         ItemStack offhandStack = player.getItemInHand(InteractionHand.OFF_HAND);
-        Optional<DecalcificationRecipe> recipeOpt = DecalcificationRecipeManager.INSTANCE.getRecipe(offhandStack);
+        Optional<DecalcificationRecipe> recipeOpt = DecalcificationRecipeManager.INSTANCE.getRecipe(level, offhandStack);
 
         if (recipeOpt.isEmpty()) {
             ItemStack mainOther = player.getItemInHand(InteractionHand.MAIN_HAND);
-            if (DecalcificationRecipeManager.INSTANCE.getRecipe(mainOther).isPresent()) {
+            if (DecalcificationRecipeManager.INSTANCE.getRecipe(level, mainOther).isPresent()) {
                 player.sendSystemMessage(Component.translatable(
                         "item.bioforge.decalcification_fluid.put_target_in_offhand").withStyle(ChatFormatting.RED));
                 return InteractionResultHolder.fail(fluidStack);

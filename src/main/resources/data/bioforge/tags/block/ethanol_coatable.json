@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "bioforge:black_steel_block",
+    "bioforge:black_steel_tiles",
+    "bioforge:black_steel_grate",
+    "bioforge:black_steel_door",
+    "bioforge:black_steel_trapdoor",
+    "bioforge:black_steel_bars"
+  ]
+}

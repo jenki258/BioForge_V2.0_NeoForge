@@ -44,7 +44,9 @@ public final class AreaContaminationScannerItem extends Item {
         serverPlayer.displayClientMessage(Component.translatable(
                 "item.bioforge.area_contamination_scanner.result",
                 Component.translatable("item.bioforge.area_contamination_scanner.level." + levelKey),
-                surface.contaminatedSurfaces(), air.reservoirs()), true);
+                surface.contaminatedSurfaces(), air.reservoirs()).append(Component.translatable(
+                "item.bioforge.area_contamination_scanner.coated_result",
+                surface.ethanolCoatedMarkers().size())), true);
         showContamination(serverLevel, serverPlayer, surface, air);
         serverPlayer.getCooldowns().addCooldown(this, 30);
         stack.hurtAndBreak(1, serverPlayer, LivingEntity.getSlotForHand(hand));
@@ -65,6 +67,13 @@ public final class AreaContaminationScannerItem extends Item {
                     pos.getX() + 0.5D, pos.getY() + 0.65D, pos.getZ() + 0.5D,
                     6, 0.38D, 0.38D, 0.38D, 0.0D);
         }
+        DustParticleOptions coated = new DustParticleOptions(
+                new Vector3f(0.10F, 1.0F, 0.55F), 1.0F);
+        for (var pos : surface.ethanolCoatedMarkers()) {
+            level.sendParticles(player, coated, true,
+                    pos.getX() + 0.5D, pos.getY() + 0.65D, pos.getZ() + 0.5D,
+                    8, 0.38D, 0.38D, 0.38D, 0.0D);
+        }
         DustParticleOptions airborne = new DustParticleOptions(
                 new Vector3f(0.10F, 0.75F, 1.0F), 0.8F);
         for (var pos : air.visualizationCells()) {
@@ -81,6 +90,9 @@ public final class AreaContaminationScannerItem extends Item {
                 .withStyle(ChatFormatting.GRAY));
         tooltip.add(Component.translatable("item.bioforge.area_contamination_scanner.visualization")
                 .withStyle(ChatFormatting.YELLOW));
+        tooltip.add(Component.translatable(
+                        "item.bioforge.area_contamination_scanner.ethanol_visualization")
+                .withStyle(ChatFormatting.GREEN));
         tooltip.add(Component.translatable("item.bioforge.area_contamination_scanner.privacy")
                 .withStyle(ChatFormatting.DARK_AQUA));
     }

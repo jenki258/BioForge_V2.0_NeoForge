@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bioforge:item/vaccine_syringe",
+    "layer1": "bioforge:item/vaccine_syringe_liquid"
+  }
+}

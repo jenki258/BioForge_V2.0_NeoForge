@@ -1,0 +1,67 @@
+{
+  "order": 2010,
+  "unlock_items": [
+    "bioforge:biomedical_processor"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:biomedical_processor"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:biomedical_processor"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:biomedical_processor"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.biomedical_processor"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.biomedical_processor"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.machine",
+        "with": [
+          {
+            "translate": "item.bioforge.biomedical_processor"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:laboratory_machines",
+      "line_breaks": 0
+    }
+  ]
+}

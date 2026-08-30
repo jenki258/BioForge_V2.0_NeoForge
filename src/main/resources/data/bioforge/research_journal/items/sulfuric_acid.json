@@ -1,0 +1,67 @@
+{
+  "order": 2087,
+  "unlock_items": [
+    "bioforge:sulfuric_acid"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:sulfuric_acid"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sulfuric_acid"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:sulfuric_acid"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.sulfuric_acid"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.sulfuric_acid"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.chemistry",
+        "with": [
+          {
+            "translate": "item.bioforge.sulfuric_acid"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:chemistry",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package net.jenkimods.bioforge.client.vaccine;
 import net.jenkimods.bioforge.BioForge;
 import net.jenkimods.bioforge.api.vaccine.VaccineMakerPageDefinition;
 import net.jenkimods.bioforge.client.VaccineMakerScreen;
+import net.jenkimods.bioforge.client.GuiRenderCompat;
 import net.jenkimods.bioforge.registry.BioForgeSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -48,6 +49,7 @@ public final class VaccineMakerTabButton extends AbstractButton {
         boolean selected = screen.getMenuView().getActivePageIndex() == pageIndex;
         if (Minecraft.getInstance().getResourceManager().getResource(TEXTURE).isPresent()) {
             int frame = selected ? 2 : !active ? 3 : isHovered() || isFocused() ? 1 : 0;
+            GuiRenderCompat.prepare(TEXTURE);
             graphics.blit(TEXTURE, getX(), getY(), frame * width, 0,
                     width, height, width * 4, height);
         } else {

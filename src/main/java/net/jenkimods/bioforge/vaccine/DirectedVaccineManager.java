@@ -121,6 +121,22 @@ public final class DirectedVaccineManager {
     private static boolean applyMutation(LivingEntity target, InfectionData infection,
                                          String mutationId, String operation) {
         boolean present = MutationManager.hasMutation(infection, mutationId);
+        if (present && "auto_opposite".equals(operation)) {
+            MutationDefinition current = MutationLoader.INSTANCE
+                    .getMutation(mutationId).orElse(null);
+            if (current != null && !current.upgradeTo().isEmpty()) {
+                MutationDefinition upgrade = MutationLoader.INSTANCE
+                        .getMutation(current.upgradeTo()).orElse(null);
+                if (upgrade != null && MutationManager.applyMutation(
+                        upgrade, infection, target, true)
+                        == MutationManager.ApplyResult.APPLIED) {
+                    if (MutationManager.hasMutation(infection, mutationId)) {
+                        MutationManager.removeMutation(infection, target, mutationId);
+                    }
+                    return true;
+                }
+            }
+        }
         boolean shouldAdd = switch (operation) {
             case "add", "set", "increase", "replace" -> true;
             case "remove", "reduce", "move_toward_neutral" -> false;

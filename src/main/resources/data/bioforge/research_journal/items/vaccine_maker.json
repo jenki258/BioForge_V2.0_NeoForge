@@ -1,0 +1,67 @@
+{
+  "order": 2098,
+  "unlock_items": [
+    "bioforge:vaccine_maker"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:vaccine_maker"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:vaccine_maker"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:vaccine_maker"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "block.bioforge.vaccine_maker"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "block.bioforge.vaccine_maker"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.crispr",
+        "with": [
+          {
+            "translate": "block.bioforge.vaccine_maker"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:crispr_workflow",
+      "line_breaks": 0
+    }
+  ]
+}

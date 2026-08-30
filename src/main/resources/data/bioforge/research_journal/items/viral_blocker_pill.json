@@ -1,0 +1,67 @@
+{
+  "order": 2099,
+  "unlock_items": [
+    "bioforge:viral_blocker_pill"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:viral_blocker_pill"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:viral_blocker_pill"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:viral_blocker_pill"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.viral_blocker_pill"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.viral_blocker_pill"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.crispr",
+        "with": [
+          {
+            "translate": "item.bioforge.viral_blocker_pill"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:crispr_workflow",
+      "line_breaks": 0
+    }
+  ]
+}

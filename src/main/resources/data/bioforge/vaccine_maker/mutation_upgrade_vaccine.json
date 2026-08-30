@@ -1,0 +1,37 @@
+{
+  "operation": "random_mutation_upgrade",
+  "guide_profile": "bioforge:default",
+  "processing_time": 260,
+  "requires_program": true,
+  "consume_sample": true,
+  "minimum_quality": 0.55,
+  "research": { "base_quality_cap": 0.78 },
+  "failure": {
+    "mutation_chance": 1.0,
+    "mutation_below_quality": 0.9,
+    "consume_reagent": true
+  },
+  "inputs": {
+    "sample": [
+      { "tag": "bioforge:ingredients/bioforge/virus_sample" },
+      { "tag": "bioforge:ingredients/bioforge/live_culture_vial" },
+      { "tag": "bioforge:ingredients/bioforge/petri_dish" }
+    ],
+    "carrier": { "tag": "bioforge:ingredients/bioforge/mutation_upgrade_vaccine" },
+    "reagent": { "tag": "bioforge:ingredients/bioforge/nutrient_medium" },
+    "cartridge": { "tag": "bioforge:ingredients/bioforge/crispr_cartridge" },
+    "cas_module": { "tag": "bioforge:ingredients/bioforge/cas_module" }
+  },
+  "quality": {
+    "guides": [0.25, 0.25, 0.25],
+    "cas_module": 0.1,
+    "sample": 0.05,
+    "carrier": 0.05,
+    "reagent": 0.05
+  },
+  "result": {
+    "item": "bioforge:mutation_upgrade_vaccine",
+    "uses": 1,
+    "defense_risk": 0.15
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "order": 2065,
+  "unlock_items": [
+    "bioforge:otoscope"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:otoscope"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:otoscope"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:otoscope"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.otoscope"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.otoscope"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.diagnostic",
+        "with": [
+          {
+            "translate": "item.bioforge.otoscope"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:diagnostics",
+      "line_breaks": 0
+    }
+  ]
+}

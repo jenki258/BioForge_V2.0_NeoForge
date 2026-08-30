@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "PMP",
+    "M M",
+    "PMP"
+  ],
+  "key": {
+    "P": { "tag": "bioforge:ingredients/bioforge/black_steel_plate" },
+    "M": { "tag": "bioforge:ingredients/bioforge/black_steel_mesh" }
+  },
+  "result": {
+    "id": "bioforge:black_steel_grate",
+    "count": 4
+  }
+}

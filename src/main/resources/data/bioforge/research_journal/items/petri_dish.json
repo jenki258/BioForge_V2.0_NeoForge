@@ -1,0 +1,67 @@
+{
+  "order": 2067,
+  "unlock_items": [
+    "bioforge:petri_dish"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:petri_dish"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:petri_dish"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:petri_dish"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "block.bioforge.petri_dish"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "block.bioforge.petri_dish"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.sample",
+        "with": [
+          {
+            "translate": "block.bioforge.petri_dish"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:sample_chain",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -6,12 +6,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.jenkimods.bioforge.BioForge;
+import net.jenkimods.bioforge.world.recipe.BioForgeRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -94,8 +96,15 @@ public class CentrifugeRecipeManager extends SimpleJsonResourceReloadListener {
         javaRegistrationsFrozen = true;
     }
 
-    public Optional<CentrifugeRecipe> getRecipe(ItemStack inputStack) {
+    public Optional<CentrifugeRecipe> getRecipe(Level level, ItemStack inputStack) {
         if (inputStack.isEmpty()) return Optional.empty();
+        if (level != null) {
+            for (var holder : level.getRecipeManager().getAllRecipesFor(
+                    BioForgeRecipeRegistration.CENTRIFUGE_TYPE)) {
+                CentrifugeRecipe recipe = holder.value().recipe();
+                if (recipe.input().test(inputStack)) return Optional.of(recipe);
+            }
+        }
         for (CentrifugeRecipe recipe : recipes) {
             if (recipe.input().test(inputStack)) return Optional.of(recipe);
         }
@@ -104,5 +113,14 @@ public class CentrifugeRecipeManager extends SimpleJsonResourceReloadListener {
 
     public List<CentrifugeRecipe> getRecipes() {
         return java.util.Collections.unmodifiableList(recipes);
+    }
+
+    public List<CentrifugeRecipe> getRecipes(Level level) {
+        if (level == null) return getRecipes();
+        List<CentrifugeRecipe> combined = new ArrayList<>();
+        level.getRecipeManager().getAllRecipesFor(BioForgeRecipeRegistration.CENTRIFUGE_TYPE)
+                .forEach(holder -> combined.add(holder.value().recipe()));
+        combined.addAll(recipes);
+        return List.copyOf(combined);
     }
 }

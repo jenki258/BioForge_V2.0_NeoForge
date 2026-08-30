@@ -1,6 +1,7 @@
 package net.jenkimods.bioforge.world.centrifuge;
 
 import net.jenkimods.bioforge.BioForge;
+import net.jenkimods.bioforge.config.BioForgeServerConfig;
 import net.jenkimods.bioforge.item.BloodSampleUtil;
 import net.jenkimods.bioforge.util.NbtObfuscator;
 import net.jenkimods.bioforge.registry.BioForgeSounds;
@@ -78,7 +79,7 @@ public class CentrifugeBlockEntity extends BlockEntity implements MenuProvider {
         boolean processingNow = false;
         for (int slot = 0; slot < SLOT_COUNT; slot++) {
             ItemStack input = be.items.getStackInSlot(slot);
-            var recipeOpt = CentrifugeRecipeManager.INSTANCE.getRecipe(input);
+            var recipeOpt = CentrifugeRecipeManager.INSTANCE.getRecipe(level, input);
             if (recipeOpt.isEmpty()) {
                 if (be.progress[slot] != 0) {
                     be.progress[slot] = 0;
@@ -97,7 +98,8 @@ public class CentrifugeBlockEntity extends BlockEntity implements MenuProvider {
             }
 
             processingNow = true;
-            be.maxProgress[slot] = Math.max(1, recipe.processingTime());
+            be.maxProgress[slot] = BioForgeServerConfig
+                    .centrifugeProcessingTime(recipe.processingTime());
             be.progress[slot]++;
             if (be.progress[slot] < be.maxProgress[slot]) {
                 changed = true;

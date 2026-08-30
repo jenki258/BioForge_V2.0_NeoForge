@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    { "tag": "bioforge:ingredients/bioforge/random_mutation_vaccine" },
+    { "tag": "bioforge:ingredients/minecraft/echo_shard" },
+    { "tag": "bioforge:ingredients/bioforge/gene_imprint" },
+    { "tag": "bioforge:ingredients/bioforge/precision_mechanism" }
+  ],
+  "result": { "id": "bioforge:mutation_upgrade_vaccine" }
+}

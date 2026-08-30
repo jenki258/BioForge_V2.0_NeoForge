@@ -108,6 +108,20 @@
             "normal": "bioforge:textures/gui/microscope/lung_clear.png",
             "crackle": "bioforge:textures/gui/microscope/lung_crackle.png"
           }
+        },
+        {
+          "symptom": "incubation_time",
+          "type": "float",
+          "source": "lifecycle",
+          "icon": "bioforge:textures/gui/microscope/stage.png",
+          "display_percentage": false
+        },
+        {
+          "symptom": "active_lifespan",
+          "type": "float",
+          "source": "lifecycle",
+          "icon": "bioforge:textures/gui/microscope/stage.png",
+          "display_percentage": false
         }
       ]
     },

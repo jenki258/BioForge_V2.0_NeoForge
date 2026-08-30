@@ -1,6 +1,7 @@
 package net.jenkimods.bioforge.world.laboratory;
 
 import net.jenkimods.bioforge.BioForge;
+import net.jenkimods.bioforge.config.BioForgeServerConfig;
 import net.jenkimods.bioforge.block.LaboratoryProcessorBlock;
 import net.jenkimods.bioforge.infection.spread.ItemStrainData;
 import net.jenkimods.bioforge.registry.BioForgeSounds;
@@ -78,14 +79,15 @@ public final class LaboratoryProcessorBlockEntity extends BlockEntity implements
 
     private void tickCrafting() {
         LaboratoryStation station = station();
-        var recipe = LaboratoryProcessRecipeManager.INSTANCE.find(station, items);
+        var recipe = LaboratoryProcessRecipeManager.INSTANCE.find(level, station, items);
         if (recipe.isEmpty() || !canAccept(station.resultSlot(), recipe.get().result())
                 || !canAccept(station.wasteSlot(), recipe.get().waste())) {
             resetProgress(0);
             return;
         }
         LaboratoryProcessRecipe active = recipe.get();
-        maxProgress[0] = active.processingTime();
+        maxProgress[0] = BioForgeServerConfig
+                .laboratoryProcessingTime(station, active.processingTime());
         progress[0]++;
         if (progress[0] < maxProgress[0]) {
             setChanged();
@@ -105,7 +107,7 @@ public final class LaboratoryProcessorBlockEntity extends BlockEntity implements
         for (int slot = 0; slot < LaboratoryStation.STERILIZATION_CHAMBER.inputSlots(); slot++) {
             ItemStack input = items.getStackInSlot(slot);
             var recipe = LaboratoryProcessRecipeManager.INSTANCE.findSingle(
-                    LaboratoryStation.STERILIZATION_CHAMBER, input);
+                    level, LaboratoryStation.STERILIZATION_CHAMBER, input);
             boolean contaminated = ItemStrainData.read(input) != null;
             if (input.isEmpty() || (recipe.isEmpty() && !contaminated)) {
                 if (progress[slot] != 0) {
@@ -114,8 +116,10 @@ public final class LaboratoryProcessorBlockEntity extends BlockEntity implements
                 }
                 continue;
             }
-            maxProgress[slot] = recipe.map(LaboratoryProcessRecipe::processingTime)
+            int baseProcessingTime = recipe.map(LaboratoryProcessRecipe::processingTime)
                     .orElse(100);
+            maxProgress[slot] = BioForgeServerConfig.laboratoryProcessingTime(
+                    LaboratoryStation.STERILIZATION_CHAMBER, baseProcessingTime);
             progress[slot]++;
             changed = true;
             if (progress[slot] < maxProgress[slot]) continue;

@@ -2,6 +2,7 @@ package net.jenkimods.bioforge.infection;
 
 import net.jenkimods.bioforge.infection.symptoms.BioForgeSymptoms;
 import net.jenkimods.bioforge.infection.symptoms.SymptomKey;
+import net.jenkimods.bioforge.infection.lifecycle.InfectionLifecycleState;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.jenkimods.bioforge.api.definition.BioForgeIds;
@@ -71,10 +72,13 @@ public class InfectionStore extends SavedData {
             Map<String, Object> symptoms,
             List<String> mutations,
             @Nullable ResourceLocation pathogenId,
-            List<ResourceLocation> transmissionIds
+            List<ResourceLocation> transmissionIds,
+            int incubationTicksOverride,
+            int lifespanTicksOverride
     ) {
         public static final InfectionRecord NONE = new InfectionRecord(
-                false, false, null, List.of(), Map.of(), List.of(), null, List.of()
+                false, false, null, List.of(), Map.of(), List.of(), null, List.of(),
+                -1, InfectionLifecycleState.NO_LIFESPAN_OVERRIDE
         );
 
         public InfectionRecord(boolean infected, boolean persistent, @Nullable PathogenType pathogenType,
@@ -87,7 +91,17 @@ public class InfectionStore extends SavedData {
                                List<String> mutations) {
             this(infected, persistent, pathogenType, List.copyOf(infectionTypes), Map.copyOf(symptoms),
                     List.copyOf(mutations), pathogenType == null ? null : BioForgeIds.pathogen(pathogenType),
-                    infectionTypes.stream().map(BioForgeIds::transmission).toList());
+                    infectionTypes.stream().map(BioForgeIds::transmission).toList(),
+                    -1, InfectionLifecycleState.NO_LIFESPAN_OVERRIDE);
+        }
+
+        public InfectionRecord(boolean infected, boolean persistent, @Nullable PathogenType pathogenType,
+                               List<InfectionType> infectionTypes, Map<String, Object> symptoms,
+                               List<String> mutations, @Nullable ResourceLocation pathogenId,
+                               List<ResourceLocation> transmissionIds) {
+            this(infected, persistent, pathogenType, List.copyOf(infectionTypes), Map.copyOf(symptoms),
+                    List.copyOf(mutations), pathogenId, List.copyOf(transmissionIds),
+                    -1, InfectionLifecycleState.NO_LIFESPAN_OVERRIDE);
         }
 
         public CompoundTag toNbt() {
@@ -114,6 +128,12 @@ public class InfectionStore extends SavedData {
 
             if (!mutations.isEmpty()) {
                 tag.putString("Mutations", String.join(",", mutations));
+            }
+            if (incubationTicksOverride >= 0) {
+                tag.putInt("IncubationTicksOverride", incubationTicksOverride);
+            }
+            if (lifespanTicksOverride != InfectionLifecycleState.NO_LIFESPAN_OVERRIDE) {
+                tag.putInt("LifespanTicksOverride", lifespanTicksOverride);
             }
             return tag;
         }
@@ -177,9 +197,15 @@ public class InfectionStore extends SavedData {
                 }
             }
 
+            int incubationTicksOverride = tag.contains("IncubationTicksOverride")
+                    ? Math.max(0, tag.getInt("IncubationTicksOverride")) : -1;
+            int lifespanTicksOverride = tag.contains("LifespanTicksOverride")
+                    ? Math.max(-1, tag.getInt("LifespanTicksOverride"))
+                    : InfectionLifecycleState.NO_LIFESPAN_OVERRIDE;
+
             return new InfectionRecord(infected, persistent, pt, List.copyOf(types),
                     Map.copyOf(symptoms), List.copyOf(mutations), pathogenId,
-                    List.copyOf(transmissionIds));
+                    List.copyOf(transmissionIds), incubationTicksOverride, lifespanTicksOverride);
         }
     }
 }

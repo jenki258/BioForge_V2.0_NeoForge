@@ -1,0 +1,90 @@
+{
+  "order": 505,
+  "unlock_items": [
+    "bioforge:vaccine_maker",
+    "bioforge:crispr_cartridge",
+    "bioforge:gene_imprint"
+  ],
+  "recipes": [
+    "bioforge:crispr_cartridge",
+    "bioforge:cas_module",
+    "bioforge:gene_imprint",
+    "bioforge:vaccine_maker",
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:full_strain_vaccine"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "research.bioforge.page.crispr_workflow.title"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.1"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.2"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.3"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.4"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.5"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.6"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.7"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.page.crispr_workflow.content.8"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.page.crispr_workflow.back"
+      },
+      "link": "bioforge:crispr_and_vaccines",
+      "line_breaks": 0
+    }
+  ]
+}

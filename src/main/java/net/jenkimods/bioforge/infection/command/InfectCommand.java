@@ -2,6 +2,7 @@ package net.jenkimods.bioforge.infection.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.jenkimods.bioforge.config.BioForgeServerConfig;
@@ -99,6 +100,20 @@ public class InfectCommand {
                                                                                         parseMutationIds(StringArgumentType.getString(ctx, "mutation_ids"))))
                                                                         )
                                                                 )
+                                                                .then(Commands.literal("lifecycle")
+                                                                        .then(Commands.argument("incubation_ticks", IntegerArgumentType.integer(0))
+                                                                                .then(Commands.argument("lifespan_ticks", IntegerArgumentType.integer(-1))
+                                                                                        .executes(ctx -> execute(
+                                                                                                ctx.getSource(),
+                                                                                                toLiving(EntityArgument.getEntities(ctx, "targets")),
+                                                                                                BoolArgumentType.getBool(ctx, "infected"),
+                                                                                                PathogenType.fromName(StringArgumentType.getString(ctx, "pathogen")),
+                                                                                                parseTypes(StringArgumentType.getString(ctx, "infectionType")),
+                                                                                                BoolArgumentType.getBool(ctx, "persistent"),
+                                                                                                List.of(),
+                                                                                                IntegerArgumentType.getInteger(ctx, "incubation_ticks"),
+                                                                                                IntegerArgumentType.getInteger(ctx, "lifespan_ticks"))))
+                                                                )
                                                         )
                                                 )
                                         )
@@ -111,7 +126,7 @@ public class InfectCommand {
                                 .executes(ctx -> cure(ctx.getSource(),
                                         toLiving(EntityArgument.getEntities(ctx, "targets")))))
                 )
-        );
+        ));
     }
 
     private static Collection<LivingEntity> toLiving(Collection<? extends Entity> entities) {
@@ -154,6 +169,13 @@ public class InfectCommand {
     private static int execute(CommandSourceStack source, Collection<LivingEntity> targets,
                                boolean infected, PathogenType pathogenType, Set<InfectionType> types,
                                boolean persistent, List<String> mutationIds) {
+        return execute(source, targets, infected, pathogenType, types, persistent, mutationIds, null, null);
+    }
+
+    private static int execute(CommandSourceStack source, Collection<LivingEntity> targets,
+                               boolean infected, PathogenType pathogenType, Set<InfectionType> types,
+                               boolean persistent, List<String> mutationIds,
+                               Integer incubationTicks, Integer lifespanTicks) {
         for (InfectionType t : types) {
             if (!BioForgeServerConfig.isTransmissionEnabled(t) || !pathogenType.allows(t)) {
                 source.sendFailure(Component.translatable("command.bioforge.infect.incompatible",
@@ -180,6 +202,9 @@ public class InfectCommand {
                 data.setPathogenType(pathogenType);
                 for (InfectionType t : types) data.addInfectionType(t);
                 BioForgeSymptoms.applyDefaultSymptoms(data);
+                if (incubationTicks != null && lifespanTicks != null) {
+                    data.getLifecycle().setTimingOverrides(incubationTicks, lifespanTicks);
+                }
 
 
                 if (mutationIds != null && !mutationIds.isEmpty()) {
@@ -194,8 +219,11 @@ public class InfectCommand {
                     }
                     List<String> muts = new ArrayList<>(data.getSymptoms().getMutations());
                     InfectionStore.get(player.serverLevel()).setInfection(player.getUUID(),
-                            new InfectionStore.InfectionRecord(true, true, pathogenType, new ArrayList<>(types),
-                                    symptomMap, muts));
+                            new InfectionStore.InfectionRecord(true, true, pathogenType,
+                                    new ArrayList<>(types), symptomMap, muts,
+                                    data.getPathogenId(), new ArrayList<>(data.getTransmissionIds()),
+                                    data.getLifecycle().incubationTicksOverride(),
+                                    data.getLifecycle().lifespanTicksOverride()));
                 }
                 final String name = entity.getDisplayName().getString();
                 source.sendSuccess(() -> Component.translatable("command.bioforge.infect.success", name,

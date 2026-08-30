@@ -82,7 +82,12 @@ public class InfectionEventHandler {
         ServerPlayer serverPlayer = (ServerPlayer) newPlayer;
         InfectionStore store = InfectionStore.get(serverPlayer.serverLevel());
         InfectionStore.InfectionRecord record = store.getInfection(serverPlayer.getUUID());
-        if (record != null && record.persistent()) {
+        boolean preserveAllInfections = serverPlayer.level().getGameRules()
+                .getBoolean(BioForgeGameRules.PERSISTENT_INFECTIONS);
+        if (preserveAllInfections && oldData.isInfected()) {
+            newData.copyCompleteStateFrom(oldData);
+            MutationManager.refreshContinuousEffects(newData, serverPlayer);
+        } else if (record != null && record.persistent()) {
             newData.setInfected(true);
             if (record.pathogenId() != null) newData.setPathogenId(record.pathogenId());
             else newData.setPathogenType(record.pathogenType());
@@ -102,6 +107,8 @@ public class InfectionEventHandler {
             for (String mutationId : record.mutations()) {
                 newData.getSymptoms().addMutation(mutationId);
             }
+            newData.getLifecycle().setTimingOverridesRaw(
+                    record.incubationTicksOverride(), record.lifespanTicksOverride());
             MutationManager.refreshContinuousEffects(newData, serverPlayer);
         } else {
             newData.clearInfection();

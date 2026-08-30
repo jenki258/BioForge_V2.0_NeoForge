@@ -341,6 +341,7 @@ public final class MutationDefinition {
     private final Set<String> conflictingMutations;
     private final Set<String> tags;
     private final List<Interaction> interactions;
+    private final String upgradeTo;
 
     private MutationDefinition(Builder builder) {
         this.id = builder.id;
@@ -363,6 +364,7 @@ public final class MutationDefinition {
         this.conflictingMutations = Collections.unmodifiableSet(new LinkedHashSet<>(builder.conflictingMutations));
         this.tags = Collections.unmodifiableSet(new LinkedHashSet<>(builder.tags));
         this.interactions = List.copyOf(builder.interactions);
+        this.upgradeTo = normalize(builder.upgradeTo);
     }
 
     public String id() { return id; }
@@ -382,6 +384,7 @@ public final class MutationDefinition {
     public Set<String> conflictingMutations() { return conflictingMutations; }
     public Set<String> tags() { return tags; }
     public List<Interaction> interactions() { return interactions; }
+    public String upgradeTo() { return upgradeTo; }
 
 
 
@@ -470,6 +473,7 @@ public final class MutationDefinition {
         private final Set<String> conflictingMutations = new LinkedHashSet<>();
         private final Set<String> tags = new LinkedHashSet<>();
         private final List<Interaction> interactions = new ArrayList<>();
+        private String upgradeTo = "";
 
         public Builder id(String id) {
             this.id = id == null ? null : id.trim().toLowerCase(Locale.ROOT);
@@ -554,6 +558,11 @@ public final class MutationDefinition {
 
         public Builder interactions(Collection<Interaction> interactions) {
             if (interactions != null) this.interactions.addAll(interactions);
+            return this;
+        }
+
+        public Builder upgradeTo(@Nullable String mutationId) {
+            this.upgradeTo = mutationId == null ? "" : mutationId;
             return this;
         }
 

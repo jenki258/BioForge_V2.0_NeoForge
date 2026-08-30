@@ -1,0 +1,67 @@
+{
+  "order": 2011,
+  "unlock_items": [
+    "bioforge:black_steel_bars"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:black_steel_bars"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:black_steel_bars"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:black_steel_bars"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "block.bioforge.black_steel_bars"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "block.bioforge.black_steel_bars"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.containment",
+        "with": [
+          {
+            "translate": "block.bioforge.black_steel_bars"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:containment",
+      "line_breaks": 0
+    }
+  ]
+}

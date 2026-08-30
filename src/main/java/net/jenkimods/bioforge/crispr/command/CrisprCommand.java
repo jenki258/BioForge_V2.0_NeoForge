@@ -156,8 +156,8 @@ public final class CrisprCommand {
                 BioForgeResearchData.guideProfileIds().size(),
                 BioForgeResearchData.casModuleIds().size(),
                 BioForgeResearchData.actionIds().size(),
-                BioForgeResearchData.recipes().size()), false);
-        return BioForgeResearchData.recipes().size();
+                BioForgeResearchData.recipes(source.getLevel()).size()), false);
+        return BioForgeResearchData.recipes(source.getLevel()).size();
     }
 
     private static int cartridge(CommandSourceStack source, int slot, String sequence,

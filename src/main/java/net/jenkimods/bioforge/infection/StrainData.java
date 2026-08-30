@@ -11,6 +11,7 @@ import net.jenkimods.bioforge.vaccine.VaccineManager;
 import net.jenkimods.bioforge.mutation.MutationDefinition;
 import net.jenkimods.bioforge.infection.lifecycle.InfectionLifecycleState;
 import net.jenkimods.bioforge.infection.lifecycle.InfectionLifecycleRegistry;
+import net.jenkimods.bioforge.infection.lifecycle.InfectionLifecycleRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,6 +27,8 @@ public class StrainData {
     private final Map<String, String> symptoms = new LinkedHashMap<>();
     private final Set<String> mutationIds = new HashSet<>();
     private ResourceLocation lifecycleProfileId = InfectionLifecycleState.DEFAULT_PROFILE;
+    private int incubationTicksOverride = -1;
+    private int lifespanTicksOverride = InfectionLifecycleState.NO_LIFESPAN_OVERRIDE;
 
     private static Map<String, SymptomKey<?>> ALL_SYMPTOM_KEYS;
 
@@ -52,6 +55,8 @@ public class StrainData {
                     .forEach(s.infectionTypes::add);
             s.transmissionIds.addAll(data.getTransmissionIds());
             s.lifecycleProfileId = data.getLifecycle().profileId();
+            s.incubationTicksOverride = data.getLifecycle().incubationTicksOverride();
+            s.lifespanTicksOverride = data.getLifecycle().lifespanTicksOverride();
 
             for (Map.Entry<String, SymptomKey<?>> entry : getAllSymptomKeys().entrySet()) {
                 String keyId = entry.getKey();
@@ -98,6 +103,12 @@ public class StrainData {
                 } else if (kv[0].equals("lifecycle_profile")) {
                     ResourceLocation profile = ResourceLocation.tryParse(kv[1]);
                     if (profile != null) s.lifecycleProfileId = profile;
+                } else if (kv[0].equals("incubation_ticks_override")) {
+                    try { s.incubationTicksOverride = Math.max(-1, Integer.parseInt(kv[1])); }
+                    catch (NumberFormatException ignored) {}
+                } else if (kv[0].equals("lifespan_ticks_override")) {
+                    try { s.lifespanTicksOverride = Math.max(-1, Integer.parseInt(kv[1])); }
+                    catch (NumberFormatException ignored) {}
                 } else if (allKeys.containsKey(kv[0])
                         && BioForgeServerConfig.isSymptomEnabled(kv[0])) {
                     s.symptoms.put(kv[0], kv[1]);
@@ -121,11 +132,28 @@ public class StrainData {
     public Map<String, String> getSymptoms() { return symptoms; }
     public Set<String> getMutationIds() { return mutationIds; }
     public ResourceLocation getLifecycleProfileId() { return lifecycleProfileId; }
+    public int getIncubationTicksOverride() { return incubationTicksOverride; }
+    public int getLifespanTicksOverride() { return lifespanTicksOverride; }
+    public int getEffectiveIncubationTicks() {
+        int profileTicks = InfectionLifecycleRegistry.INSTANCE
+                .resolve(lifecycleProfileId).incubationTicks();
+        return incubationTicksOverride >= 0 ? incubationTicksOverride : profileTicks;
+    }
+    public int getEffectiveLifespanTicks() {
+        int profileTicks = InfectionLifecycleRegistry.INSTANCE
+                .resolve(lifecycleProfileId).lifespanTicks();
+        return lifespanTicksOverride != InfectionLifecycleState.NO_LIFESPAN_OVERRIDE
+                ? lifespanTicksOverride : profileTicks;
+    }
     public Optional<String> getSymptom(String key) { return Optional.ofNullable(symptoms.get(key)); }
 
     public void setColonyId(UUID id) { this.colonyId = id; }
     public void setLifecycleProfileId(ResourceLocation id) {
         lifecycleProfileId = id == null ? InfectionLifecycleState.DEFAULT_PROFILE : id;
+    }
+    public void setTimingOverrides(int incubationTicks, int lifespanTicks) {
+        incubationTicksOverride = Math.max(0, incubationTicks);
+        lifespanTicksOverride = Math.max(-1, lifespanTicks);
     }
     public void setPathogen(PathogenType pathogen) {
         this.pathogen = pathogen;
@@ -286,6 +314,12 @@ public class StrainData {
             sb.append(";");
         }
         sb.append("lifecycle_profile=").append(lifecycleProfileId).append(";");
+        if (incubationTicksOverride >= 0) {
+            sb.append("incubation_ticks_override=").append(incubationTicksOverride).append(";");
+        }
+        if (lifespanTicksOverride != InfectionLifecycleState.NO_LIFESPAN_OVERRIDE) {
+            sb.append("lifespan_ticks_override=").append(lifespanTicksOverride).append(";");
+        }
         return sb.toString();
     }
 
@@ -300,11 +334,17 @@ public class StrainData {
                 .map(ResourceLocation::toString).sorted()
                 .forEach(type -> result.append(type).append(','));
         result.append(';');
-        symptoms.entrySet().stream()
+        getAllSymptomKeys().entrySet().stream()
                 .filter(entry -> BioForgeServerConfig.isSymptomEnabled(entry.getKey()))
                 .sorted(Map.Entry.comparingByKey())
-                .forEach(entry -> result.append(entry.getKey()).append('=')
-                        .append(entry.getValue()).append(';'));
+                .forEach(entry -> {
+                    String value = symptoms.get(entry.getKey());
+                    if (value == null) {
+                        value = serializeSymptomValue(entry.getValue().getDefaultValue());
+                    }
+                    result.append(entry.getKey()).append('=')
+                            .append(value).append(';');
+                });
         if (!mutationIds.isEmpty()) {
             result.append("mutations=");
             mutationIds.stream().filter(BioForgeServerConfig::isMutationEnabled)
@@ -312,6 +352,12 @@ public class StrainData {
             result.append(';');
         }
         result.append("lifecycle_profile=").append(lifecycleProfileId).append(';');
+        if (incubationTicksOverride >= 0) {
+            result.append("incubation_ticks_override=").append(incubationTicksOverride).append(';');
+        }
+        if (lifespanTicksOverride != InfectionLifecycleState.NO_LIFESPAN_OVERRIDE) {
+            result.append("lifespan_ticks_override=").append(lifespanTicksOverride).append(';');
+        }
         return result.toString();
     }
 
@@ -341,9 +387,10 @@ public class StrainData {
             MutationManager.clearMutations(data, target);
             data.clearInfection();
         }
-        data.getLifecycle().setProfileId(lifecycleProfileId);
         data.setInfected(true);
         data.setPathogenId(pathogenId);
+        data.getLifecycle().setProfileId(lifecycleProfileId);
+        data.getLifecycle().setTimingOverridesRaw(incubationTicksOverride, lifespanTicksOverride);
         for (ResourceLocation type : getTransmissionIds()) {
             if (isTransmissionEnabled(type)) data.addTransmissionId(type);
         }
@@ -423,6 +470,8 @@ public class StrainData {
         copy.getSymptoms().putAll(original.getSymptoms());
         copy.getMutationIds().addAll(original.getMutationIds());
         copy.setLifecycleProfileId(original.getLifecycleProfileId());
+        copy.incubationTicksOverride = original.incubationTicksOverride;
+        copy.lifespanTicksOverride = original.lifespanTicksOverride;
         return copy;
     }
 

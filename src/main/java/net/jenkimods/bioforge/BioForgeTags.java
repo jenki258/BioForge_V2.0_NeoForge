@@ -24,6 +24,8 @@ public class BioForgeTags {
                     ResourceLocation.tryBuild("bioforge", "infectable_crops"));
     public static final TagKey<Block> DECONTAMINATION_TARGETS =
             BlockTags.create(ResourceLocation.tryBuild("bioforge", "decontamination_targets"));
+    public static final TagKey<Block> ETHANOL_COATABLE =
+            BlockTags.create(ResourceLocation.tryBuild("bioforge", "ethanol_coatable"));
 
     public static final TagKey<Item> BLOCKS_OUTGOING_AIRBORNE = item("blocks_outgoing_airborne");
     public static final TagKey<Item> REDUCES_INCOMING_AIRBORNE = item("reduces_incoming_airborne");
@@ -34,6 +36,7 @@ public class BioForgeTags {
     public static final TagKey<Item> BLOCKS_HEAT_SYMPTOMS = item("blocks_heat_symptoms");
     public static final TagKey<Item> BLOCKS_CHILL_SYMPTOMS = item("blocks_chill_symptoms");
     public static final TagKey<Item> HAZCURE_PIECES = item("hazcure_pieces");
+    public static final TagKey<Item> FLESH_CRAVING_MEAT = item("foods/meat");
 
     private static TagKey<Item> item(String path) {
         return ItemTags.create(ResourceLocation.tryBuild("bioforge", path));

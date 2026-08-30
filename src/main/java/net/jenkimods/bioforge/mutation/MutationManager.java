@@ -1105,7 +1105,9 @@ public final class MutationManager {
                 new ArrayList<>(data.getInfectionTypes()),
                 symptoms,
                 new ArrayList<>(data.getSymptoms().getMutations()),
-                data.getPathogenId(), new ArrayList<>(data.getTransmissionIds())
+                data.getPathogenId(), new ArrayList<>(data.getTransmissionIds()),
+                data.getLifecycle().incubationTicksOverride(),
+                data.getLifecycle().lifespanTicksOverride()
         ));
     }
 }

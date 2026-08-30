@@ -1,0 +1,67 @@
+{
+  "order": 2104,
+  "unlock_items": [
+    "bioforge:visibility_reagent"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:visibility_reagent"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:visibility_reagent"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:visibility_reagent"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.visibility_reagent"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.visibility_reagent"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.chemistry",
+        "with": [
+          {
+            "translate": "item.bioforge.visibility_reagent"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:chemistry",
+      "line_breaks": 0
+    }
+  ]
+}

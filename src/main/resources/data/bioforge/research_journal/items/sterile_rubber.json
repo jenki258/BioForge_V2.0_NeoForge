@@ -1,0 +1,67 @@
+{
+  "order": 2083,
+  "unlock_items": [
+    "bioforge:sterile_rubber"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:sterile_rubber"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sterile_rubber"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:sterile_rubber"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.sterile_rubber"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.sterile_rubber"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.general",
+        "with": [
+          {
+            "translate": "item.bioforge.sterile_rubber"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -12,7 +12,6 @@ import net.jenkimods.bioforge.api.definition.SymptomDefinition;
 import net.jenkimods.bioforge.definition.BioForgeDefinitionManager;
 import net.jenkimods.bioforge.mutation.MutationDefinition;
 import net.jenkimods.bioforge.mutation.MutationLoader;
-import net.jenkimods.bioforge.infection.lifecycle.InfectionLifecycleRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -471,22 +470,46 @@ public final class VaccineCorrectionState {
 
     private void appendLifecycle(StrainData strain, VaccineCorrectionProfile profile,
                                  List<ResolvedTarget> targets) {
+        appendLifecycleDuration(strain, profile, targets, "incubation_period",
+                strain.getEffectiveIncubationTicks(), profile.maximumIncubationTicks(), false);
+        appendLifecycleDuration(strain, profile, targets, "active_lifespan",
+                strain.getEffectiveLifespanTicks(), profile.maximumLifespanTicks(), true);
+    }
+
+    private void appendLifecycleDuration(StrainData strain,
+                                         VaccineCorrectionProfile profile,
+                                         List<ResolvedTarget> targets,
+                                         String target,
+                                         int durationTicks,
+                                         int configuredMaximum,
+                                         boolean permitsInfinite) {
         VaccineCorrectionProfile.TargetKey key = targetKey(
-                VaccineCorrectionProfile.TargetFamily.LIFECYCLE,
-                "incubation_period");
+                VaccineCorrectionProfile.TargetFamily.LIFECYCLE, target);
         VaccineCorrectionProfile.TargetOverride override =
                 profile.targetOverride(key.family(), key.target());
         if (!override.enabled()) return;
-        int maximum = Math.max(0, profile.maximumIncubationTicks());
-        int states = override.resolveStates(maximum + 1);
-        int incubation = InfectionLifecycleRegistry.INSTANCE
-                .resolve(strain.getLifecycleProfileId()).incubationTicks();
-        float normalized = maximum <= 0 ? 0.0F
-                : Math.max(0.0F, Math.min(1.0F, incubation / (float) maximum));
+        int maximum = Math.max(0, configuredMaximum);
+        int states = override.resolveStates(maximum + (permitsInfinite ? 2 : 1));
+        float normalized;
+        float displayMinimum;
+        if (permitsInfinite) {
+            displayMinimum = -1.0F;
+            normalized = durationTicks < 0 ? 0.0F
+                    : maximum <= 0 ? 1.0F
+                    : Math.max(0.0F, Math.min(1.0F, durationTicks / (float) maximum));
+            if (durationTicks >= 0) {
+                normalized = (1.0F + normalized * Math.max(1, states - 2))
+                        / Math.max(1, states - 1);
+            }
+        } else {
+            displayMinimum = 0.0F;
+            normalized = maximum <= 0 ? 0.0F
+                    : Math.max(0.0F, Math.min(1.0F, durationTicks / (float) maximum));
+        }
         int expected = Math.round(normalized * Math.max(0, states - 1));
         targets.add(new ResolvedTarget(key, states, expected,
                 override.resolveWeight(1.0F), ValueKind.NUMBER,
-                0.0F, maximum));
+                displayMinimum, maximum));
     }
 
     private static int expectedSymptomState(SymptomKey<?> key,

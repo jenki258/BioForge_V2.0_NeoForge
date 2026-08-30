@@ -102,11 +102,15 @@ public final class TransmissionEngine {
         AirRoomScanner.invalidate(level);
         exposeFromSurface(level, event.getPlayer(), event.getPos(), ExposureKind.BREAK,
                 level.getGameTime());
+        SurfaceContaminationData.get(level).removeEthanolCoating(event.getPos());
     }
 
     @SubscribeEvent
     public static void onPlaceBlock(BlockEvent.EntityPlaceEvent event) {
-        if (event.getLevel() instanceof ServerLevel level) AirRoomScanner.invalidate(level);
+        if (event.getLevel() instanceof ServerLevel level) {
+            AirRoomScanner.invalidate(level);
+            SurfaceContaminationData.get(level).removeEthanolCoating(event.getPos());
+        }
     }
 
     private static void emitFromHost(ServerLevel level, LivingEntity host,

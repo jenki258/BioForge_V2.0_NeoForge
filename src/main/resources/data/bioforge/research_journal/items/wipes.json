@@ -1,0 +1,67 @@
+{
+  "order": 2106,
+  "unlock_items": [
+    "bioforge:wipes"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:wipes"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:wipes"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:wipes"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.wipes"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.wipes"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.general",
+        "with": [
+          {
+            "translate": "item.bioforge.wipes"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "order": 2062,
+  "unlock_items": [
+    "bioforge:open_left_viral_scanner"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:open_left_viral_scanner"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:open_left_viral_scanner"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:open_left_viral_scanner"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "block.bioforge.open_left_viral_scanner"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "block.bioforge.open_left_viral_scanner"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.environment",
+        "with": [
+          {
+            "translate": "block.bioforge.open_left_viral_scanner"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:environmental_control",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -23,6 +23,7 @@ public record VaccineCorrectionProfile(
         int numericStates,
         int percentageSteps,
         int maximumIncubationTicks,
+        int maximumLifespanTicks,
         BlendMode blendMode,
         float crisprWeight,
         float correctionWeight,
@@ -48,6 +49,10 @@ public record VaccineCorrectionProfile(
         if (maximumIncubationTicks < 0 || maximumIncubationTicks > 100000) {
             throw new IllegalArgumentException(
                     "maximum_incubation_ticks must be between 0 and 100000");
+        }
+        if (maximumLifespanTicks < 0 || maximumLifespanTicks > 1000000) {
+            throw new IllegalArgumentException(
+                    "maximum_lifespan_ticks must be between 0 and 1000000");
         }
         if (!Float.isFinite(crisprWeight) || crisprWeight < 0.0F
                 || !Float.isFinite(correctionWeight) || correctionWeight < 0.0F
@@ -100,6 +105,8 @@ public record VaccineCorrectionProfile(
                 controls, "percentage_steps", 100);
         int maximumIncubationTicks = GsonHelper.getAsInt(
                 controls, "maximum_incubation_ticks", 72000);
+        int maximumLifespanTicks = GsonHelper.getAsInt(
+                controls, "maximum_lifespan_ticks", 240000);
 
         JsonObject blend = objectOrEmpty(json, "quality_blend");
         BlendMode blendMode = BlendMode.fromName(
@@ -169,7 +176,7 @@ public record VaccineCorrectionProfile(
 
         return new VaccineCorrectionProfile(
                 id, schemaVersion, included, targetsPerPage, numericStates,
-                percentageSteps, maximumIncubationTicks,
+                percentageSteps, maximumIncubationTicks, maximumLifespanTicks,
                 blendMode, crisprWeight, correctionWeight, familyWeights,
                 overrides, assay);
     }

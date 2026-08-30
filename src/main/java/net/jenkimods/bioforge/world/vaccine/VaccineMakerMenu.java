@@ -41,7 +41,7 @@ public class VaccineMakerMenu extends AbstractContainerMenu {
     private int machineViewCount;
 
     public VaccineMakerMenu(int id, Inventory inventory, FriendlyByteBuf buffer) {
-        this(id, inventory, getBlockEntity(inventory, buffer), new SimpleContainerData(4));
+        this(id, inventory, getBlockEntity(inventory, buffer), new SimpleContainerData(5));
     }
 
     public VaccineMakerMenu(int id, Inventory inventory, VaccineMakerBlockEntity blockEntity,
@@ -192,6 +192,11 @@ public class VaccineMakerMenu extends AbstractContainerMenu {
 
     public int getStatus() {
         return data.get(3);
+    }
+
+    public int getSelectedGeneCategory() {
+        return Math.max(0, Math.min(
+                VaccineMakerBlockEntity.GENE_CATEGORY_BUTTON_COUNT - 1, data.get(4)));
     }
 
     @Override

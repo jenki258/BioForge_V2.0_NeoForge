@@ -11,7 +11,8 @@
     "targets_per_page": 5,
     "numeric_states": 16,
     "percentage_steps": 100,
-    "maximum_incubation_ticks": 72000
+    "maximum_incubation_ticks": 72000,
+    "maximum_lifespan_ticks": 240000
   },
   "quality_blend": {
     "mode": "geometric",

@@ -1,0 +1,67 @@
+{
+  "order": 2068,
+  "unlock_items": [
+    "bioforge:pharma_mixer"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:pharma_mixer"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:pharma_mixer"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:pharma_mixer"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "block.bioforge.pharma_mixer"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "block.bioforge.pharma_mixer"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.machine",
+        "with": [
+          {
+            "translate": "block.bioforge.pharma_mixer"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:laboratory_machines",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -64,13 +64,31 @@ public interface InfectionData {
     boolean tickStrainImmunities();
     void copyStrainImmunitiesFrom(InfectionData source);
 
+    default void copyCompleteStateFrom(InfectionData source) {
+        clearInfection();
+        copyStrainImmunitiesFrom(source);
+        if (source == null || !source.isInfected()) return;
+
+        setInfected(true);
+        ResourceLocation pathogenId = source.getPathogenId();
+        if (pathogenId != null) setPathogenId(pathogenId);
+        else setPathogenType(source.getPathogenType());
+        for (ResourceLocation transmissionId : source.getTransmissionIds()) {
+            addTransmissionId(transmissionId);
+        }
+        getSymptoms().deserializeNBT(source.getSymptoms().serializeNBT(),
+                net.jenkimods.bioforge.infection.symptoms.BioForgeSymptoms.deserializer());
+        getLifecycle().deserializeNBT(source.getLifecycle().serializeNBT());
+    }
+
     EntitySymptoms getSymptoms();
     InfectionLifecycleState getLifecycle();
 
     default boolean isIncubating() {
         if (!isInfected()) return false;
         var profile = InfectionLifecycleRegistry.INSTANCE.resolve(getLifecycle().profileId());
-        return getLifecycle().incubationProgress() < profile.incubationTicks();
+        return getLifecycle().incubationProgress()
+                < getLifecycle().effectiveIncubationTicks(profile.incubationTicks());
     }
 
     default boolean isInfectionActive() {

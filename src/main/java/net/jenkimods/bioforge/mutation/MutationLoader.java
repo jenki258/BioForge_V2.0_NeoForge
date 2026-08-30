@@ -116,6 +116,11 @@ public final class MutationLoader extends SimpleJsonResourceReloadListener {
 
     private void validateInteractionReferences() {
         for (MutationDefinition definition : allMutations) {
+            if (!definition.upgradeTo().isEmpty()
+                    && getLoadedMutation(definition.upgradeTo()).isEmpty()) {
+                BioForge.LOGGER.warn("Mutation {} references unknown upgrade mutation {}",
+                        definition.id(), definition.upgradeTo());
+            }
             for (MutationDefinition.Interaction interaction : definition.interactions()) {
                 for (String partner : interaction.withMutations()) {
                     if (getLoadedMutation(partner).isEmpty()) {
@@ -190,6 +195,7 @@ public final class MutationLoader extends SimpleJsonResourceReloadListener {
                     .conflictingMutations(readStringSet(json, "conflicts", "incompatible_mutations"))
                     .tags(readStringSet(json, "tags"))
                     .interactions(parseInteractions(json))
+                    .upgradeTo(GsonHelper.getAsString(json, "upgrade_to", ""))
                     .build();
 
             indexDefinition(definition);

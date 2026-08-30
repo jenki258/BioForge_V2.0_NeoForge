@@ -2,6 +2,7 @@
   "definitions": [
     {
       "id": "muscular_response_i",
+      "upgrade_to": "muscular_response_ii",
       "name": "Muscular Response I",
       "description": "The infection stimulates muscle fibres, granting Strength I",
       "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 28,
@@ -10,6 +11,7 @@
     },
     {
       "id": "muscular_response_ii",
+      "upgrade_to": "muscular_response_iii",
       "name": "Muscular Response II",
       "description": "A stronger muscle response grants Strength II at a higher metabolic cost",
       "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 12,
@@ -30,6 +32,7 @@
     },
     {
       "id": "neural_acceleration_i",
+      "upgrade_to": "neural_acceleration_ii",
       "name": "Neural Acceleration I",
       "description": "Faster motor signalling grants Speed I",
       "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 28,
@@ -38,6 +41,7 @@
     },
     {
       "id": "neural_acceleration_ii",
+      "upgrade_to": "neural_acceleration_iii",
       "name": "Neural Acceleration II",
       "description": "Accelerated neural signalling grants Speed II and mild hunger",
       "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 12,
@@ -58,6 +62,7 @@
     },
     {
       "id": "dermal_reinforcement_i",
+      "upgrade_to": "dermal_reinforcement_ii",
       "name": "Dermal Reinforcement I",
       "description": "Altered connective tissue grants Resistance I",
       "pathogens": ["UNIVERSAL"], "rarity": "uncommon", "weight": 22,
@@ -66,6 +71,7 @@
     },
     {
       "id": "dermal_reinforcement_ii",
+      "upgrade_to": "dermal_reinforcement_iii",
       "name": "Dermal Reinforcement II",
       "description": "Dense connective tissue grants Resistance II but slows the host slightly",
       "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 9,
@@ -86,6 +92,7 @@
     },
     {
       "id": "regenerative_tissue_i",
+      "upgrade_to": "regenerative_tissue_ii",
       "name": "Regenerative Tissue I",
       "description": "Slow tissue repair grants Regeneration I",
       "pathogens": ["UNIVERSAL"], "rarity": "rare", "weight": 16,
@@ -94,6 +101,7 @@
     },
     {
       "id": "regenerative_tissue_ii",
+      "upgrade_to": "regenerative_tissue_iii",
       "name": "Regenerative Tissue II",
       "description": "Rapid tissue repair grants Regeneration II and consumes food reserves",
       "pathogens": ["UNIVERSAL"], "rarity": "epic", "weight": 6,

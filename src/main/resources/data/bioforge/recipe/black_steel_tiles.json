@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": { "tag": "bioforge:ingredients/bioforge/black_steel_plate" }
+  },
+  "result": {
+    "id": "bioforge:black_steel_tiles",
+    "count": 4
+  }
+}

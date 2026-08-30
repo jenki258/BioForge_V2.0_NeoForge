@@ -1,0 +1,67 @@
+{
+  "order": 2003,
+  "unlock_items": [
+    "bioforge:air_vent"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:air_vent"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:air_vent"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:air_vent"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "block.bioforge.air_vent"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "block.bioforge.air_vent"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.environment",
+        "with": [
+          {
+            "translate": "block.bioforge.air_vent"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:environmental_control",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -25,6 +25,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.LinkedHashSet;
 
 public final class ResearchJournalRecipeResolver {
     private static final int MAX_UNLOCK_RECIPES = 3;
@@ -58,7 +60,7 @@ public final class ResearchJournalRecipeResolver {
             }
         }
         for (LaboratoryProcessRecipe recipe
-                : LaboratoryProcessRecipeManager.INSTANCE.recipes()) {
+                : LaboratoryProcessRecipeManager.INSTANCE.recipes(player.serverLevel())) {
             if (matchesAny(List.of(recipe.result(), recipe.waste()), requirements)) {
                 resolved.putIfAbsent("laboratory|" + recipe.id(),
                         laboratory(recipe));
@@ -67,7 +69,7 @@ public final class ResearchJournalRecipeResolver {
                 }
             }
         }
-        for (VaccineMakerRecipe recipe : BioForgeResearchData.recipes()) {
+        for (VaccineMakerRecipe recipe : BioForgeResearchData.recipes(player.serverLevel())) {
             ResearchJournalRecipeView view = vaccineMaker(recipe);
             if (matchesAny(view.results(), requirements)) {
                 resolved.putIfAbsent("vaccine_maker|" + recipe.id(), view);
@@ -79,18 +81,99 @@ public final class ResearchJournalRecipeResolver {
         return List.copyOf(resolved.values());
     }
 
+    public static Map<net.minecraft.resources.ResourceLocation, List<ItemStack>>
+    buildUsageIndex(ServerPlayer player) {
+        Map<net.minecraft.resources.ResourceLocation,
+                LinkedHashMap<net.minecraft.resources.ResourceLocation, ItemStack>> index =
+                new LinkedHashMap<>();
+        for (RecipeHolder<?> holder : player.serverLevel().getRecipeManager().getRecipes()) {
+            Recipe<?> recipe = holder.value();
+            ItemStack output = recipe.getResultItem(player.serverLevel().registryAccess()).copy();
+            indexIngredients(index, recipe.getIngredients(), List.of(output));
+        }
+        for (LaboratoryProcessRecipe recipe
+                : LaboratoryProcessRecipeManager.INSTANCE.recipes(player.serverLevel())) {
+            List<ItemStack> outputs = new ArrayList<>();
+            if (!recipe.result().isEmpty()) outputs.add(recipe.result().copy());
+            if (!recipe.waste().isEmpty()) outputs.add(recipe.waste().copy());
+            indexIngredients(index, recipe.ingredients(), outputs);
+        }
+        for (VaccineMakerRecipe recipe : BioForgeResearchData.recipes(player.serverLevel())) {
+            List<Ingredient> ingredients = new ArrayList<>();
+            add(ingredients, recipe.sample());
+            add(ingredients, recipe.carrier());
+            add(ingredients, recipe.reagent());
+            add(ingredients, recipe.report());
+            add(ingredients, recipe.cartridge());
+            add(ingredients, recipe.casModule());
+            indexIngredients(index, ingredients, vaccineMaker(recipe).results());
+        }
+        Map<net.minecraft.resources.ResourceLocation, List<ItemStack>> result =
+                new LinkedHashMap<>();
+        index.forEach((id, outputs) -> result.put(id, List.copyOf(outputs.values())));
+        return Map.copyOf(result);
+    }
+
+    private static void indexIngredients(
+            Map<net.minecraft.resources.ResourceLocation,
+                    LinkedHashMap<net.minecraft.resources.ResourceLocation, ItemStack>> index,
+            List<Ingredient> ingredients, List<ItemStack> outputs) {
+        if (outputs.isEmpty()) return;
+        Set<net.minecraft.resources.ResourceLocation> inputIds = new LinkedHashSet<>();
+        for (Ingredient ingredient : ingredients) {
+            for (ItemStack input : ingredient.getItems()) {
+                inputIds.add(net.minecraft.core.registries.BuiltInRegistries.ITEM
+                        .getKey(input.getItem()));
+            }
+        }
+        for (net.minecraft.resources.ResourceLocation inputId : inputIds) {
+            LinkedHashMap<net.minecraft.resources.ResourceLocation, ItemStack> uses =
+                    index.computeIfAbsent(inputId, ignored -> new LinkedHashMap<>());
+            for (ItemStack output : outputs) {
+                if (output.isEmpty()) continue;
+                net.minecraft.resources.ResourceLocation outputId =
+                        net.minecraft.core.registries.BuiltInRegistries.ITEM
+                                .getKey(output.getItem());
+                if (outputId.equals(inputId)) continue;
+                ItemStack display = output.copy();
+                display.setCount(1);
+                uses.putIfAbsent(outputId, display);
+            }
+        }
+    }
+
     private static Optional<ResearchJournalRecipeView> resolve(
             ServerPlayer player, ResearchJournalRecipeReference reference) {
         return switch (reference.type()) {
             case CRAFTING -> player.serverLevel().getRecipeManager()
-                    .byKey(reference.id()).map(holder -> vanilla(player, holder));
-            case LABORATORY -> LaboratoryProcessRecipeManager.INSTANCE.recipes().stream()
-                    .filter(recipe -> recipe.id().equals(reference.id()))
+                    .byKey(reference.id()).map(holder -> vanilla(player, holder))
+                    .or(() -> player.serverLevel().getRecipeManager().getRecipes().stream()
+                            .filter(holder -> outputMatches(player, holder, reference.id()))
+                            .findFirst().map(holder -> vanilla(player, holder)));
+            case LABORATORY -> LaboratoryProcessRecipeManager.INSTANCE
+                    .recipes(player.serverLevel()).stream()
+                    .filter(recipe -> recipe.id().equals(reference.id())
+                            || stackMatches(recipe.result(), reference.id())
+                            || stackMatches(recipe.waste(), reference.id()))
                     .findFirst().map(ResearchJournalRecipeResolver::laboratory);
-            case VACCINE_MAKER -> BioForgeResearchData.recipes().stream()
-                    .filter(recipe -> recipe.id().equals(reference.id()))
+            case VACCINE_MAKER -> BioForgeResearchData.recipes(player.serverLevel()).stream()
+                    .filter(recipe -> recipe.id().equals(reference.id())
+                            || vaccineMaker(recipe).results().stream()
+                            .anyMatch(stack -> stackMatches(stack, reference.id())))
                     .findFirst().map(ResearchJournalRecipeResolver::vaccineMaker);
         };
+    }
+
+    private static boolean outputMatches(ServerPlayer player, RecipeHolder<?> holder,
+                                         net.minecraft.resources.ResourceLocation itemId) {
+        return stackMatches(holder.value().getResultItem(
+                player.serverLevel().registryAccess()), itemId);
+    }
+
+    private static boolean stackMatches(ItemStack stack,
+                                        net.minecraft.resources.ResourceLocation itemId) {
+        return !stack.isEmpty() && net.minecraft.core.registries.BuiltInRegistries.ITEM
+                .getKey(stack.getItem()).equals(itemId);
     }
 
     private static ResearchJournalRecipeView vanilla(ServerPlayer player,

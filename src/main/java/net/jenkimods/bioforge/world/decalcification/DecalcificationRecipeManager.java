@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.jenkimods.bioforge.BioForge;
+import net.jenkimods.bioforge.world.recipe.BioForgeRecipeRegistration;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +18,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -79,8 +81,15 @@ public class DecalcificationRecipeManager extends SimpleJsonResourceReloadListen
         javaRegistrationsFrozen = true;
     }
 
-    public Optional<DecalcificationRecipe> getRecipe(ItemStack input) {
+    public Optional<DecalcificationRecipe> getRecipe(Level level, ItemStack input) {
         if (input.isEmpty()) return Optional.empty();
+        if (level != null) {
+            for (var holder : level.getRecipeManager().getAllRecipesFor(
+                    BioForgeRecipeRegistration.DECALCIFICATION_TYPE)) {
+                DecalcificationRecipe recipe = holder.value().recipe();
+                if (matchesInput(recipe.input(), input)) return Optional.of(recipe);
+            }
+        }
         for (DecalcificationRecipe recipe : recipes) {
             if (matchesInput(recipe.input(), input)) return Optional.of(recipe);
         }
@@ -122,5 +131,14 @@ public class DecalcificationRecipeManager extends SimpleJsonResourceReloadListen
 
     public List<DecalcificationRecipe> getRecipes() {
         return Collections.unmodifiableList(recipes);
+    }
+
+    public List<DecalcificationRecipe> getRecipes(Level level) {
+        if (level == null) return getRecipes();
+        List<DecalcificationRecipe> combined = new ArrayList<>();
+        level.getRecipeManager().getAllRecipesFor(BioForgeRecipeRegistration.DECALCIFICATION_TYPE)
+                .forEach(holder -> combined.add(holder.value().recipe()));
+        combined.addAll(recipes);
+        return List.copyOf(combined);
     }
 }

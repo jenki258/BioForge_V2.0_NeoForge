@@ -25,6 +25,11 @@ public class BFCreativeTabs {
                         output.accept(BioForge.BLACK_STEEL_NUGGET.get());
                         output.accept(BioForge.BLACK_STEEL_PLATE.get());
                         output.accept(BioForge.BLACK_STEEL_BLOCK_ITEM.get());
+                        output.accept(BioForge.BLACK_STEEL_TILES_ITEM.get());
+                        output.accept(BioForge.BLACK_STEEL_GRATE_ITEM.get());
+                        output.accept(BioForge.BLACK_STEEL_DOOR_ITEM.get());
+                        output.accept(BioForge.BLACK_STEEL_TRAPDOOR_ITEM.get());
+                        output.accept(BioForge.BLACK_STEEL_BARS_ITEM.get());
                         output.accept(BioForge.REINFORCED_GLASS.get());
                         output.accept(BioForge.AGAR_POWDER.get());
                         output.accept(BioForge.SULFURIC_ACID.get());
@@ -94,6 +99,7 @@ public class BFCreativeTabs {
                         output.accept(BioForge.TRANSMISSION_VACCINE.get());
                         output.accept(BioForge.SYMPTOM_VACCINE.get());
                         output.accept(BioForge.RANDOM_MUTATION_VACCINE.get());
+                        output.accept(BioForge.MUTATION_UPGRADE_VACCINE.get());
                         output.accept(BioForge.VIRAL_SUPPRESSOR_PILL.get());
                         output.accept(BioForge.VIRAL_INHIBITOR_PILL.get());
                         output.accept(BioForge.VIRAL_BLOCKER_PILL.get());

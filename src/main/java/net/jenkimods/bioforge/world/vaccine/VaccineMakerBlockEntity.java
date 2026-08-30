@@ -1,6 +1,7 @@
 package net.jenkimods.bioforge.world.vaccine;
 
 import net.jenkimods.bioforge.BioForge;
+import net.jenkimods.bioforge.config.BioForgeServerConfig;
 import net.jenkimods.bioforge.api.behavior.BioForgeBehaviorRegistry;
 import net.jenkimods.bioforge.api.behavior.VaccineMakerOperationContext;
 import net.jenkimods.bioforge.crispr.BioForgeResearchData;
@@ -76,6 +77,8 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
     public static final int SLOT_COUNT = 21;
     public static final int SYNTHESIZE_BUTTON = 250;
     public static final int RESEARCH_BUTTON = 251;
+    public static final int GENE_CATEGORY_BUTTON_BASE = 252;
+    public static final int GENE_CATEGORY_BUTTON_COUNT = 4;
 
     private final ItemStackHandler items = new ItemStackHandler(SLOT_COUNT) {
         @Override
@@ -108,26 +111,26 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             if (slot == OUTPUT_SLOT) return false;
             if (slot >= CARTRIDGE_START && slot < CARTRIDGE_END) {
-                return BioForgeResearchData.recipes().stream()
+                return BioForgeResearchData.recipes(level).stream()
                         .filter(VaccineMakerRecipe::requiresProgram)
                         .anyMatch(recipe -> recipe.cartridge().test(stack));
             }
             if (slot == CAS_SLOT) {
-                return BioForgeResearchData.recipes().stream()
+                return BioForgeResearchData.recipes(level).stream()
                         .filter(VaccineMakerRecipe::requiresProgram)
                         .anyMatch(recipe -> recipe.casModule().test(stack));
             }
             if (slot == SAMPLE_SLOT) {
-                return BioForgeResearchData.recipes().stream()
+                return BioForgeResearchData.recipes(level).stream()
                         .anyMatch(recipe -> recipe.sample().test(stack));
             }
             if (slot == CARRIER_SLOT) {
-                return BioForgeResearchData.recipes().stream()
+                return BioForgeResearchData.recipes(level).stream()
                         .anyMatch(recipe -> recipe.carrier().test(stack));
             }
             if (slot == REAGENT_SLOT) {
                 return stack.getItem() instanceof GeneImprintItem
-                        || BioForgeResearchData.recipes().stream()
+                        || BioForgeResearchData.recipes(level).stream()
                         .anyMatch(recipe -> recipe.reagent().test(stack));
             }
             if (slot == REPORT_SLOT) {
@@ -155,6 +158,7 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
     private int failureTicks;
     private int selectedPageIndex;
     private int selectedCorrectionPage;
+    private int selectedGeneCategory;
     private final VaccineCorrectionState correctionState =
             new VaccineCorrectionState();
     @Nullable private ResourceLocation activeRecipeId;
@@ -168,6 +172,7 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
                 case 1 -> maxProgress;
                 case 2 -> 0;
                 case 3 -> status;
+                case 4 -> selectedGeneCategory;
                 default -> 0;
             };
         }
@@ -179,12 +184,14 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
                 case 1 -> maxProgress = value;
                 case 2 -> qualityPermille = value;
                 case 3 -> status = value;
+                case 4 -> selectedGeneCategory = Math.max(0, Math.min(
+                        GENE_CATEGORY_BUTTON_COUNT - 1, value));
             }
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return 5;
         }
     };
 
@@ -225,7 +232,8 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
                 maker.assignProgram(preview.guideProfile());
                 maker.qualityPermille = Math.round(
                         maker.calculateQuality(preview) * 1000.0f);
-                maker.maxProgress = preview.processingTime();
+                maker.maxProgress = BioForgeServerConfig
+                        .vaccineMakerProcessingTime(preview.processingTime());
             } else {
                 maker.qualityPermille = 0;
             }
@@ -236,7 +244,8 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         maker.assignProgram(recipe.guideProfile());
         float quality = maker.calculateQuality(recipe);
         maker.qualityPermille = Math.round(quality * 1000.0f);
-        maker.maxProgress = recipe.processingTime();
+        maker.maxProgress = BioForgeServerConfig
+                .vaccineMakerProcessingTime(recipe.processingTime());
         if (!maker.canAcceptOutput()) {
             maker.status = 4;
             maker.progress = 0;
@@ -279,6 +288,14 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         }
         if (buttonId == SYNTHESIZE_BUTTON) {
             return requestCraft(player.getUUID());
+        }
+        if (buttonId >= GENE_CATEGORY_BUTTON_BASE
+                && buttonId < GENE_CATEGORY_BUTTON_BASE + GENE_CATEGORY_BUTTON_COUNT) {
+            int selected = buttonId - GENE_CATEGORY_BUTTON_BASE;
+            if (selectedGeneCategory == selected) return true;
+            selectedGeneCategory = selected;
+            setChanged();
+            return true;
         }
         boolean backwards = buttonId >= 64 && buttonId < 124;
         int encoded = backwards ? buttonId - 64 : buttonId;
@@ -350,8 +367,10 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         }
 
         if (GeneImprintItem.isBlank(reagent)) {
+            VaccineTargetCategory preferred = selectedGeneCategory <= 0 ? null
+                    : VaccineTargetCategory.values()[selectedGeneCategory - 1];
             if (strain == null || !GeneImprintItem.captureUnknown(
-                    reagent, strain, player.getRandom())) {
+                    reagent, strain, player.getRandom(), preferred)) {
                 player.displayClientMessage(Component.translatable(
                         "message.bioforge.vaccine_maker.no_gene_target"), true);
                 return false;
@@ -374,7 +393,7 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
             return false;
         }
         ResourceLocation templateRecipe = ResourceLocation.tryParse(template.recipeId());
-        ResourceLocation profile = BioForgeResearchData.recipes().stream()
+        ResourceLocation profile = BioForgeResearchData.recipes(level).stream()
                 .filter(candidate -> candidate.id().equals(templateRecipe))
                 .map(VaccineMakerRecipe::guideProfile)
                 .findFirst()
@@ -413,13 +432,13 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         ItemStack reagent = items.getStackInSlot(REAGENT_SLOT);
         ItemStack report = items.getStackInSlot(REPORT_SLOT);
         ItemStack cas = items.getStackInSlot(CAS_SLOT);
-        Optional<VaccineMakerRecipe> exact = BioForgeResearchData.recipes().stream()
+        Optional<VaccineMakerRecipe> exact = BioForgeResearchData.recipes(level).stream()
                 .filter(recipe -> recipe.matches(sample, carrier, reagent, report, cas))
                 .filter(this::additionalRequirements)
                 .sorted(Comparator.comparing(recipe -> recipe.id().toString()))
                 .findFirst();
         if (exact.isPresent() || !VaccineBloodAssay.isAssay(report)) return exact;
-        return BioForgeResearchData.recipes().stream()
+        return BioForgeResearchData.recipes(level).stream()
                 .filter(recipe -> recipe.matches(
                         sample, carrier, reagent, ItemStack.EMPTY, cas))
                 .filter(this::additionalRequirements)
@@ -430,7 +449,7 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
     private Optional<VaccineMakerRecipe> findResearchRecipe() {
         ItemStack sample = items.getStackInSlot(SAMPLE_SLOT);
         ItemStack cas = items.getStackInSlot(CAS_SLOT);
-        return BioForgeResearchData.recipes().stream()
+        return BioForgeResearchData.recipes(level).stream()
                 .filter(recipe -> recipe.operation() == VaccineMakerOperation.FULL)
                 .filter(recipe -> recipe.sample().test(sample))
                 .filter(recipe -> recipe.casModule().test(cas))
@@ -464,7 +483,7 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         }
         return switch (recipe.operation()) {
             case FULL -> fullRequirements(recipe);
-            case RANDOM_MUTATION -> fullRequirements(recipe);
+            case RANDOM_MUTATION, RANDOM_MUTATION_UPGRADE -> fullRequirements(recipe);
             case DIRECTED -> directedRequirements(recipe);
             case RESISTANCE_PILL -> StrainSampleUtil.getStrain(
                     items.getStackInSlot(SAMPLE_SLOT)) != null;
@@ -869,7 +888,8 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         } else {
             output = switch (recipe.operation()) {
                 case FULL -> createFullVaccine(recipe, quality);
-                case RANDOM_MUTATION -> createFullVaccine(recipe, quality);
+                case RANDOM_MUTATION, RANDOM_MUTATION_UPGRADE ->
+                        createFullVaccine(recipe, quality);
                 case DIRECTED -> createDirectedVaccine(recipe, quality);
                 case RESISTANCE_PILL -> createResistancePill(recipe);
                 case SYMPTOM_TABLET -> createSymptomTablet(recipe, quality);
@@ -1046,6 +1066,7 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         tag.putInt("FailureTicks", failureTicks);
         tag.putInt("SelectedPage", selectedPageIndex);
         tag.putInt("SelectedCorrectionPage", selectedCorrectionPage);
+        tag.putInt("SelectedGeneCategory", selectedGeneCategory);
         NbtObfuscator.writeCompoundDeterministic(
                 tag, CORRECTION_NBT_CHANNEL, correctionState.save());
         tag.remove("CorrectionState");
@@ -1073,6 +1094,8 @@ public class VaccineMakerBlockEntity extends BlockEntity implements MenuProvider
         selectedCorrectionPage = Math.max(0, Math.min(
                 VaccineMakerMenu.MAX_CORRECTION_PAGE_COUNT - 1,
                 tag.getInt("SelectedCorrectionPage")));
+        selectedGeneCategory = Math.max(0, Math.min(
+                GENE_CATEGORY_BUTTON_COUNT - 1, tag.getInt("SelectedGeneCategory")));
         CompoundTag correction = NbtObfuscator.readCompound(
                 tag, CORRECTION_NBT_CHANNEL);
         correctionState.load(correction != null

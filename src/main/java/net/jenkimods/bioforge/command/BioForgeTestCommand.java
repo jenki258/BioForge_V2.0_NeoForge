@@ -66,10 +66,10 @@ public final class BioForgeTestCommand {
         int transmissions = BioForgeDefinitionManager.TRANSMISSIONS.ids().size();
         int symptoms = BioForgeDefinitionManager.SYMPTOMS.ids().size();
         int mutations = MutationLoader.INSTANCE.getAllMutations().size();
-        int recipes = BioForgeResearchData.recipes().size()
-                + LaboratoryProcessRecipeManager.INSTANCE.recipes().size()
-                + CentrifugeRecipeManager.INSTANCE.getRecipes().size()
-                + DecalcificationRecipeManager.INSTANCE.getRecipes().size();
+        int recipes = BioForgeResearchData.recipes(source.getLevel()).size()
+                + LaboratoryProcessRecipeManager.INSTANCE.recipes(source.getLevel()).size()
+                + CentrifugeRecipeManager.INSTANCE.getRecipes(source.getLevel()).size()
+                + DecalcificationRecipeManager.INSTANCE.getRecipes(source.getLevel()).size();
         int pages = ResearchJournalRegistry.pages().size();
         source.sendSuccess(() -> Component.translatable(
                 "command.bioforge.test.data", pathogens, transmissions, symptoms,

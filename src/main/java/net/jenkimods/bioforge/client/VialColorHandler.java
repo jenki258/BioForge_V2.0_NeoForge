@@ -30,6 +30,7 @@ public class VialColorHandler {
     private static final int COLOR_TRANSMISSION_DEFAULT = 0xFFE69245;
     private static final int COLOR_SYMPTOM_DEFAULT      = 0xFF66C878;
     private static final int COLOR_RANDOM_MUTATION_DEFAULT = 0xFFD43A78;
+    private static final int COLOR_MUTATION_UPGRADE_DEFAULT = 0xFF5D4BE3;
 
     @SubscribeEvent
     public static void onRegisterItemColors(RegisterColorHandlersEvent.Item event) {
@@ -47,7 +48,8 @@ public class VialColorHandler {
                 BioForge.MUTATION_VACCINE.get(),
                 BioForge.TRANSMISSION_VACCINE.get(),
                 BioForge.SYMPTOM_VACCINE.get(),
-                BioForge.RANDOM_MUTATION_VACCINE.get());
+                BioForge.RANDOM_MUTATION_VACCINE.get(),
+                BioForge.MUTATION_UPGRADE_VACCINE.get());
         event.register(VialColorHandler::getSymptomTabletColor,
                 BioForge.SYMPTOM_TABLET.get());
         event.register((stack, tintIndex) -> tintIndex == 1 ? 0xFF7A193D : 0xFFFFFFFF,
@@ -153,6 +155,7 @@ public class VialColorHandler {
             case TRANSMISSION -> COLOR_TRANSMISSION_DEFAULT;
             case SYMPTOM -> COLOR_SYMPTOM_DEFAULT;
             case RANDOM_MUTATION -> COLOR_RANDOM_MUTATION_DEFAULT;
+            case RANDOM_MUTATION_UPGRADE -> COLOR_MUTATION_UPGRADE_DEFAULT;
         };
     }
 
@@ -163,6 +166,7 @@ public class VialColorHandler {
             case TRANSMISSION -> 0.075f;
             case SYMPTOM -> 0.36f;
             case RANDOM_MUTATION -> 0.94f;
+            case RANDOM_MUTATION_UPGRADE -> 0.66f;
         };
     }
 

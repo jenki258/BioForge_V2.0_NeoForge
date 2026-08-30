@@ -2,6 +2,7 @@ package net.jenkimods.bioforge.config;
 
 import net.jenkimods.bioforge.infection.InfectionType;
 import net.jenkimods.bioforge.vaccine.VaccineRules;
+import net.jenkimods.bioforge.world.laboratory.LaboratoryStation;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.EnumMap;
@@ -56,6 +57,13 @@ public final class BioForgeServerConfig {
     private static final ModConfigSpec.DoubleValue WATER_EXPOSURE_CHANCE;
     private static final ModConfigSpec.DoubleValue BLOOD_EXPOSURE_CHANCE;
     private static final ModConfigSpec.IntValue DECONTAMINATION_RADIUS;
+    private static final ModConfigSpec.DoubleValue CENTRIFUGE_SPEED;
+    private static final ModConfigSpec.DoubleValue INCUBATOR_SPEED;
+    private static final ModConfigSpec.DoubleValue VACCINE_MAKER_SPEED;
+    private static final ModConfigSpec.DoubleValue BARREL_PRESS_SPEED;
+    private static final ModConfigSpec.DoubleValue CHEMICAL_SYNTHESIZER_SPEED;
+    private static final ModConfigSpec.DoubleValue STERILIZATION_CHAMBER_SPEED;
+    private static final ModConfigSpec.DoubleValue PHARMA_MIXER_SPEED;
 
     private static final String[] ORIGINAL_SYMPTOMS = {
             "heart_rate", "lung_sound", "temperature_plus", "temperature_minus",
@@ -123,6 +131,24 @@ public final class BioForgeServerConfig {
         UNKNOWN_HOST_MULTIPLIER = nonNegative(builder,
                 "unknownHostMultiplier", 0.85,
                 "Multiplier when either the host or vaccine has no verified blood profile.");
+
+        builder.pop().push("machineProcessing");
+        CENTRIFUGE_SPEED = processingSpeed(builder, "centrifugeSpeedMultiplier",
+                "Processing speed multiplier for the Centrifuge.");
+        INCUBATOR_SPEED = processingSpeed(builder, "incubatorSpeedMultiplier",
+                "Processing speed multiplier for the Incubator.");
+        VACCINE_MAKER_SPEED = processingSpeed(builder, "vaccineMakerSpeedMultiplier",
+                "Processing speed multiplier for the Vaccine Maker.");
+        BARREL_PRESS_SPEED = processingSpeed(builder, "barrelPressSpeedMultiplier",
+                "Processing speed multiplier for the Barrel Press.");
+        CHEMICAL_SYNTHESIZER_SPEED = processingSpeed(builder,
+                "chemicalSynthesizerSpeedMultiplier",
+                "Processing speed multiplier for the Chemical Synthesizer.");
+        STERILIZATION_CHAMBER_SPEED = processingSpeed(builder,
+                "sterilizationChamberSpeedMultiplier",
+                "Processing speed multiplier for the Sterilization Chamber.");
+        PHARMA_MIXER_SPEED = processingSpeed(builder, "pharmaMixerSpeedMultiplier",
+                "Processing speed multiplier for the Pharma Mixer.");
 
         builder.pop().push("mutations");
         DEFENSE_MUTATION = builder
@@ -327,6 +353,28 @@ public final class BioForgeServerConfig {
     }
     public static int decontaminationRadius() { return DECONTAMINATION_RADIUS.get(); }
 
+    public static int centrifugeProcessingTime(int baseTicks) {
+        return scaledProcessingTime(baseTicks, CENTRIFUGE_SPEED.get());
+    }
+
+    public static int incubatorProcessingTime(int baseTicks) {
+        return scaledProcessingTime(baseTicks, INCUBATOR_SPEED.get());
+    }
+
+    public static int vaccineMakerProcessingTime(int baseTicks) {
+        return scaledProcessingTime(baseTicks, VACCINE_MAKER_SPEED.get());
+    }
+
+    public static int laboratoryProcessingTime(LaboratoryStation station, int baseTicks) {
+        double speed = switch (station) {
+            case BARREL_PRESS -> BARREL_PRESS_SPEED.get();
+            case CHEMICAL_SYNTHESIZER -> CHEMICAL_SYNTHESIZER_SPEED.get();
+            case STERILIZATION_CHAMBER -> STERILIZATION_CHAMBER_SPEED.get();
+            case PHARMA_MIXER -> PHARMA_MIXER_SPEED.get();
+        };
+        return scaledProcessingTime(baseTicks, speed);
+    }
+
     private static String normalizeId(String id) {
         String normalized = id.trim().toLowerCase(Locale.ROOT);
         int separator = normalized.indexOf(':');
@@ -341,5 +389,16 @@ public final class BioForgeServerConfig {
     private static ModConfigSpec.DoubleValue nonNegative(
             ModConfigSpec.Builder builder, String name, double fallback, String comment) {
         return builder.comment(comment).defineInRange(name, fallback, 0.0, 100.0);
+    }
+
+    private static ModConfigSpec.DoubleValue processingSpeed(
+            ModConfigSpec.Builder builder, String name, String comment) {
+        return builder.comment(comment,
+                        "1.0 keeps JSON recipe time, 2.0 is twice as fast, and 0.5 is twice as slow.")
+                .defineInRange(name, 1.0, 0.05, 100.0);
+    }
+
+    private static int scaledProcessingTime(int baseTicks, double speed) {
+        return Math.max(1, (int) Math.ceil(Math.max(1, baseTicks) / speed));
     }
 }

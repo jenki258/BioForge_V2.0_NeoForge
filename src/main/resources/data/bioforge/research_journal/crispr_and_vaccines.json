@@ -96,6 +96,15 @@
       "component": {
         "color": "dark_aqua",
         "underlined": true,
+        "translate": "research.bioforge.page.crispr_and_vaccines.content.workflow"
+      },
+      "link": "bioforge:crispr_workflow",
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
         "translate": "research.bioforge.page.crispr_and_vaccines.content.5"
       },
       "link": "bioforge:contents",

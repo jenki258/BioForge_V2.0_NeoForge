@@ -6,10 +6,12 @@ import net.jenkimods.bioforge.api.definition.BioForgeIds;
 import net.jenkimods.bioforge.block.MicroscopeBlock;
 import net.jenkimods.bioforge.crispr.BioForgeResearchData;
 import net.jenkimods.bioforge.infection.StrainData;
+import net.jenkimods.bioforge.infection.MicroscopeVisibility;
 import net.jenkimods.bioforge.infection.naming.StrainNamingManager;
 import net.jenkimods.bioforge.infection.symptoms.BioForgeSymptoms;
 import net.jenkimods.bioforge.infection.symptoms.SymptomKey;
 import net.jenkimods.bioforge.item.crispr.GeneImprintItem;
+import net.jenkimods.bioforge.mutation.MutationLoader;
 import net.jenkimods.bioforge.util.NbtObfuscator;
 import net.jenkimods.bioforge.vaccine.VaccineBloodAssay;
 import net.jenkimods.bioforge.vaccine.VaccineCorrectionProfile;
@@ -50,6 +52,8 @@ public class MicroscopeBlockEntity extends BlockEntity implements MenuProvider {
             "microscope_calibration";
     private static final ResourceLocation DEFAULT_CORRECTION_PROFILE =
             ResourceLocation.tryBuild(BioForge.MODID, "default");
+    private static final ResourceLocation MUTATION_ICON = ResourceLocation.tryBuild(
+            BioForge.MODID, "textures/item/gene_imprint/mutation.png");
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(1) {
         @Override
@@ -105,7 +109,7 @@ public class MicroscopeBlockEntity extends BlockEntity implements MenuProvider {
     private void syncToViewers() {
         if (level == null) return;
         ItemStack stack = itemHandler.getStackInSlot(0);
-        List<MicroscopeSymptomEntry> entries = MicroscopeSymptomConfig.INSTANCE.getEntriesFor(stack);
+        List<MicroscopeSymptomEntry> entries = entriesFor(stack);
         List<CalibrationSlider> calibration = getCalibrationFor(stack);
         Map<String, Object> symptoms = getCurrentSymptoms(entries);
         String visibility = getCurrentVisibility();
@@ -405,6 +409,24 @@ public class MicroscopeBlockEntity extends BlockEntity implements MenuProvider {
                     continue;
                 }
                 if (strain == null) continue;
+                if ("mutation".equals(entry.source())) {
+                    String mutationId = entry.symptomKey().startsWith("mutation:")
+                            ? entry.symptomKey().substring("mutation:".length()) : "";
+                    if (!mutationId.isEmpty() && strain.getMutationIds().contains(mutationId)) {
+                        symptoms.put(entry.symptomKey(), (float) mutationTier(mutationId));
+                    }
+                    continue;
+                }
+                if ("lifecycle".equals(entry.source())) {
+                    if ("incubation_time".equals(entry.symptomKey())) {
+                        float seconds = strain.getEffectiveIncubationTicks() / 20.0F;
+                        symptoms.put(entry.symptomKey(), seconds);
+                    } else if ("active_lifespan".equals(entry.symptomKey())) {
+                        int lifespan = strain.getEffectiveLifespanTicks();
+                        symptoms.put(entry.symptomKey(), lifespan < 0 ? -1.0F : lifespan / 20.0F);
+                    }
+                    continue;
+                }
                 if ("pathogen".equals(entry.source())) {
                     if (entry.isEnum()) {
                         if (strain.getPathogenId() != null) {
@@ -438,6 +460,43 @@ public class MicroscopeBlockEntity extends BlockEntity implements MenuProvider {
         return symptoms;
     }
 
+    private List<MicroscopeSymptomEntry> entriesFor(ItemStack stack) {
+        List<MicroscopeSymptomEntry> entries = new ArrayList<>(
+                MicroscopeSymptomConfig.INSTANCE.getEntriesFor(stack));
+        StrainData strain = readStrain(stack);
+        if (strain == null) return entries;
+        strain.getMutationIds().stream().sorted().forEach(mutationId ->
+                MutationLoader.INSTANCE.getMutation(mutationId)
+                        .filter(definition -> definition.enabled() && !definition.hidden())
+                        .ifPresent(definition -> entries.add(new MicroscopeSymptomEntry(
+                                "mutation:" + definition.id(), MUTATION_ICON, false,
+                                MicroscopeVisibility.HIGH, "mutation", null, null, false))));
+        return List.copyOf(entries);
+    }
+
+    @Nullable
+    private static StrainData readStrain(ItemStack stack) {
+        if (stack.isEmpty()) return null;
+        CompoundTag tag = net.jenkimods.bioforge.util.StackData.copy(stack);
+        String strainRaw = NbtObfuscator.readInfection(tag);
+        if (strainRaw == null || strainRaw.isEmpty()) strainRaw = NbtObfuscator.readString(tag);
+        if (strainRaw == null || strainRaw.isEmpty()) return null;
+        StrainData strain = StrainData.parse(strainRaw);
+        return strain.getPathogenId() == null ? null : strain;
+    }
+
+    private static int mutationTier(String mutationId) {
+        return MutationLoader.INSTANCE.getMutation(mutationId)
+                .map(definition -> definition.tags().stream()
+                        .filter(tag -> tag.startsWith("tier_"))
+                        .map(tag -> tag.substring("tier_".length()))
+                        .mapToInt(value -> {
+                            try { return Integer.parseInt(value); }
+                            catch (NumberFormatException ignored) { return 1; }
+                        }).max().orElse(1))
+                .orElse(1);
+    }
+
     private String getCurrentVisibility() {
         ItemStack stack = itemHandler.getStackInSlot(0);
         if (!stack.isEmpty()) {
@@ -461,7 +520,7 @@ public class MicroscopeBlockEntity extends BlockEntity implements MenuProvider {
     public AbstractContainerMenu createMenu(int containerId, Inventory playerInventory, Player player) {
         if (player instanceof ServerPlayer sp) {
             ItemStack stack = itemHandler.getStackInSlot(0);
-            List<MicroscopeSymptomEntry> entries = MicroscopeSymptomConfig.INSTANCE.getEntriesFor(stack);
+            List<MicroscopeSymptomEntry> entries = entriesFor(stack);
             List<CalibrationSlider> calib = getCalibrationFor(stack);
             MicroscopeNetwork.sendToPlayer(
                     new MicroscopeSyncPacket(getCurrentSymptoms(entries),

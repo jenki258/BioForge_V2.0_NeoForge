@@ -25,6 +25,7 @@ public final class LaboratoryProcessorScreen
     protected void renderBg(GuiGraphics graphics, float partialTick,
                             int mouseX, int mouseY) {
         ResourceLocation texture = texture();
+        GuiRenderCompat.prepare(texture);
         graphics.blit(texture, leftPos, topPos, 0, 0,
                 imageWidth, imageHeight, TEXTURE_SIZE, TEXTURE_SIZE);
         switch (menu.station()) {

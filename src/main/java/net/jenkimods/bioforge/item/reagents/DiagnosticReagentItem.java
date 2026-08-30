@@ -130,9 +130,10 @@ public class DiagnosticReagentItem extends Item {
     }
 
     private static ItemStack takeOne(ItemStack reagent) {
-        if (reagent.getCount() <= 1) return reagent;
+        ItemStack used = reagent.copy();
+        used.setCount(1);
         reagent.shrink(1);
-        return new ItemStack(reagent.getItem());
+        return used;
     }
 
     private static void consumeSample(ItemStack sample) {

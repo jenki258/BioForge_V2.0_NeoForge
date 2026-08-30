@@ -28,7 +28,7 @@ public class IncubatorScreen extends AbstractContainerScreen<IncubatorMenu> {
 
     @Override
     protected void renderBg(GuiGraphics g, float pt, int mx, int my) {
-        RenderSystem.setShaderTexture(0, TEXTURE);
+        GuiRenderCompat.prepare(TEXTURE);
         g.blit(TEXTURE, leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
         int progress = menu.getProgress();

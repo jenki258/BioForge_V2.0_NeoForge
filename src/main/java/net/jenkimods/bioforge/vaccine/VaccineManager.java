@@ -280,7 +280,9 @@ public final class VaccineManager {
                     true, true, infection.getPathogenType(),
                     new ArrayList<>(infection.getInfectionTypes()), symptoms,
                     new ArrayList<>(infection.getSymptoms().getMutations()),
-                    infection.getPathogenId(), new ArrayList<>(infection.getTransmissionIds())));
+                    infection.getPathogenId(), new ArrayList<>(infection.getTransmissionIds()),
+                    infection.getLifecycle().incubationTicksOverride(),
+                    infection.getLifecycle().lifespanTicksOverride()));
         }
         InfectionEventHandler.syncToClient(player, infection);
     }

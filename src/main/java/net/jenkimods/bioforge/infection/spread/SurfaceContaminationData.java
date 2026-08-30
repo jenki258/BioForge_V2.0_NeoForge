@@ -25,6 +25,7 @@ import java.util.TreeMap;
 
 public final class SurfaceContaminationData extends SavedData {
     private static final String DATA_NAME = "bioforge_surface_contamination";
+    public static final int ETHANOL_PROTECTION_RADIUS = 2;
     private static final SavedData.Factory<SurfaceContaminationData> FACTORY =
             new SavedData.Factory<>(SurfaceContaminationData::new,
                     SurfaceContaminationData::load, null);
@@ -34,6 +35,7 @@ public final class SurfaceContaminationData extends SavedData {
             new Long2ObjectOpenHashMap<>();
     private final Long2ObjectOpenHashMap<StrainData> strainByPosition =
             new Long2ObjectOpenHashMap<>();
+    private final LongOpenHashSet ethanolCoated = new LongOpenHashSet();
     private final Long2ObjectOpenHashMap<LongOpenHashSet> positionsByChunk =
             new Long2ObjectOpenHashMap<>();
     private final TreeMap<Long, LongOpenHashSet> positionsByExpiry = new TreeMap<>();
@@ -61,12 +63,16 @@ public final class SurfaceContaminationData extends SavedData {
             data.putInternal(position, contamination,
                     parsed.toCanonicalGeneticPayload(), parsed);
         }
+        for (long position : tag.getLongArray("EthanolCoated")) {
+            data.ethanolCoated.add(position);
+        }
         return data;
     }
 
     public void contaminate(BlockPos pos, StrainData strain, float strength,
                             int durationTicks, long gameTime) {
         if (strain == null || strain.getPathogenId() == null || durationTicks <= 0) return;
+        if (isProtectedByEthanol(pos)) return;
         String payload = strain.toPayload();
         String canonical = strain.toCanonicalGeneticPayload();
         float safeStrength = Math.max(0.01F, Math.min(1.0F, strength));
@@ -90,6 +96,51 @@ public final class SurfaceContaminationData extends SavedData {
                     winner.toCanonicalGeneticPayload(), winner);
         }
         setDirty();
+    }
+
+    public boolean coatWithEthanol(BlockPos pos) {
+        long key = pos.asLong();
+        boolean added = ethanolCoated.add(key);
+        boolean cleaned = clearEthanolHalo(pos);
+        if (added || cleaned) setDirty();
+        return added;
+    }
+
+    public boolean isProtectedByEthanol(BlockPos pos) {
+        int radius = ETHANOL_PROTECTION_RADIUS;
+        for (int x = -radius; x <= radius; x++) {
+            for (int y = -radius; y <= radius; y++) {
+                for (int z = -radius; z <= radius; z++) {
+                    if (ethanolCoated.contains(pos.offset(x, y, z).asLong())) return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean clearEthanolHalo(BlockPos center) {
+        boolean cleaned = false;
+        int radius = ETHANOL_PROTECTION_RADIUS;
+        for (int x = -radius; x <= radius; x++) {
+            for (int y = -radius; y <= radius; y++) {
+                for (int z = -radius; z <= radius; z++) {
+                    long key = center.offset(x, y, z).asLong();
+                    if (contaminated.containsKey(key)) {
+                        removeInternal(key);
+                        cleaned = true;
+                    }
+                }
+            }
+        }
+        return cleaned;
+    }
+
+    public boolean isEthanolCoated(BlockPos pos) {
+        return ethanolCoated.contains(pos.asLong());
+    }
+
+    public void removeEthanolCoating(BlockPos pos) {
+        if (ethanolCoated.remove(pos.asLong())) setDirty();
     }
 
     public Optional<Contamination> contaminationAt(BlockPos pos, long gameTime) {
@@ -258,7 +309,23 @@ public final class SurfaceContaminationData extends SavedData {
         markers.sort(Comparator.comparingDouble(ScanMarker::strength).reversed()
                 .thenComparingDouble(marker -> marker.position().distSqr(center)));
         if (markers.size() > 96) markers = new ArrayList<>(markers.subList(0, 96));
-        return new ScanResult(count, maximum, List.copyOf(markers));
+        List<BlockPos> coatedMarkers = new ArrayList<>();
+        LongIterator coatedIterator = ethanolCoated.iterator();
+        while (coatedIterator.hasNext()) {
+            long key = coatedIterator.nextLong();
+            long dx = BlockPos.getX(key) - center.getX();
+            long dy = BlockPos.getY(key) - center.getY();
+            long dz = BlockPos.getZ(key) - center.getZ();
+            if (dx * dx + dy * dy + dz * dz <= radiusSquared) {
+                coatedMarkers.add(BlockPos.of(key));
+            }
+        }
+        coatedMarkers.sort(Comparator.comparingDouble(position -> position.distSqr(center)));
+        if (coatedMarkers.size() > 96) {
+            coatedMarkers = new ArrayList<>(coatedMarkers.subList(0, 96));
+        }
+        return new ScanResult(count, maximum, List.copyOf(markers),
+                List.copyOf(coatedMarkers));
     }
 
     @Override
@@ -276,6 +343,7 @@ public final class SurfaceContaminationData extends SavedData {
             entries.add(stored);
         });
         tag.put("Entries", entries);
+        tag.putLongArray("EthanolCoated", ethanolCoated.toLongArray());
         return tag;
     }
 
@@ -349,5 +417,5 @@ public final class SurfaceContaminationData extends SavedData {
                                 long expiresAt, long lastTouched) {}
     public record ScanMarker(BlockPos position, float strength) {}
     public record ScanResult(int contaminatedSurfaces, float maximumStrength,
-                             List<ScanMarker> markers) {}
+                             List<ScanMarker> markers, List<BlockPos> ethanolCoatedMarkers) {}
 }

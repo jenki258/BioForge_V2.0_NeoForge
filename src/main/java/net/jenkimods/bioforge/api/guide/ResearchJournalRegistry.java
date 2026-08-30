@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import net.jenkimods.bioforge.BioForge;
+import net.jenkimods.bioforge.mutation.MutationDefinition;
+import net.jenkimods.bioforge.mutation.MutationLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.ClickEvent;
@@ -11,6 +13,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -31,6 +36,19 @@ public final class ResearchJournalRegistry {
     private static final Gson GSON = new GsonBuilder().setLenient().create();
     private static final Map<ResourceLocation, ResearchJournalPageDefinition> JAVA_PAGES =
             new LinkedHashMap<>();
+    private static final Set<String> HIDDEN_COMPONENT_ITEM_PAGES = Set.of(
+            "activated_carbon", "activated_filter", "agar_powder", "airtight_seal",
+            "biomedical_processor", "black_steel_bars", "black_steel_blend",
+            "black_steel_block", "black_steel_door", "black_steel_grate",
+            "black_steel_ingot", "black_steel_mesh", "black_steel_nugget",
+            "black_steel_plate", "black_steel_trapdoor", "chemical_resistant_coating",
+            "electronic_control_unit", "insulated_lining", "laboratory_frame",
+            "laboratory_glassware", "neutralizing_agent", "optical_lens", "polymer_resin",
+            "precision_mechanism", "reinforced_glass", "respirator_valve",
+            "sealed_biofabric", "sterile_filter", "sterile_polymer_sheet",
+            "sterile_rubber", "sterilizing_solution", "sulfuric_acid",
+            "surfactant_concentrate", "thermal_gel", "wine_must",
+            "ceiling_viral_scanner", "open_left_viral_scanner", "open_right_viral_scanner");
     private static volatile List<ResearchJournalPageDefinition> pages = List.of();
     private static volatile int contentHash;
     private static boolean frozen;
@@ -109,6 +127,9 @@ public final class ResearchJournalRegistry {
             ServerPlayer player, Set<ResourceLocation> unlockedPages,
             Set<ResourceLocation> lockedPages) {
         List<ResearchJournalPageView> result = new ArrayList<>();
+        Map<ResourceLocation, List<ItemStack>> usageIndex = player == null
+                ? Map.of() : net.jenkimods.bioforge.item.guide
+                .ResearchJournalRecipeResolver.buildUsageIndex(player);
         boolean unlockRecipeAssigned = false;
         for (ResearchJournalPageDefinition definition : pages) {
             boolean unlocked = !lockedPages.contains(definition.id())
@@ -142,18 +163,161 @@ public final class ResearchJournalRegistry {
                     unlockRecipeAssigned = !recipeViews.isEmpty();
                 }
             }
+            if (player != null && unlocked && definition.id().getPath().startsWith("items/")) {
+                body = createItemBody(definition, player, recipeViews, usageIndex);
+            }
             result.add(new ResearchJournalPageView(definition.id(),
                     unlocked ? definition.title().copy()
                             : Component.translatable("gui.bioforge.research_journal.locked_title"),
                     body, unlocked, recipeViews));
         }
+        boolean mutationCatalogueUnlocked = result.stream().anyMatch(page ->
+                page.id().equals(ResourceLocation.tryBuild(BioForge.MODID, "mutations"))
+                        && page.unlocked());
+        if (mutationCatalogueUnlocked) {
+            MutationLoader.INSTANCE.getAllMutations().stream()
+                    .filter(MutationDefinition::enabled)
+                    .filter(definition -> !definition.hidden())
+                    .sorted(Comparator.comparing(MutationDefinition::id))
+                    .forEach(definition -> result.add(createMutationView(
+                            definition, true)));
+        }
         return List.copyOf(result);
+    }
+
+    private static MutableComponent createItemBody(
+            ResearchJournalPageDefinition definition, ServerPlayer player,
+            List<ResearchJournalRecipeView> recipes,
+            Map<ResourceLocation, List<ItemStack>> usageIndex) {
+        String itemPath = definition.id().getPath().substring("items/".length());
+        ResourceLocation itemId = ResourceLocation.tryBuild(
+                definition.id().getNamespace(), itemPath);
+        Item item = itemId == null ? null
+                : net.minecraft.core.registries.BuiltInRegistries.ITEM.get(itemId);
+        if (item == null) return Component.empty();
+        ItemStack stack = new ItemStack(item);
+        MutableComponent body = Component.translatable(
+                "research.bioforge.item_summary.function").append("\n");
+        List<Component> tooltips;
+        try {
+            tooltips = stack.getTooltipLines(
+                    Item.TooltipContext.of(player.level()), player, TooltipFlag.NORMAL);
+        } catch (RuntimeException exception) {
+            tooltips = List.of();
+        }
+        int added = 0;
+        for (int index = 1; index < tooltips.size() && added < 6; index++) {
+            Component line = tooltips.get(index);
+            if (line.getString().isBlank()) continue;
+            if (added > 0) body.append("\n");
+            body.append(line.copy());
+            added++;
+        }
+        if (added == 0) {
+            body.append(Component.translatable(
+                    "research.bioforge.item_summary.component", stack.getHoverName()));
+        }
+
+        body.append("\n\n").append(Component.translatable(
+                "research.bioforge.item_summary.acquisition")).append("\n");
+        String specialSource = specialAcquisitionKey(itemPath);
+        if (specialSource != null) {
+            body.append(Component.translatable(specialSource));
+        } else if (!recipes.isEmpty()) {
+            MutableComponent stations = Component.empty();
+            boolean first = true;
+            for (ResearchJournalRecipeView recipe : recipes) {
+                if (!first) stations.append(", ");
+                stations.append(recipe.station().copy());
+                first = false;
+            }
+            body.append(Component.translatable(
+                    "research.bioforge.item_summary.produced_at", stations));
+        } else {
+            body.append(Component.translatable(
+                    "research.bioforge.item_summary.no_direct_recipe"));
+        }
+
+        List<ItemStack> uses = usageIndex.getOrDefault(itemId, List.of());
+        if (!uses.isEmpty()) {
+            body.append("\n\n").append(Component.translatable(
+                    "research.bioforge.item_summary.used_for")).append("\n");
+            int limit = Math.min(6, uses.size());
+            for (int index = 0; index < limit; index++) {
+                if (index > 0) body.append(", ");
+                body.append(uses.get(index).getHoverName());
+            }
+            if (uses.size() > limit) {
+                body.append(Component.translatable(
+                        "research.bioforge.item_summary.more_uses", uses.size() - limit));
+            }
+        }
+        return body;
+    }
+
+    private static String specialAcquisitionKey(String itemPath) {
+        return switch (itemPath) {
+            case "split_bone" -> "research.bioforge.item_summary.source.split_bone";
+            case "withered_split_bone" ->
+                    "research.bioforge.item_summary.source.withered_split_bone";
+            case "bone_marrow" -> "research.bioforge.item_summary.source.bone_marrow";
+            case "withered_bone_marrow" ->
+                    "research.bioforge.item_summary.source.withered_bone_marrow";
+            case "plasma_sample", "cell_pellet" ->
+                    "research.bioforge.item_summary.source.centrifuged_tube";
+            default -> null;
+        };
+    }
+
+    private static ResearchJournalPageView createMutationView(
+            MutationDefinition definition, boolean unlocked) {
+        ResourceLocation id = ResourceLocation.tryParse(definition.id());
+        if (id == null) id = ResourceLocation.tryBuild(BioForge.MODID, definition.id());
+        ResourceLocation pageId = ResourceLocation.tryBuild(BioForge.MODID,
+                "mutation/" + id.getNamespace() + "/" + id.getPath());
+        if (!unlocked) {
+            return new ResearchJournalPageView(pageId,
+                    Component.translatable("gui.bioforge.research_journal.locked_title"),
+                    Component.translatable("gui.bioforge.research_journal.locked_body")
+                            .withStyle(ChatFormatting.GRAY), false, List.of());
+        }
+
+        MutableComponent body = Component.translatable(definition.descriptionKey())
+                .append("\n\n")
+                .append(Component.translatable("research.bioforge.mutation_catalog.rarity",
+                        Component.translatable("mutation.rarity."
+                                + definition.rarity())));
+        if (!definition.upgradeTo().isEmpty()) {
+            body.append("\n").append(Component.translatable(
+                    "research.bioforge.mutation_catalog.upgrade",
+                    mutationName(definition.upgradeTo())));
+        }
+        if (!definition.requiredMutations().isEmpty()) {
+            MutableComponent requirements = Component.empty();
+            boolean first = true;
+            for (String required : definition.requiredMutations()) {
+                if (!first) requirements.append(", ");
+                requirements.append(mutationName(required));
+                first = false;
+            }
+            body.append("\n").append(Component.translatable(
+                    "research.bioforge.mutation_catalog.requires", requirements));
+        }
+        return new ResearchJournalPageView(pageId,
+                Component.translatable(definition.nameKey()), body, true, List.of());
+    }
+
+    private static Component mutationName(String mutationId) {
+        return MutationLoader.INSTANCE.getMutation(mutationId)
+                .<Component>map(definition -> Component.translatable(definition.nameKey()))
+                .orElseGet(() -> Component.literal(mutationId));
     }
 
     private static void replacePages(Map<ResourceLocation, ResearchJournalPageDefinition> loaded,
                                      HolderLookup.Provider registries) {
         JAVA_PAGES.forEach(loaded::putIfAbsent);
         List<ResearchJournalPageDefinition> sorted = loaded.values().stream()
+                .filter(page -> !isHiddenComponentItemPage(page.id()))
                 .sorted(Comparator.comparingInt(ResearchJournalPageDefinition::order)
                         .thenComparing(page -> page.id().toString()))
                 .toList();
@@ -162,7 +326,13 @@ public final class ResearchJournalRegistry {
         validateLinks(sorted);
     }
 
-    private static int calculateHash(List<ResearchJournalPageDefinition> definitions,
+    private static boolean isHiddenComponentItemPage(ResourceLocation pageId) {
+        String path = pageId.getPath();
+        return path.startsWith("items/")
+                && HIDDEN_COMPONENT_ITEM_PAGES.contains(path.substring("items/".length()));
+    }
+
+   private static int calculateHash(List<ResearchJournalPageDefinition> definitions,
                                      HolderLookup.Provider registries) {
         int hash = 1;
         for (ResearchJournalPageDefinition page : definitions) {

@@ -2,6 +2,22 @@
   "replace": false,
   "values": [
     "bioforge:black_steel_block",
-    "bioforge:air_vent"
+    "bioforge:black_steel_tiles",
+    "bioforge:black_steel_grate",
+    "bioforge:black_steel_door",
+    "bioforge:black_steel_trapdoor",
+    "bioforge:black_steel_bars",
+    "bioforge:air_vent",
+    "bioforge:centrifuge",
+    "bioforge:viral_scanner",
+    "bioforge:ceiling_viral_scanner",
+    "bioforge:open_left_viral_scanner",
+    "bioforge:open_right_viral_scanner",
+    "bioforge:microscope",
+    "bioforge:incubator",
+    "bioforge:vaccine_maker",
+    "bioforge:chemical_synthesizer",
+    "bioforge:sterilization_chamber",
+    "bioforge:pharma_mixer"
   ]
 }

@@ -104,6 +104,7 @@ public record VaccineMakerRecipe(
         errorMutationThreshold = Mth.clamp(errorMutationThreshold, 0.0f, 1.0f);
         if ((operation == VaccineMakerOperation.FULL
                 || operation == VaccineMakerOperation.RANDOM_MUTATION
+                || operation == VaccineMakerOperation.RANDOM_MUTATION_UPGRADE
                 || operation == VaccineMakerOperation.RESISTANCE_PILL
                 || operation == VaccineMakerOperation.SYMPTOM_TABLET)
                 && fullResult == null) {
@@ -218,6 +219,19 @@ public record VaccineMakerRecipe(
                 GsonHelper.getAsFloat(failure, "mutation_below_quality", 0.95f),
                 GsonHelper.getAsBoolean(failure, "consume_reagent", true)
         );
+    }
+
+    public VaccineMakerRecipe withId(ResourceLocation newId) {
+        return new VaccineMakerRecipe(newId, operationId, sample, carrier, reagent,
+                report, cartridge, casModule, guideProfile, processingTime,
+                requiresProgram, consumeSample, minimumQuality, guideWeights,
+                casWeight, sampleWeight, carrierWeight, reagentWeight, uses,
+                defenseRisk, resistance, durationTicks, fullResult,
+                directedResults, directedActions, fixedDirectedCategory,
+                baseQualityCap, findingBonus, completeBloodBonus,
+                identifiedImprintBonus, assayFeedbackBonus, consumeReagent,
+                consumeReport, errorMutationChance, errorMutationThreshold,
+                consumeReagentOnMutation);
     }
 
     private static Ingredient ingredient(JsonObject inputs, String key) {

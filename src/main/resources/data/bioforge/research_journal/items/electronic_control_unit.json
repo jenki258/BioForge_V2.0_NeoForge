@@ -1,0 +1,67 @@
+{
+  "order": 2039,
+  "unlock_items": [
+    "bioforge:electronic_control_unit"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:electronic_control_unit"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:electronic_control_unit"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:electronic_control_unit"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.electronic_control_unit"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.electronic_control_unit"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.general",
+        "with": [
+          {
+            "translate": "item.bioforge.electronic_control_unit"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:contents",
+      "line_breaks": 0
+    }
+  ]
+}

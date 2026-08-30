@@ -1,0 +1,67 @@
+{
+  "order": 2069,
+  "unlock_items": [
+    "bioforge:plasma_sample"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:plasma_sample"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:plasma_sample"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:plasma_sample"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.plasma_sample"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.plasma_sample"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.sample",
+        "with": [
+          {
+            "translate": "item.bioforge.plasma_sample"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:sample_chain",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -24,6 +24,7 @@ public final class ResearchTabletScreen extends Screen {
     private static final int SIDEBAR_WIDTH = 116;
     private static final int HEADER_HEIGHT = 30;
     private static final int ENTRY_HEIGHT = 20;
+    private static final int TAB_HEIGHT = 14;
     private static final int RECIPE_AREA_HEIGHT = 91;
     private static final int SCROLL_BAR_WIDTH = 5;
     private static final int PANEL = 0xFF071E27;
@@ -37,6 +38,7 @@ public final class ResearchTabletScreen extends Screen {
     private static final int DISABLED_CYAN = 0xFF39727A;
     private final List<ResearchJournalPageView> pages;
     private int selectedPage;
+    private ResearchTab selectedResearchTab = ResearchTab.GENERAL;
     private int navigationScroll;
     private int contentScroll;
     private int navigationMaxScroll;
@@ -67,13 +69,12 @@ public final class ResearchTabletScreen extends Screen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         int left = (width - TABLET_WIDTH) / 2;
         int top = (height - TABLET_HEIGHT) / 2;
-
         renderTablet(graphics, left, top);
+        renderResearchTabs(graphics, left, top, mouseX, mouseY);
         renderNavigation(graphics, left, top, mouseX, mouseY);
         renderPage(graphics, left, top);
         renderRecipes(graphics, left, top, mouseX, mouseY);
         renderCloseButton(graphics, left, top, mouseX, mouseY);
-
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
@@ -81,6 +82,7 @@ public final class ResearchTabletScreen extends Screen {
         boolean hasTexture = minecraft != null && minecraft.getResourceManager()
                 .getResource(TABLET_TEXTURE).isPresent();
         if (hasTexture) {
+            GuiRenderCompat.prepare(TABLET_TEXTURE);
             graphics.blit(TABLET_TEXTURE, left, top, 0, 0,
                     TABLET_WIDTH, TABLET_HEIGHT, TABLET_WIDTH, TABLET_HEIGHT);
         } else {
@@ -111,20 +113,22 @@ public final class ResearchTabletScreen extends Screen {
 
     private void renderNavigation(GuiGraphics graphics, int left, int top,
                                   int mouseX, int mouseY) {
-        int listTop = top + HEADER_HEIGHT + 8;
+        List<ResearchJournalPageView> visiblePages = visiblePages();
+        int listTop = navigationListTop(top);
         int listBottom = top + TABLET_HEIGHT - 14;
         int visible = Math.max(1, (listBottom - listTop) / ENTRY_HEIGHT);
         navigationVisibleRows = visible;
-        navigationMaxScroll = Math.max(0, pages.size() - visible);
+        navigationMaxScroll = Math.max(0, visiblePages.size() - visible);
         navigationScroll = Mth.clamp(navigationScroll, 0, navigationMaxScroll);
         for (int row = 0; row < visible; row++) {
             int index = navigationScroll + row;
-            if (index >= pages.size()) break;
-            ResearchJournalPageView page = pages.get(index);
+            if (index >= visiblePages.size()) break;
+            ResearchJournalPageView page = visiblePages.get(index);
+            int globalIndex = pages.indexOf(page);
             int y = listTop + row * ENTRY_HEIGHT;
             boolean hovered = mouseX >= left + 14 && mouseX < left + SIDEBAR_WIDTH - 5
                     && mouseY >= y && mouseY < y + ENTRY_HEIGHT - 2;
-            int background = index == selectedPage ? PANEL_SELECTED
+            int background = globalIndex == selectedPage ? PANEL_SELECTED
                     : hovered ? PANEL_HOVER : PANEL_INNER;
             graphics.fill(left + 14, y, left + SIDEBAR_WIDTH - 5,
                     y + ENTRY_HEIGHT - 2, BORDER);
@@ -138,6 +142,26 @@ public final class ResearchTabletScreen extends Screen {
         renderScrollBar(graphics, navigationScrollX(left), listTop,
                 listBottom - listTop, navigationScroll, navigationMaxScroll,
                 navigationVisibleRows);
+    }
+
+    private void renderResearchTabs(GuiGraphics graphics, int left, int top,
+                                    int mouseX, int mouseY) {
+        int y = top + HEADER_HEIGHT + 6;
+        int x = left + 14;
+        int width = (SIDEBAR_WIDTH - 21) / 2;
+        for (ResearchTab tab : ResearchTab.values()) {
+            int tabX = x + tab.ordinal() * width;
+            boolean hovered = mouseX >= tabX && mouseX < tabX + width - 2
+                    && mouseY >= y && mouseY < y + TAB_HEIGHT;
+            graphics.fill(tabX, y, tabX + width - 2, y + TAB_HEIGHT, BORDER);
+            graphics.fill(tabX + 1, y + 1, tabX + width - 3, y + TAB_HEIGHT - 1,
+                    tab == selectedResearchTab ? PANEL_SELECTED
+                            : hovered ? PANEL_HOVER : PANEL_INNER);
+            Component label = Component.translatable(tab.translationKey);
+            graphics.drawCenteredString(font, trim(label, width - 8),
+                    tabX + (width - 2) / 2, y + 3,
+                    tab == selectedResearchTab ? CYAN : MUTED_CYAN);
+        }
     }
 
     private void renderPage(GuiGraphics graphics, int left, int top) {
@@ -288,6 +312,7 @@ public final class ResearchTabletScreen extends Screen {
                                   int mouseX, int mouseY) {
         boolean hovered = mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16;
         if (minecraft != null && minecraft.getResourceManager().getResource(SLOT_TEXTURE).isPresent()) {
+            GuiRenderCompat.prepare(SLOT_TEXTURE);
             graphics.blit(SLOT_TEXTURE, x - 1, y - 1, 0, 0, 18, 19, 18, 19);
         } else {
             graphics.fill(x - 1, y - 1, x + 17, y + 18, BORDER);
@@ -347,7 +372,18 @@ public final class ResearchTabletScreen extends Screen {
                 return true;
             }
         }
-        int listTop = top + HEADER_HEIGHT + 8;
+        int tabY = top + HEADER_HEIGHT + 6;
+        int tabX = left + 14;
+        int tabWidth = (SIDEBAR_WIDTH - 21) / 2;
+        if (mouseY >= tabY && mouseY < tabY + TAB_HEIGHT
+                && mouseX >= tabX && mouseX < tabX + tabWidth * 2) {
+            int index = Mth.clamp(((int) mouseX - tabX) / tabWidth,
+                    0, ResearchTab.values().length - 1);
+            selectResearchTab(ResearchTab.values()[index]);
+            return true;
+        }
+        List<ResearchJournalPageView> visiblePages = visiblePages();
+        int listTop = navigationListTop(top);
         int listBottom = top + TABLET_HEIGHT - 14;
         if (isInsideScrollBar(mouseX, mouseY, navigationScrollX(left), listTop,
                 listBottom - listTop)) {
@@ -369,8 +405,8 @@ public final class ResearchTabletScreen extends Screen {
                 && mouseY >= listTop && mouseY < listBottom) {
             int row = ((int) mouseY - listTop) / ENTRY_HEIGHT;
             int index = navigationScroll + row;
-            if (index >= 0 && index < pages.size()) {
-                selectedPage = index;
+            if (index >= 0 && index < visiblePages.size()) {
+                selectedPage = pages.indexOf(visiblePages.get(index));
                 contentScroll = 0;
                 recipeScroll = 0;
                 return true;
@@ -401,8 +437,8 @@ public final class ResearchTabletScreen extends Screen {
             int left = (width - TABLET_WIDTH) / 2;
             int top = (height - TABLET_HEIGHT) / 2;
             if (draggedScroll == ScrollTarget.NAVIGATION) {
-                int trackTop = top + HEADER_HEIGHT + 8;
-                int trackHeight = TABLET_HEIGHT - HEADER_HEIGHT - 22;
+                int trackTop = navigationListTop(top);
+                int trackHeight = top + TABLET_HEIGHT - 14 - trackTop;
                 navigationScroll = scrollFromPointer(mouseY, trackTop, trackHeight,
                         navigationMaxScroll, navigationVisibleRows);
             } else {
@@ -467,6 +503,35 @@ public final class ResearchTabletScreen extends Screen {
         return left + SIDEBAR_WIDTH - 10;
     }
 
+    private int navigationListTop(int top) {
+        return top + HEADER_HEIGHT + TAB_HEIGHT + 10;
+    }
+
+    private List<ResearchJournalPageView> visiblePages() {
+        return pages.stream().filter(page -> selectedResearchTab == ResearchTab.MUTATIONS
+                ? isMutationPage(page) : !isMutationPage(page)).toList();
+    }
+
+    private boolean isMutationPage(ResearchJournalPageView page) {
+        String path = page.id().getPath();
+        return path.startsWith("mutation/") || path.equals("mutations")
+                || path.equals("mutation_interactions");
+    }
+
+    private void selectResearchTab(ResearchTab tab) {
+        if (tab == selectedResearchTab) return;
+        selectedResearchTab = tab;
+        navigationScroll = 0;
+        contentScroll = 0;
+        recipeScroll = 0;
+        List<ResearchJournalPageView> visible = visiblePages();
+        if (!visible.isEmpty()) {
+            selectedPage = pages.indexOf(visible.stream()
+                    .filter(ResearchJournalPageView::unlocked)
+                    .findFirst().orElse(visible.get(0)));
+        }
+    }
+
     private int contentScrollX(int left) {
         return left + TABLET_WIDTH - 18;
     }
@@ -527,5 +592,16 @@ public final class ResearchTabletScreen extends Screen {
         NONE,
         NAVIGATION,
         CONTENT
+    }
+
+    private enum ResearchTab {
+        GENERAL("gui.bioforge.research_journal.tab.general"),
+        MUTATIONS("gui.bioforge.research_journal.tab.mutations");
+
+        private final String translationKey;
+
+        ResearchTab(String translationKey) {
+            this.translationKey = translationKey;
+        }
     }
 }

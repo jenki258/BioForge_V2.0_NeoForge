@@ -395,6 +395,8 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
         addPageTooltip(left + 183, top + 64, 54, font.lineHeight + 4,
                 Component.translatable("gui.bioforge.vaccine_maker.slot.report"));
 
+        renderGeneCategorySelector(graphics, left, top, mouseX, mouseY);
+
         drawInfoBadge(graphics, left + 226, top + 18, mouseX, mouseY,
                 Component.translatable("gui.bioforge.vaccine_maker.crispr.hint"));
 
@@ -407,6 +409,28 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
                             "gui.bioforge.vaccine_maker.crispr.base_tooltip",
                             guide, fragment, hoveredBase.base() + 1,
                             String.valueOf(hoveredBase.value())));
+        }
+    }
+
+    private void renderGeneCategorySelector(GuiGraphics graphics, int left, int top,
+                                            int mouseX, int mouseY) {
+        int selected = menu.getSelectedGeneCategory();
+        for (int index = 0; index < VaccineMakerBlockEntity.GENE_CATEGORY_BUTTON_COUNT; index++) {
+            int x = left + 138 + index * 24;
+            int y = top + 76;
+            boolean hovered = mouseX >= x && mouseX < x + 22
+                    && mouseY >= y && mouseY < y + 10;
+            graphics.fill(x, y, x + 22, y + 10,
+                    index == selected ? 0xFF67F5D0 : hovered ? 0xFF75BFCB : 0xFF31505A);
+            graphics.fill(x + 1, y + 1, x + 21, y + 9,
+                    index == selected ? 0xFF123C43 : 0xFF071E27);
+            Component label = Component.translatable(
+                    "gui.bioforge.vaccine_maker.gene_filter.short." + index);
+            graphics.drawString(font, label,
+                    x + (22 - font.width(label)) / 2, y + 1,
+                    index == selected ? 0xFFFFFFFF : 0xFF78C7D3, false);
+            addPageTooltip(x, y, 22, 10, Component.translatable(
+                    "gui.bioforge.vaccine_maker.gene_filter." + index));
         }
     }
 
@@ -479,6 +503,7 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
                     0xFF173842);
         }
         if (filled > 0 && texturePresent(PROGRESS_FILL_TEXTURE)) {
+            GuiRenderCompat.prepare(PROGRESS_FILL_TEXTURE);
             graphics.blit(PROGRESS_FILL_TEXTURE, left + 137, top + 111,
                     0, 0, filled, 4, 99, 4);
         } else if (filled > 0) {
@@ -708,8 +733,9 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
             }
             case PATHOGEN -> Component.translatable(
                     "gui.bioforge.vaccine_maker.correction.pathogen");
-            case LIFECYCLE -> Component.translatable(
-                    "gui.bioforge.vaccine_maker.correction.incubation_period");
+            case LIFECYCLE -> translatedOrLiteral(
+                    "gui.bioforge.vaccine_maker.correction." + id,
+                    prettifyId(id));
         };
     }
 
@@ -854,8 +880,7 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
     private static void drawSlot(GuiGraphics graphics, int x, int y, int color,
                                  boolean textured) {
         if (textured) {
-
-
+            GuiRenderCompat.prepare(SLOT_TEXTURE);
             graphics.blit(SLOT_TEXTURE, x - 1, y - 1, 0, 0, 18, 19, 18, 19);
         } else {
             graphics.fill(x - 1, y - 1, x + 17, y + 17, 0xFF31505A);
@@ -871,6 +896,7 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
         boolean hovered = mouseX >= x && mouseX < x + 10
                 && mouseY >= y && mouseY < y + 10;
         if (texturePresent(INFO_TEXTURE)) {
+            GuiRenderCompat.prepare(INFO_TEXTURE);
             graphics.blit(INFO_TEXTURE, x, y, hovered ? 10 : 0, 0,
                     10, 10, 20, 10);
             addPageTooltip(x, y, 10, 10, tooltip);
@@ -898,6 +924,7 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
                                   int x, int y, int width, int height,
                                   int textureWidth, int textureHeight) {
         if (!texturePresent(texture)) return false;
+        GuiRenderCompat.prepare(texture);
         graphics.blit(texture, x, y, 0, 0, width, height,
                 textureWidth, textureHeight);
         return true;
@@ -1137,6 +1164,14 @@ public class VaccineMakerScreen extends AbstractContainerScreen<VaccineMakerMenu
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (button == 0 && VaccineMakerPageRegistry.CRISPR.equals(menu.getActivePageId())
+                && mouseY >= topPos + 76 && mouseY < topPos + 86
+                && mouseX >= leftPos + 138 && mouseX < leftPos + 234) {
+            int index = Math.min(VaccineMakerBlockEntity.GENE_CATEGORY_BUTTON_COUNT - 1,
+                    Math.max(0, ((int) mouseX - leftPos - 138) / 24));
+            sendMachineButton(VaccineMakerBlockEntity.GENE_CATEGORY_BUTTON_BASE + index);
+            return true;
+        }
         if (VaccineMakerPageRegistry.CORRECTION.equals(
                 menu.getActivePageId())
                 && handleCorrectionClick(mouseX, mouseY)) {

@@ -9,6 +9,7 @@ public enum VaccineMakerOperation {
     FULL,
     DIRECTED,
     RANDOM_MUTATION,
+    RANDOM_MUTATION_UPGRADE,
     RESISTANCE_PILL,
     SYMPTOM_TABLET,
     CLONE;

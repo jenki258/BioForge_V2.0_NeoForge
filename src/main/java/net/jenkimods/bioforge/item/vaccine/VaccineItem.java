@@ -9,6 +9,8 @@ import net.jenkimods.bioforge.vaccine.VaccineProfile;
 import net.jenkimods.bioforge.infection.InfectionCapability;
 import net.jenkimods.bioforge.infection.InfectionData;
 import net.jenkimods.bioforge.mutation.MutationManager;
+import net.jenkimods.bioforge.mutation.MutationDefinition;
+import net.jenkimods.bioforge.mutation.MutationLoader;
 import net.jenkimods.bioforge.mutation.network.MutationNetworkHandler;
 import net.jenkimods.bioforge.mutation.network.MutationSlotPacket;
 import net.minecraft.ChatFormatting;
@@ -28,6 +30,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -41,7 +44,8 @@ public class VaccineItem extends Item {
         MUTATION,
         TRANSMISSION,
         SYMPTOM,
-        RANDOM_MUTATION
+        RANDOM_MUTATION,
+        RANDOM_MUTATION_UPGRADE
     }
 
     private final Kind kind;
@@ -112,6 +116,10 @@ public class VaccineItem extends Item {
     private void applyDose(Player practitioner, LivingEntity target, ItemStack stack) {
         if (kind == Kind.RANDOM_MUTATION) {
             applyRandomMutationDose(practitioner, target, stack);
+            return;
+        }
+        if (kind == Kind.RANDOM_MUTATION_UPGRADE) {
+            applyRandomMutationUpgradeDose(practitioner, target, stack);
             return;
         }
         DirectedVaccineProfile directed = DirectedVaccineProfile.read(stack);
@@ -203,6 +211,74 @@ public class VaccineItem extends Item {
         if (!practitioner.getAbilities().instabuild) VaccineProfile.consumeDose(stack);
     }
 
+    private void applyRandomMutationUpgradeDose(Player practitioner, LivingEntity target,
+                                                ItemStack stack) {
+        VaccineProfile profile = VaccineProfile.read(stack);
+        InfectionData infection = InfectionCapability.get(target);
+        if (profile == null || infection == null || !infection.isInfected()
+                || infection.getPathogenId() == null
+                || !Objects.equals(profile.strain().getPathogenId(), infection.getPathogenId())) {
+            practitioner.displayClientMessage(Component.translatable(
+                    "message.bioforge.mutation_upgrade_vaccine.mismatch",
+                    target.getDisplayName()).withStyle(ChatFormatting.RED), true);
+            return;
+        }
+
+        List<MutationDefinition> candidates = new ArrayList<>();
+        for (String mutationId : new ArrayList<>(infection.getSymptoms().getMutations())) {
+            MutationDefinition current = MutationLoader.INSTANCE
+                    .getMutation(mutationId).orElse(null);
+            if (current == null || current.upgradeTo().isEmpty()) continue;
+            MutationDefinition upgrade = MutationLoader.INSTANCE
+                    .getMutation(current.upgradeTo()).orElse(null);
+            if (upgrade == null || !upgrade.enabled()
+                    || !upgrade.isCompatible(infection.getPathogenId())
+                    || MutationManager.hasMutation(infection, upgrade.id())) continue;
+            candidates.add(current);
+        }
+        if (candidates.isEmpty()) {
+            practitioner.displayClientMessage(Component.translatable(
+                    "message.bioforge.mutation_upgrade_vaccine.no_target",
+                    target.getDisplayName()).withStyle(ChatFormatting.GOLD), true);
+            return;
+        }
+
+        MutationDefinition current = candidates.get(
+                target.getRandom().nextInt(candidates.size()));
+        MutationDefinition upgrade = MutationLoader.INSTANCE
+                .getMutation(current.upgradeTo()).orElse(null);
+        if (upgrade == null || MutationManager.applyMutation(
+                upgrade, infection, target, true) != MutationManager.ApplyResult.APPLIED) {
+            practitioner.displayClientMessage(Component.translatable(
+                    "message.bioforge.mutation_upgrade_vaccine.failed",
+                    target.getDisplayName()).withStyle(ChatFormatting.GOLD), true);
+            return;
+        }
+        if (MutationManager.hasMutation(infection, current.id())) {
+            MutationManager.removeMutation(infection, target, current.id());
+        }
+        ServerPlayer practitionerPlayer = practitioner instanceof ServerPlayer serverPlayer
+                ? serverPlayer : null;
+        if (practitionerPlayer != null) {
+            MutationNetworkHandler.sendToPlayer(
+                    MutationSlotPacket.forMutation(upgrade.id()), practitionerPlayer);
+        }
+        if (target instanceof ServerPlayer targetPlayer && targetPlayer != practitionerPlayer) {
+            MutationNetworkHandler.sendToPlayer(
+                    MutationSlotPacket.forMutation(upgrade.id()), targetPlayer);
+        }
+        practitioner.displayClientMessage(Component.translatable(
+                "message.bioforge.mutation_upgrade_vaccine.applied",
+                target.getDisplayName(), Component.translatable(current.nameKey()),
+                Component.translatable(upgrade.nameKey()))
+                .withStyle(ChatFormatting.LIGHT_PURPLE), true);
+        practitioner.getCooldowns().addCooldown(this, 20);
+        practitioner.level().playSound(null, target.blockPosition(),
+                SoundEvents.BREWING_STAND_BREW, SoundSource.PLAYERS,
+                0.9F, 1.2F);
+        if (!practitioner.getAbilities().instabuild) VaccineProfile.consumeDose(stack);
+    }
+
     private void applyDirectedDose(Player practitioner, LivingEntity target, ItemStack stack,
                                    DirectedVaccineProfile profile) {
         DirectedVaccineManager.AttemptResult result =
@@ -257,16 +333,21 @@ public class VaccineItem extends Item {
         VaccineProfile profile = VaccineProfile.read(stack);
         DirectedVaccineProfile directed = DirectedVaccineProfile.read(stack);
         VaccineHostProfile host = VaccineHostProfile.read(stack);
-        if (kind == Kind.RANDOM_MUTATION && profile != null) {
+        if ((kind == Kind.RANDOM_MUTATION || kind == Kind.RANDOM_MUTATION_UPGRADE)
+                && profile != null) {
             tooltip.add(Component.translatable(
-                    "item.bioforge.random_mutation_vaccine.encoded")
+                    kind == Kind.RANDOM_MUTATION
+                            ? "item.bioforge.random_mutation_vaccine.encoded"
+                            : "item.bioforge.mutation_upgrade_vaccine.encoded")
                     .withStyle(ChatFormatting.DARK_PURPLE));
             tooltip.add(Component.translatable("item.bioforge.vaccine.uses",
                     profile.remainingUses()).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("item.bioforge.vaccine.assay_hint")
                     .withStyle(ChatFormatting.DARK_AQUA));
             tooltip.add(Component.translatable(
-                    "item.bioforge.random_mutation_vaccine.warning")
+                    kind == Kind.RANDOM_MUTATION
+                            ? "item.bioforge.random_mutation_vaccine.warning"
+                            : "item.bioforge.mutation_upgrade_vaccine.warning")
                     .withStyle(ChatFormatting.DARK_RED));
             return;
         }

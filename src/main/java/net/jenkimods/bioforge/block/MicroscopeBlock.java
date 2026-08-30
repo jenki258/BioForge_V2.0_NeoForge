@@ -49,7 +49,8 @@ public class MicroscopeBlock extends BaseEntityBlock implements EntityBlock {
                 .strength(2.0f)
                 .noOcclusion()
                 .lightLevel(state -> state.getValue(LIT) ? 12 : 0)
-                .sound(SoundType.METAL));
+                .sound(SoundType.METAL)
+                .requiresCorrectToolForDrops());
         registerDefaultState(stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(LIT, false));

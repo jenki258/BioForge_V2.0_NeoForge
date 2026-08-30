@@ -1,0 +1,1 @@
+{"parent":"minecraft:block/door_bottom_left","render_type":"minecraft:cutout","textures":{"bottom":"bioforge:block/black_steel_door_bottom","top":"bioforge:block/black_steel_door_top"}}

@@ -34,6 +34,7 @@ public final class InfectionLifecycleHandler {
         InfectionLifecycleDefinition profile = InfectionLifecycleRegistry.INSTANCE.resolve(state.profileId());
         boolean wasActive = !data.isIncubating();
         state.advanceAge(20L);
+        if (wasActive) state.advanceActiveAge(20L);
 
         float temperature = level.getBiome(entity.blockPosition()).value().getBaseTemperature();
         boolean hot = temperature >= HOT_TEMPERATURE;
@@ -70,8 +71,9 @@ public final class InfectionLifecycleHandler {
             sync(entity, data);
         }
 
+        int lifespanTicks = state.effectiveLifespanTicks(profile.lifespanTicks());
         if (state.selfDestructRequested()
-                || (profile.lifespanTicks() >= 0 && state.infectionAgeTicks() >= profile.lifespanTicks())) {
+                || (lifespanTicks >= 0 && state.activeAgeTicks() >= lifespanTicks)) {
             MutationManager.clearMutations(data, entity);
             data.clearInfection();
             if (entity instanceof ServerPlayer player) {

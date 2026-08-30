@@ -9,6 +9,6 @@
   ],
   "output": "bioforge:pathogen_reagent",
   "count": 2,
-  "waste": "bioforge:laboratory_waste",
+  "waste": "minecraft:charcoal",
   "processing_time": 200
 }

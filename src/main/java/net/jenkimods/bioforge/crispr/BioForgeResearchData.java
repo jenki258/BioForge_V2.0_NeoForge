@@ -8,15 +8,18 @@ import net.jenkimods.bioforge.BioForge;
 import net.jenkimods.bioforge.vaccine.DirectedVaccineAction;
 import net.jenkimods.bioforge.vaccine.VaccineCorrectionProfile;
 import net.jenkimods.bioforge.world.vaccine.VaccineMakerRecipe;
+import net.jenkimods.bioforge.world.recipe.BioForgeRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +83,16 @@ public final class BioForgeResearchData {
 
     public static List<VaccineMakerRecipe> recipes() {
         return recipes;
+    }
+
+    public static List<VaccineMakerRecipe> recipes(Level level) {
+        if (level == null) return recipes();
+        List<VaccineMakerRecipe> combined = new ArrayList<>();
+        level.getRecipeManager().getAllRecipesFor(BioForgeRecipeRegistration.VACCINE_MAKER_TYPE)
+                .forEach(holder -> combined.add(holder.value().recipe()
+                        .withId(holder.id())));
+        combined.addAll(recipes);
+        return List.copyOf(combined);
     }
 
     public static Set<ResourceLocation> guideProfileIds() {

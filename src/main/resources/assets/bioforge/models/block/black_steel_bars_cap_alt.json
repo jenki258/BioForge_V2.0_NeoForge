@@ -1,0 +1,1 @@
+{"parent":"minecraft:block/iron_bars_cap_alt","render_type":"minecraft:cutout","textures":{"particle":"bioforge:block/black_steel_bars","bars":"bioforge:block/black_steel_bars","edge":"bioforge:block/black_steel_bars_top"}}

@@ -1,0 +1,67 @@
+{
+  "order": 2085,
+  "unlock_items": [
+    "bioforge:sterilizing_solution"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:sterilizing_solution"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:sterilizing_solution"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:sterilizing_solution"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.sterilizing_solution"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.sterilizing_solution"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.chemistry",
+        "with": [
+          {
+            "translate": "item.bioforge.sterilizing_solution"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:chemistry",
+      "line_breaks": 0
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "order": 2034,
+  "unlock_items": [
+    "bioforge:crispr_cartridge"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:crispr_cartridge"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:crispr_cartridge"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:crispr_cartridge"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.crispr_cartridge"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.crispr_cartridge"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.crispr",
+        "with": [
+          {
+            "translate": "item.bioforge.crispr_cartridge"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:crispr_workflow",
+      "line_breaks": 0
+    }
+  ]
+}

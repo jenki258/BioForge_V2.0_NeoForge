@@ -1,0 +1,67 @@
+{
+  "order": 2093,
+  "unlock_items": [
+    "bioforge:thermal_gel"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:thermal_gel"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:thermal_gel"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:thermal_gel"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.thermal_gel"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.thermal_gel"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.chemistry",
+        "with": [
+          {
+            "translate": "item.bioforge.thermal_gel"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:chemistry",
+      "line_breaks": 0
+    }
+  ]
+}

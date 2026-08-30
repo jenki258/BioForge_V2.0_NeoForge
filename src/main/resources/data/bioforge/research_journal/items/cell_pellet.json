@@ -1,0 +1,67 @@
+{
+  "order": 2028,
+  "unlock_items": [
+    "bioforge:cell_pellet"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:cell_pellet"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:cell_pellet"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:cell_pellet"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.cell_pellet"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.cell_pellet"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.sample",
+        "with": [
+          {
+            "translate": "item.bioforge.cell_pellet"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:sample_chain",
+      "line_breaks": 0
+    }
+  ]
+}

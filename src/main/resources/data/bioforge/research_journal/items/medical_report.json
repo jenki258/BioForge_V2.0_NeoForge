@@ -1,0 +1,67 @@
+{
+  "order": 2056,
+  "unlock_items": [
+    "bioforge:medical_report"
+  ],
+  "recipes": [
+    {
+      "type": "crafting",
+      "id": "bioforge:medical_report"
+    },
+    {
+      "type": "laboratory",
+      "id": "bioforge:medical_report"
+    },
+    {
+      "type": "vaccine_maker",
+      "id": "bioforge:medical_report"
+    }
+  ],
+  "title": {
+    "color": "dark_aqua",
+    "bold": true,
+    "translate": "item.bioforge.medical_report"
+  },
+  "content": [
+    {
+      "component": {
+        "color": "black",
+        "translate": "research.bioforge.item_guide.intro",
+        "with": [
+          {
+            "translate": "item.bioforge.medical_report"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_gray",
+        "translate": "research.bioforge.item_guide.diagnostic",
+        "with": [
+          {
+            "translate": "item.bioforge.medical_report"
+          }
+        ]
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "gray",
+        "translate": "research.bioforge.item_guide.recipe_hint"
+      },
+      "line_breaks": 2
+    },
+    {
+      "component": {
+        "color": "dark_aqua",
+        "underlined": true,
+        "translate": "research.bioforge.item_guide.open_protocol"
+      },
+      "link": "bioforge:diagnostics",
+      "line_breaks": 0
+    }
+  ]
+}

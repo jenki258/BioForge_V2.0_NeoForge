@@ -82,11 +82,19 @@ public class GeneImprintItem extends Item {
 
 
     public static boolean captureUnknown(ItemStack stack, StrainData strain, RandomSource random) {
+        return captureUnknown(stack, strain, random, null);
+    }
+
+    public static boolean captureUnknown(ItemStack stack, StrainData strain, RandomSource random,
+                                         @Nullable VaccineTargetCategory preferredCategory) {
         if (!(stack.getItem() instanceof GeneImprintItem)
                 || strain == null || strain.getPathogenId() == null) {
             return false;
         }
-        List<Candidate> candidates = allCandidates(strain);
+        List<Candidate> candidates = preferredCategory == null
+                ? allCandidates(strain)
+                : candidates(strain, preferredCategory).stream()
+                .map(target -> new Candidate(preferredCategory, target)).toList();
         if (candidates.isEmpty()) return false;
         Candidate selected = candidates.get(random.nextInt(candidates.size()));
         write(stack, new Data(strain.toPayload(), selected.category(), selected.target(), false,
