@@ -1,20 +1,22 @@
 package net.jenkimods.bioforge.world.laboratory;
 
 import net.jenkimods.bioforge.BioForge;
-import net.jenkimods.bioforge.block.LaboratoryProcessorBlock;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 public final class LaboratoryProcessorMenu extends AbstractContainerMenu {
     private final LaboratoryProcessorBlockEntity blockEntity;
+    private final Block block;
     private final ContainerData data;
     private final LaboratoryStation station;
     private final int machineSlots;
@@ -35,6 +37,7 @@ public final class LaboratoryProcessorMenu extends AbstractContainerMenu {
                                    LaboratoryProcessorBlockEntity blockEntity, ContainerData data) {
         super(BioForge.LABORATORY_PROCESSOR_MENU.get(), id);
         this.blockEntity = blockEntity;
+        this.block = blockEntity.getBlockState().getBlock();
         this.data = data;
         this.station = blockEntity.station();
         this.machineSlots = station.machineSlots();
@@ -81,9 +84,8 @@ public final class LaboratoryProcessorMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return player.level().getBlockEntity(blockEntity.getBlockPos()) == blockEntity
-                && blockEntity.getBlockState().getBlock() instanceof LaboratoryProcessorBlock
-                && blockEntity.getBlockPos().distToCenterSqr(player.position()) <= 64.0D;
+        return stillValid(ContainerLevelAccess.create(
+                blockEntity.getLevel(), blockEntity.getBlockPos()), player, block);
     }
 
     public int scaledProgress(int width) {
